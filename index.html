@@ -9,239 +9,284 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --green:#8DC63F;
-  --green-dark:#6a9e2a;
-  --green-light:#b5e04a;
-  --bg:#f4f4f4;
-  --card:#ffffff;
-  --text:#1a1a1a;
-  --text2:#888;
-  --text3:#bbb;
-  --border:#ececec;
-  --blue-bg:#e8f4ff;
-  --blue-text:#3b9ede;
-  --yellow-bg:#fff8e1;
-  --yellow-text:#e6a817;
-  --purple-bg:#f3eeff;
-  --purple-text:#8b5cf6;
-  --radius:18px;
-  --radius-sm:12px;
+  --green:#8DC63F;--green-dark:#6a9e2a;
+  --bg:#f4f4f4;--card:#fff;--text:#1a1a1a;--text2:#888;--text3:#bbb;
+  --border:#ececec;--blue-bg:#e8f4ff;--blue-text:#3b9ede;
+  --yellow-bg:#fff8e1;--yellow-text:#e6a817;--purple-bg:#f3eeff;--purple-text:#8b5cf6;
+  --radius:18px;--radius-sm:12px;
 }
 html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color:var(--text);overflow-x:hidden}
 .screen{display:none;flex-direction:column;min-height:100vh}
 .screen.active{display:flex}
 
-/* ── SPLASH ── */
+/* SPLASH */
 #splash{background:var(--green);align-items:center;justify-content:center;gap:0}
-.splash-icon{width:120px;height:120px;margin-bottom:24px;animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both}
-@keyframes popIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+.splash-icon{font-size:80px;margin-bottom:24px;animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both}
 .splash-title{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;animation:fadeUp .5s .3s both}
 .splash-sub{font-size:16px;color:rgba(255,255,255,.75);font-weight:600;margin-top:6px;animation:fadeUp .5s .45s both}
+@keyframes popIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── HEADER ── */
-.header{padding:16px 20px 8px;display:flex;align-items:center;justify-content:space-between;background:var(--card);border-bottom:1px solid var(--border)}
-.header-logo{display:flex;align-items:center;gap:8px}
-.header-logo .logo-icon{width:36px;height:36px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px}
-.header-logo .logo-text{font-size:18px;font-weight:900;color:var(--text)}
-.profile-btn{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:6px}
-.profile-btn svg{width:16px;height:16px;stroke:var(--text2)}
+/* ONBOARDING */
+#onboarding{background:var(--bg)}
+.ob-header{padding:16px 20px 8px;display:flex;align-items:center;gap:12px}
+.ob-back{width:36px;height:36px;background:var(--card);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--text2);font-weight:700;flex-shrink:0}
+.progress-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
+.ob-content{flex:1;padding:24px 20px 120px;overflow-y:auto}
+.ob-icon{font-size:64px;margin-bottom:16px;display:block;text-align:center}
+.ob-title{font-size:26px;font-weight:900;text-align:center;margin-bottom:8px;line-height:1.2}
+.ob-sub{font-size:14px;color:var(--text2);text-align:center;font-weight:600;margin-bottom:28px;line-height:1.5}
+.ob-footer{position:fixed;bottom:0;left:0;right:0;padding:16px 20px 32px;background:var(--bg)}
+.ob-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:28px;padding:18px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;transition:transform .1s,opacity .2s}
+.ob-btn:active{transform:scale(.97)}
+.ob-btn:disabled{opacity:.4;cursor:default}
+.choice-list{display:flex;flex-direction:column;gap:10px}
+.choice-item{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .15s;font-size:16px;font-weight:700}
+.choice-item.selected{background:#1a1a1a;border-color:#1a1a1a;color:#fff}
+.ch-icon{font-size:26px;flex-shrink:0}
+.ch-sub{font-size:12px;font-weight:600;color:var(--text2);margin-top:2px}
+.choice-item.selected .ch-sub{color:rgba(255,255,255,.6)}
+.picker-wrap{position:relative;height:200px;overflow:hidden}
+.picker-list{overflow-y:scroll;height:200px;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.picker-list::-webkit-scrollbar{display:none}
+.picker-item{height:40px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:16px;font-weight:600;color:var(--text3);transition:all .15s}
+.picker-item.active{font-size:24px;font-weight:900;color:var(--text)}
+.picker-hl{position:absolute;top:50%;left:0;right:0;height:44px;transform:translateY(-50%);background:rgba(141,198,63,.08);border-radius:12px;pointer-events:none;border:1.5px solid rgba(141,198,63,.2)}
+.speed-val{font-size:36px;font-weight:900;text-align:center;margin-bottom:4px}
+.speed-lbl{font-size:13px;color:var(--text2);font-weight:600;text-align:center;margin-bottom:16px}
+.speed-icons{display:flex;justify-content:space-between;margin-bottom:8px;font-size:28px;padding:0 4px}
+.speed-slider{width:100%;accent-color:var(--green);cursor:pointer;margin-bottom:12px}
+.speed-marks{display:flex;justify-content:space-between}
+.speed-mark{text-align:center;flex:1}
+.sm-val{font-size:12px;font-weight:800}
+.sm-lbl{font-size:10px;color:var(--text2);font-weight:600;line-height:1.3}
 
-/* ── CALENDAR ── */
-.calendar-section{background:var(--card);padding:12px 20px 16px;border-bottom:1px solid var(--border)}
-.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.cal-month{font-size:16px;font-weight:800}
-.today-btn{background:#1a1a1a;color:#fff;border:none;border-radius:20px;padding:7px 16px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
-.cal-nav{background:var(--bg);border:1px solid var(--border);border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px}
-.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:6px}
+/* CALC */
+#calcScreen{background:var(--bg);align-items:center;justify-content:center;padding:40px 24px;text-align:center}
+.calc-icon{font-size:64px;margin-bottom:20px}
+.calc-title{font-size:24px;font-weight:900;margin-bottom:8px}
+.calc-sub{font-size:14px;color:var(--text2);font-weight:600;margin-bottom:40px;line-height:1.5}
+.calc-ring{position:relative;width:180px;height:180px;margin:0 auto 16px}
+.calc-ring svg{transform:rotate(-90deg)}
+.calc-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;color:var(--green)}
+.calc-hint{font-size:13px;color:var(--text2);font-weight:600}
+
+/* RESULT */
+#resultScreen{background:var(--bg);overflow-y:auto}
+.result-header{padding:24px 20px 0;text-align:center}
+.result-header h2{font-size:22px;font-weight:900;line-height:1.3;margin-bottom:20px}
+.result-card{margin:0 16px 16px;background:linear-gradient(135deg,#f0fde0,#e8f9cc);border:1.5px solid rgba(141,198,63,.3);border-radius:20px;padding:20px}
+.rc-icon{width:60px;height:60px;background:rgba(141,198,63,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 12px}
+.rc-label{font-size:13px;color:var(--text2);font-weight:600;text-align:center;margin-bottom:4px}
+.rc-big{font-size:22px;font-weight:900;text-align:center;margin-bottom:16px}
+.rc-kcal{background:#fff;border-radius:14px;padding:14px;text-align:center;margin-bottom:12px}
+.rc-kcal-lbl{font-size:13px;color:var(--text2);font-weight:700;margin-bottom:4px}
+.rc-kcal-num{font-size:40px;font-weight:900;letter-spacing:-1px}
+.rc-macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rc-macro{border-radius:12px;padding:12px 8px;text-align:center}
+.rc-macro.blue{background:var(--blue-bg)}
+.rc-macro.yellow{background:var(--yellow-bg)}
+.rc-macro.purple{background:var(--purple-bg)}
+.rc-badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;margin:0 auto 6px}
+.rc-macro.blue .rc-badge{background:var(--blue-text);color:#fff}
+.rc-macro.yellow .rc-badge{background:var(--yellow-text);color:#fff}
+.rc-macro.purple .rc-badge{background:var(--purple-text);color:#fff}
+.rc-mval{font-size:19px;font-weight:900}
+.rc-macro.blue .rc-mval{color:var(--blue-text)}
+.rc-macro.yellow .rc-mval{color:var(--yellow-text)}
+.rc-macro.purple .rc-mval{color:var(--purple-text)}
+.rc-mlbl{font-size:11px;color:var(--text2);font-weight:600;margin-top:2px}
+.result-start-btn{display:block;margin:0 16px 40px;background:var(--green);color:#fff;border:none;border-radius:28px;width:calc(100% - 32px);padding:18px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif}
+
+/* MAIN */
+#main{background:var(--bg)}
+.header{padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--card);border-bottom:1px solid var(--border)}
+.header-logo{display:flex;align-items:center;gap:8px}
+.logo-icon{width:34px;height:34px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.logo-text{font-size:17px;font-weight:900}
+.profile-btn{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:7px 12px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:5px}
+.calendar-section{background:var(--card);padding:10px 16px 14px;border-bottom:1px solid var(--border)}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.cal-month{font-size:15px;font-weight:800}
+.today-btn{background:#1a1a1a;color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
+.cal-nav{background:var(--bg);border:1px solid var(--border);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;font-weight:700}
+.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:4px}
 .cal-days-header span{font-size:11px;font-weight:700;color:var(--text2)}
 .cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
-.cal-day{height:38px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:50%;font-size:14px;font-weight:700;color:var(--text2);position:relative}
-.cal-day.today{background:var(--green);color:#fff;border-radius:12px}
-.cal-day.has-data::after{content:'';width:5px;height:5px;background:var(--green);border-radius:50%;position:absolute;bottom:3px}
-.cal-day.today::after{background:#fff}
-.cal-day.other-month{color:var(--text3)}
-
-/* ── MAIN SCROLL ── */
-.main-scroll{flex:1;overflow-y:auto;padding:16px 16px 100px}
-
-/* ── CALORIES CARD ── */
-.calories-card{background:var(--card);border-radius:var(--radius);padding:18px 20px;margin-bottom:12px}
+.cal-day{height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;font-size:14px;font-weight:700;color:var(--text2);position:relative}
+.cal-day.today{background:var(--green);color:#fff}
+.cal-day.selected{background:#1a1a1a;color:#fff}
+.cal-day.has-data::after{content:'';width:4px;height:4px;background:var(--green);border-radius:50%;position:absolute;bottom:3px}
+.cal-day.today::after,.cal-day.selected::after{background:#fff}
+.main-scroll{flex:1;overflow-y:auto;padding:14px 14px 100px}
+.calories-card{background:var(--card);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px}
 .cal-card-top{display:flex;align-items:center;justify-content:space-between}
-.cal-card-left .label{font-size:13px;color:var(--text2);font-weight:700;display:flex;align-items:center;gap:5px;margin-bottom:4px}
-.cal-card-left .big-num{font-size:42px;font-weight:900;line-height:1;letter-spacing:-2px}
-.ring-wrap{position:relative;width:80px;height:80px}
+.cal-left .clabel{font-size:13px;color:var(--text2);font-weight:700;display:flex;align-items:center;gap:4px;margin-bottom:4px}
+.cal-left .big-num{font-size:40px;font-weight:900;line-height:1;letter-spacing:-2px}
+.ring-wrap{position:relative;width:76px;height:76px}
 .ring-wrap svg{transform:rotate(-90deg)}
 .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.ring-center .eaten{font-size:13px;font-weight:800;color:var(--text)}
-.ring-center .goal{font-size:11px;color:var(--text2);font-weight:600}
-.health-bar{margin-top:14px;background:var(--bg);border-radius:10px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
-.health-bar .hlabel{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px}
-.health-score{background:var(--green);color:#fff;border-radius:20px;padding:3px 12px;font-size:12px;font-weight:800}
-.health-progress{width:100%;height:4px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
-.health-progress .fill{height:100%;background:var(--green);border-radius:2px;transition:width .5s}
-
-/* ── BJU CARDS ── */
-.bju-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
-.bju-card{background:var(--card);border-radius:var(--radius-sm);padding:14px 12px;text-align:center}
-.bju-ring{width:52px;height:52px;margin:0 auto 8px;position:relative}
+.ring-center .eaten{font-size:12px;font-weight:800}
+.ring-center .goal{font-size:10px;color:var(--text2);font-weight:600}
+.bju-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.bju-card{background:var(--card);border-radius:var(--radius-sm);padding:10px 6px;text-align:center}
+.bju-ring{width:48px;height:48px;margin:0 auto 6px;position:relative}
 .bju-ring svg{transform:rotate(-90deg)}
-.bju-ring-label{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900}
-.bju-nums{font-size:12px;font-weight:700;margin-bottom:2px}
-.bju-title{font-size:11px;color:var(--text2);font-weight:600}
-
-/* ── HISTORY ── */
-.section-title{font-size:17px;font-weight:900;margin-bottom:10px;padding:0 4px}
-.meal-item{background:var(--card);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
-.meal-thumb{width:56px;height:56px;border-radius:12px;object-fit:cover;background:var(--bg);flex-shrink:0}
-.meal-thumb-placeholder{width:56px;height:56px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0}
+.bju-ring-lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+.bju-nums{font-size:11px;font-weight:700;margin-bottom:1px}
+.bju-title{font-size:10px;color:var(--text2);font-weight:600}
+.section-title{font-size:16px;font-weight:900;margin-bottom:8px;padding:0 2px}
+.meal-item{background:var(--card);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.meal-thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.meal-thumb-ph{width:52px;height:52px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
 .meal-info{flex:1;min-width:0}
-.meal-name{font-size:14px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
-.meal-time{font-size:11px;color:var(--text2);font-weight:600;margin-bottom:5px}
-.meal-bju{display:flex;gap:8px}
-.meal-bju span{font-size:11px;font-weight:700;color:var(--text2)}
+.meal-name{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.meal-time{font-size:10px;color:var(--text2);font-weight:600;margin-bottom:4px}
+.meal-bju{display:flex;gap:6px}
+.meal-bju span{font-size:10px;font-weight:700;color:var(--text2)}
 .meal-bju span b{color:var(--text)}
-.meal-kcal{font-size:20px;font-weight:900;color:var(--text);white-space:nowrap}
-.meal-delete{width:28px;height:28px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.empty-history{background:var(--card);border-radius:var(--radius);padding:40px 20px;text-align:center}
-.empty-history .plate{font-size:60px;margin-bottom:12px;opacity:.3}
-.empty-history p{font-size:15px;color:var(--text2);font-weight:600;line-height:1.5}
-
-/* ── ADD BTN ── */
-.add-fab{position:fixed;bottom:24px;right:20px;background:#1a1a1a;color:#fff;border:none;border-radius:28px;padding:14px 22px;font-size:16px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:8px;font-family:'Nunito',sans-serif;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:50;transition:transform .1s}
+.meal-kcal{font-size:18px;font-weight:900;white-space:nowrap}
+.meal-del{width:26px;height:26px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.empty-history{background:var(--card);border-radius:var(--radius);padding:36px 20px;text-align:center}
+.empty-plate{font-size:52px;margin-bottom:10px;opacity:.3}
+.empty-history p{font-size:14px;color:var(--text2);font-weight:600;line-height:1.5}
+.add-fab{position:fixed;bottom:22px;right:18px;background:#1a1a1a;color:#fff;border:none;border-radius:28px;padding:13px 20px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.2);z-index:50;transition:transform .1s}
 .add-fab:active{transform:scale(.96)}
-.add-fab .plus{font-size:20px;font-weight:900}
 
-/* ── PROFILE SCREEN ── */
+/* PROFILE */
 #profile{background:var(--bg)}
-.profile-header{background:var(--card);padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
-.back-btn{width:36px;height:36px;background:var(--bg);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:16px;flex-shrink:0}
-.profile-header h2{font-size:18px;font-weight:900;flex:1;text-align:center}
-.profile-header .spacer{width:36px}
-.profile-content{padding:16px;overflow-y:auto;max-height:calc(100vh - 65px)}
-.calories-goal-card{background:var(--card);border-radius:var(--radius);padding:20px;margin-bottom:12px}
-.calories-goal-card .fire{font-size:18px;margin-right:6px}
-.calories-goal-card .glabel{font-size:13px;font-weight:700;color:var(--text2);margin-bottom:6px;display:flex;align-items:center}
-.calories-goal-card .gval{font-size:38px;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;gap:10px}
-.edit-icon{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:5px 8px;cursor:pointer;font-size:14px}
-.macro-goal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
-.macro-goal-card{border-radius:var(--radius-sm);padding:14px 12px}
-.macro-goal-card.blue{background:var(--blue-bg)}
-.macro-goal-card.yellow{background:var(--yellow-bg)}
-.macro-goal-card.purple{background:var(--purple-bg)}
-.macro-goal-card .mlabel{font-size:12px;font-weight:800;display:flex;align-items:center;gap:5px;margin-bottom:6px}
-.macro-goal-card.blue .mlabel{color:var(--blue-text)}
-.macro-goal-card.yellow .mlabel{color:var(--yellow-text)}
-.macro-goal-card.purple .mlabel{color:var(--purple-text)}
-.macro-goal-card .badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0}
-.macro-goal-card.blue .badge{background:var(--blue-text);color:#fff}
-.macro-goal-card.yellow .badge{background:var(--yellow-text);color:#fff}
-.macro-goal-card.purple .badge{background:var(--purple-text);color:#fff}
-.macro-goal-card .mval{font-size:22px;font-weight:900;display:flex;align-items:center;gap:8px}
-.macro-goal-card.blue .mval{color:var(--blue-text)}
-.macro-goal-card.yellow .mval{color:var(--yellow-text)}
-.macro-goal-card.purple .mval{color:var(--purple-text)}
-.goal-section{background:var(--card);border-radius:var(--radius);padding:16px 20px;margin-bottom:12px}
-.goal-section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.goal-section-header h3{font-size:15px;font-weight:800}
-.recalc-btn{background:#1a1a1a;color:#fff;border:none;border-radius:20px;padding:8px 16px;font-size:12px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif}
-.weight-goal-row{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-bottom:14px}
-.weight-box{background:var(--bg);border-radius:var(--radius-sm);padding:12px 14px}
-.weight-box .wlabel{font-size:11px;color:var(--text2);font-weight:700;margin-bottom:4px}
-.weight-box .wval{font-size:18px;font-weight:900;display:flex;align-items:center;gap:6px}
-.arrow-icon{font-size:20px;color:var(--text2);text-align:center}
-.profile-rows{background:var(--card);border-radius:var(--radius);overflow:hidden;margin-bottom:12px}
-.profile-row{display:flex;align-items:center;padding:14px 20px;border-bottom:1px solid var(--border);cursor:pointer}
+.profile-header{background:var(--card);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.back-btn{width:34px;height:34px;background:var(--bg);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;flex-shrink:0}
+.profile-header h2{font-size:17px;font-weight:900;flex:1;text-align:center}
+.spacer{width:34px}
+.profile-content{padding:14px;overflow-y:auto;height:calc(100vh - 63px)}
+.cal-goal-card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:10px}
+.glabel{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:5px;display:flex;align-items:center;gap:4px}
+.gval{font-size:34px;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;gap:8px}
+.edit-icon{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:4px 7px;cursor:pointer;font-size:12px}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
+.mg-card{border-radius:10px;padding:10px 6px}
+.mg-card.blue{background:var(--blue-bg)}
+.mg-card.yellow{background:var(--yellow-bg)}
+.mg-card.purple{background:var(--purple-bg)}
+.mg-lbl{font-size:10px;font-weight:800;display:flex;align-items:center;gap:3px;margin-bottom:4px}
+.mg-card.blue .mg-lbl{color:var(--blue-text)}
+.mg-card.yellow .mg-lbl{color:var(--yellow-text)}
+.mg-card.purple .mg-lbl{color:var(--purple-text)}
+.mg-badge{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0}
+.mg-card.blue .mg-badge{background:var(--blue-text);color:#fff}
+.mg-card.yellow .mg-badge{background:var(--yellow-text);color:#fff}
+.mg-card.purple .mg-badge{background:var(--purple-text);color:#fff}
+.mg-val{font-size:16px;font-weight:900;display:flex;align-items:center;gap:4px}
+.mg-card.blue .mg-val{color:var(--blue-text)}
+.mg-card.yellow .mg-val{color:var(--yellow-text)}
+.mg-card.purple .mg-val{color:var(--purple-text)}
+.profile-rows{background:var(--card);border-radius:var(--radius);overflow:hidden;margin-bottom:10px}
+.profile-row{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--border);cursor:pointer}
 .profile-row:last-child{border-bottom:none}
-.profile-row .row-icon{font-size:20px;margin-right:12px;width:28px;text-align:center}
-.profile-row .row-label{font-size:15px;font-weight:700;flex:1}
-.profile-row .row-val{font-size:14px;color:var(--text2);font-weight:700;margin-right:8px}
-.profile-row .chevron{color:var(--text3);font-size:16px}
+.row-icon{font-size:16px;margin-right:10px;width:22px;text-align:center}
+.row-label{font-size:14px;font-weight:700;flex:1}
+.row-val{font-size:12px;color:var(--text2);font-weight:700;margin-right:4px;text-align:right;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chevron{color:var(--text3);font-size:14px}
 
-/* ── API KEY SETUP ── */
-#apiSetup{background:var(--green);align-items:center;justify-content:center;padding:40px 24px;text-align:center}
-.api-setup-icon{font-size:60px;margin-bottom:20px;animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both}
-.api-setup-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:8px}
-.api-setup-sub{font-size:14px;color:rgba(255,255,255,.8);font-weight:600;margin-bottom:32px;line-height:1.5}
-.api-input{width:100%;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:14px;padding:14px 16px;font-size:14px;color:#fff;font-family:'Nunito',sans-serif;font-weight:600;outline:none;margin-bottom:12px}
-.api-input::placeholder{color:rgba(255,255,255,.6)}
-.api-input:focus{border-color:#fff;background:rgba(255,255,255,.25)}
-.api-go-btn{width:100%;background:#fff;color:var(--green-dark);border:none;border-radius:14px;padding:16px;font-size:16px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;transition:transform .1s}
-.api-go-btn:active{transform:scale(.97)}
-
-/* ── MODAL ── */
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:92vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s}
 .modal-overlay.open .modal-sheet{transform:translateY(0)}
 .modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 18px}
-.modal-title{font-size:20px;font-weight:900;margin-bottom:16px}
-.photo-preview{width:100%;border-radius:16px;max-height:240px;object-fit:cover;margin-bottom:16px;background:var(--bg)}
-.analyzing{display:flex;flex-direction:column;align-items:center;padding:30px 0;gap:14px}
-.spinner{width:44px;height:44px;border:4px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite}
+.modal-title{font-size:19px;font-weight:900;margin-bottom:14px}
+.photo-preview{width:100%;border-radius:14px;max-height:230px;object-fit:cover;margin-bottom:14px}
+.analyzing{display:flex;flex-direction:column;align-items:center;padding:28px 0;gap:12px}
+.spinner{width:42px;height:42px;border:4px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.analyzing p{font-size:15px;color:var(--text2);font-weight:700}
-.result-dish{font-size:20px;font-weight:900;margin-bottom:4px}
-.result-desc{font-size:13px;color:var(--text2);font-weight:600;margin-bottom:16px;line-height:1.5}
-.result-kcal-big{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1;color:var(--text);margin-bottom:4px}
-.result-kcal-label{font-size:13px;color:var(--text2);font-weight:700;margin-bottom:16px}
-.result-macros{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.analyzing p{font-size:14px;color:var(--text2);font-weight:700}
+.result-dish{font-size:19px;font-weight:900;margin-bottom:4px}
+.result-desc{font-size:13px;color:var(--text2);font-weight:600;margin-bottom:14px;line-height:1.5}
+.result-kcal-big{font-size:48px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:4px}
+.result-kcal-lbl{font-size:13px;color:var(--text2);font-weight:700;margin-bottom:14px}
+.result-macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
 .result-macro{border-radius:var(--radius-sm);padding:12px;text-align:center}
 .result-macro.blue{background:var(--blue-bg)}
 .result-macro.yellow{background:var(--yellow-bg)}
 .result-macro.purple{background:var(--purple-bg)}
-.result-macro .rval{font-size:20px;font-weight:900}
+.rval{font-size:19px;font-weight:900}
 .result-macro.blue .rval{color:var(--blue-text)}
 .result-macro.yellow .rval{color:var(--yellow-text)}
 .result-macro.purple .rval{color:var(--purple-text)}
-.result-macro .rlbl{font-size:11px;font-weight:700;color:var(--text2);margin-top:2px}
-.confirm-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:16px;padding:16px;font-size:16px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px;transition:transform .1s}
-.confirm-btn:active{transform:scale(.97)}
-.cancel-btn{width:100%;background:transparent;border:1.5px solid var(--border);border-radius:16px;padding:14px;font-size:15px;font-weight:700;color:var(--text2);cursor:pointer;font-family:'Nunito',sans-serif}
+.rlbl{font-size:11px;font-weight:700;color:var(--text2);margin-top:2px}
+.confirm-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px}
+.cancel-btn{width:100%;background:transparent;border:1.5px solid var(--border);border-radius:16px;padding:13px;font-size:14px;font-weight:700;color:var(--text2);cursor:pointer;font-family:'Nunito',sans-serif}
 .error-msg{color:#e74c3c;font-size:14px;font-weight:700;text-align:center;padding:16px 0;line-height:1.5}
 input[type=file]{display:none}
-
-/* ── EDIT MODAL ── */
-.edit-field{margin-bottom:14px}
-.edit-field label{font-size:13px;font-weight:700;color:var(--text2);display:block;margin-bottom:6px}
-.edit-field input,.edit-field select{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;font-size:15px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;outline:none}
-.edit-field input:focus,.edit-field select:focus{border-color:var(--green)}
+.edit-field{margin-bottom:12px}
+.edit-field label{font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:5px}
+.edit-field input,.edit-field select{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 12px;font-size:15px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;outline:none}
+.edit-field input:focus{border-color:var(--green)}
 </style>
 </head>
 <body>
 
-<!-- API SETUP -->
-<div class="screen" id="apiSetup">
-  <div class="api-setup-icon">🍽️</div>
-  <div class="api-setup-title">MealMeter</div>
-  <div class="api-setup-sub">Введи API ключ Anthropic<br>для анализа блюд по фото</div>
-  <input class="api-input" type="password" id="apiKeyField" placeholder="sk-ant-..."/>
-  <button class="api-go-btn" onclick="startApp()">Начать →</button>
-</div>
-
-<!-- SPLASH -->
 <div class="screen" id="splash">
-  <svg class="splash-icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="120" height="120" rx="28" fill="rgba(255,255,255,0.2)"/>
-    <text x="60" y="78" font-size="56" text-anchor="middle" fill="white">🍽️</text>
-  </svg>
+  <div class="splash-icon">🍽️</div>
   <div class="splash-title">MealMeter</div>
   <div class="splash-sub">Simple. Smart. Fit.</div>
 </div>
 
-<!-- MAIN -->
+<div class="screen" id="onboarding">
+  <div class="ob-header">
+    <div class="ob-back" id="obBack" onclick="obPrev()">‹</div>
+    <div class="progress-bar"><div class="progress-fill" id="obProgress"></div></div>
+  </div>
+  <div class="ob-content" id="obContent"></div>
+  <div class="ob-footer">
+    <button class="ob-btn" id="obBtn" onclick="obNext()">Продолжить</button>
+  </div>
+</div>
+
+<div class="screen" id="calcScreen">
+  <div class="calc-icon">🤍</div>
+  <div class="calc-title">Спасибо, что доверяете нам!</div>
+  <div class="calc-sub">Создаём ваш персональный план.<br>Вместе достигнем цели!</div>
+  <div class="calc-ring">
+    <svg width="180" height="180" viewBox="0 0 180 180">
+      <circle cx="90" cy="90" r="80" fill="none" stroke="#e8e8e8" stroke-width="12"/>
+      <circle id="calcRingCircle" cx="90" cy="90" r="80" fill="none" stroke="#8DC63F" stroke-width="12"
+        stroke-linecap="round" stroke-dasharray="502.7" stroke-dashoffset="502.7" style="transition:stroke-dashoffset .08s linear"/>
+    </svg>
+    <div class="calc-pct" id="calcPct">0%</div>
+  </div>
+  <div class="calc-hint">Считаем дневную норму, учитывая вашу цель</div>
+</div>
+
+<div class="screen" id="resultScreen">
+  <div class="result-header"><h2>Поздравляем! Ваш персональный план создан.</h2></div>
+  <div class="result-card">
+    <div class="rc-icon" id="rcIcon">🏆</div>
+    <div class="rc-label">Вы <span id="rcVerb">достигнете</span></div>
+    <div class="rc-big" id="rcBig">—</div>
+    <div class="rc-kcal">
+      <div class="rc-kcal-lbl">🔥 Калории</div>
+      <div class="rc-kcal-num" id="rcKcal">—</div>
+    </div>
+    <div class="rc-macros">
+      <div class="rc-macro blue"><div class="rc-badge">Б</div><div class="rc-mval" id="rcP">—</div><div class="rc-mlbl">Белки</div></div>
+      <div class="rc-macro yellow"><div class="rc-badge">Ж</div><div class="rc-mval" id="rcF">—</div><div class="rc-mlbl">Жиры</div></div>
+      <div class="rc-macro purple"><div class="rc-badge">У</div><div class="rc-mval" id="rcC">—</div><div class="rc-mlbl">Углеводы</div></div>
+    </div>
+  </div>
+  <button class="result-start-btn" onclick="startMain()">Начать →</button>
+</div>
+
 <div class="screen" id="main">
   <div class="header">
     <div class="header-logo">
       <div class="logo-icon">🍽️</div>
       <div class="logo-text">MealMeter</div>
     </div>
-    <button class="profile-btn" onclick="showScreen('profile')">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-      Профиль
-    </button>
+    <button class="profile-btn" onclick="showScreen('profile')">👤 Профиль</button>
   </div>
-
   <div class="calendar-section">
     <div class="cal-header">
       <button class="cal-nav" onclick="prevWeek()">‹</button>
@@ -249,90 +294,74 @@ input[type=file]{display:none}
       <button class="today-btn" onclick="goToday()">Сегодня</button>
       <button class="cal-nav" onclick="nextWeek()">›</button>
     </div>
-    <div class="cal-days-header">
-      <span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span>
-    </div>
+    <div class="cal-days-header"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div>
     <div class="cal-days" id="calDays"></div>
   </div>
-
   <div class="main-scroll">
     <div class="calories-card">
       <div class="cal-card-top">
-        <div class="cal-card-left">
-          <div class="label">🔥 Осталось калорий</div>
+        <div class="cal-left">
+          <div class="clabel">🔥 Осталось калорий</div>
           <div class="big-num" id="remainKcal">0</div>
         </div>
         <div class="ring-wrap">
-          <svg width="80" height="80" viewBox="0 0 80 80">
-            <circle cx="40" cy="40" r="33" fill="none" stroke="#f0f0f0" stroke-width="8"/>
-            <circle id="mainRing" cx="40" cy="40" r="33" fill="none" stroke="#8DC63F" stroke-width="8" stroke-linecap="round"
-              stroke-dasharray="207.3" stroke-dashoffset="207.3" style="transition:stroke-dashoffset .7s ease"/>
+          <svg width="76" height="76" viewBox="0 0 76 76">
+            <circle cx="38" cy="38" r="31" fill="none" stroke="#f0f0f0" stroke-width="8"/>
+            <circle id="mainRing" cx="38" cy="38" r="31" fill="none" stroke="#8DC63F" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="194.8" stroke-dashoffset="194.8" style="transition:stroke-dashoffset .7s"/>
           </svg>
           <div class="ring-center">
             <div class="eaten" id="eatenKcal">0</div>
-            <div class="goal" id="goalKcalLabel">0</div>
+            <div class="goal" id="goalKcalLbl">0</div>
           </div>
         </div>
       </div>
-      <div class="health-bar">
-        <div style="flex:1">
-          <div class="hlabel">💗 Полезность</div>
-          <div class="health-progress"><div class="fill" id="healthFill" style="width:0%"></div></div>
-        </div>
-        <div class="health-score" id="healthScore">0/10</div>
-      </div>
     </div>
-
     <div class="bju-grid">
       <div class="bju-card">
         <div class="bju-ring">
-          <svg width="52" height="52" viewBox="0 0 52 52">
-            <circle cx="26" cy="26" r="21" fill="none" stroke="#e8f4ff" stroke-width="6"/>
-            <circle id="ringP" cx="26" cy="26" r="21" fill="none" stroke="#3b9ede" stroke-width="6" stroke-linecap="round"
-              stroke-dasharray="131.9" stroke-dashoffset="131.9" style="transition:stroke-dashoffset .7s"/>
+          <svg width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="19" fill="none" stroke="#e8f4ff" stroke-width="6"/>
+            <circle id="ringP" cx="24" cy="24" r="19" fill="none" stroke="#3b9ede" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .7s"/>
           </svg>
-          <div class="bju-ring-label" style="color:#3b9ede">Б</div>
+          <div class="bju-ring-lbl" style="color:#3b9ede">Б</div>
         </div>
-        <div class="bju-nums"><span id="valP">0</span>/<span id="goalP">165</span></div>
+        <div class="bju-nums"><span id="valP">0</span>/<span id="goalPd">—</span></div>
         <div class="bju-title">Белки</div>
       </div>
       <div class="bju-card">
         <div class="bju-ring">
-          <svg width="52" height="52" viewBox="0 0 52 52">
-            <circle cx="26" cy="26" r="21" fill="none" stroke="#fff8e1" stroke-width="6"/>
-            <circle id="ringF" cx="26" cy="26" r="21" fill="none" stroke="#e6a817" stroke-width="6" stroke-linecap="round"
-              stroke-dasharray="131.9" stroke-dashoffset="131.9" style="transition:stroke-dashoffset .7s"/>
+          <svg width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="19" fill="none" stroke="#fff8e1" stroke-width="6"/>
+            <circle id="ringF" cx="24" cy="24" r="19" fill="none" stroke="#e6a817" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .7s"/>
           </svg>
-          <div class="bju-ring-label" style="color:#e6a817">Ж</div>
+          <div class="bju-ring-lbl" style="color:#e6a817">Ж</div>
         </div>
-        <div class="bju-nums"><span id="valF">0</span>/<span id="goalF">95</span></div>
+        <div class="bju-nums"><span id="valF">0</span>/<span id="goalFd">—</span></div>
         <div class="bju-title">Жиры</div>
       </div>
       <div class="bju-card">
         <div class="bju-ring">
-          <svg width="52" height="52" viewBox="0 0 52 52">
-            <circle cx="26" cy="26" r="21" fill="none" stroke="#f3eeff" stroke-width="6"/>
-            <circle id="ringC" cx="26" cy="26" r="21" fill="none" stroke="#8b5cf6" stroke-width="6" stroke-linecap="round"
-              stroke-dasharray="131.9" stroke-dashoffset="131.9" style="transition:stroke-dashoffset .7s"/>
+          <svg width="48" height="48" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="19" fill="none" stroke="#f3eeff" stroke-width="6"/>
+            <circle id="ringC" cx="24" cy="24" r="19" fill="none" stroke="#8b5cf6" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .7s"/>
           </svg>
-          <div class="bju-ring-label" style="color:#8b5cf6">У</div>
+          <div class="bju-ring-lbl" style="color:#8b5cf6">У</div>
         </div>
-        <div class="bju-nums"><span id="valC">0</span>/<span id="goalC">351</span></div>
+        <div class="bju-nums"><span id="valC">0</span>/<span id="goalCd">—</span></div>
         <div class="bju-title">Углеводы</div>
       </div>
     </div>
-
     <div class="section-title">История</div>
     <div id="mealsList"></div>
   </div>
-
-  <button class="add-fab" onclick="openCamera()">
-    <span class="plus">+</span> Добавить
-  </button>
+  <button class="add-fab" onclick="openCamera()"><span style="font-size:18px;font-weight:900">+</span> Добавить</button>
   <input type="file" id="fileInput" accept="image/*" capture="environment" onchange="handleFile(this)"/>
 </div>
 
-<!-- PROFILE -->
 <div class="screen" id="profile">
   <div class="profile-header">
     <div class="back-btn" onclick="showScreen('main')">‹</div>
@@ -340,90 +369,43 @@ input[type=file]{display:none}
     <div class="spacer"></div>
   </div>
   <div class="profile-content">
-    <div class="calories-goal-card">
-      <div class="glabel"><span class="fire">🔥</span> Калории</div>
-      <div class="gval">
-        <span id="profileKcal">2919</span>
-        <span class="edit-icon" onclick="editGoal('kcal')">✏️</span>
-      </div>
-      <div class="macro-goal-grid">
-        <div class="macro-goal-card blue">
-          <div class="mlabel"><div class="badge">Б</div> Белки</div>
-          <div class="mval"><span id="profileP">165</span>г <span class="edit-icon" style="font-size:12px" onclick="editGoal('p')">✏️</span></div>
+    <div class="cal-goal-card">
+      <div class="glabel">🔥 Калории</div>
+      <div class="gval"><span id="profileKcal">—</span> <span class="edit-icon" onclick="editGoal('kcal')">✏️</span></div>
+      <div class="mgrid">
+        <div class="mg-card blue">
+          <div class="mg-lbl"><div class="mg-badge">Б</div> Белки</div>
+          <div class="mg-val"><span id="profileP">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('p')">✏️</span></div>
         </div>
-        <div class="macro-goal-card yellow">
-          <div class="mlabel"><div class="badge">Ж</div> Жиры</div>
-          <div class="mval"><span id="profileF">95</span>г <span class="edit-icon" style="font-size:12px" onclick="editGoal('f')">✏️</span></div>
+        <div class="mg-card yellow">
+          <div class="mg-lbl"><div class="mg-badge">Ж</div> Жиры</div>
+          <div class="mg-val"><span id="profileF">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('f')">✏️</span></div>
         </div>
-        <div class="macro-goal-card purple">
-          <div class="mlabel"><div class="badge">У</div> Углеводы</div>
-          <div class="mval"><span id="profileC">351</span>г <span class="edit-icon" style="font-size:12px" onclick="editGoal('c')">✏️</span></div>
+        <div class="mg-card purple">
+          <div class="mg-lbl"><div class="mg-badge">У</div> Углев.</div>
+          <div class="mg-val"><span id="profileC">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('c')">✏️</span></div>
         </div>
       </div>
     </div>
-
-    <div class="goal-section">
-      <div class="goal-section-header">
-        <h3>Ваша цель</h3>
-        <button class="recalc-btn" onclick="recalcPlan()">Пересчитать план</button>
-      </div>
-      <div class="weight-goal-row">
-        <div class="weight-box">
-          <div class="wlabel">Вес сейчас</div>
-          <div class="wval"><span id="weightNow">76</span> кг <span class="edit-icon" style="font-size:12px" onclick="editProfile('weight')">✏️</span></div>
-        </div>
-        <div class="arrow-icon">→</div>
-        <div class="weight-box">
-          <div class="wlabel">К дате</div>
-          <div class="wval" style="font-size:14px"><span id="goalDate">06.09.2026</span> <span class="edit-icon" style="font-size:12px" onclick="editProfile('goalDate')">✏️</span></div>
-        </div>
-      </div>
-    </div>
-
     <div class="profile-rows">
-      <div class="profile-row" onclick="editProfile('gender')">
-        <div class="row-icon">⚧️</div>
-        <div class="row-label">Пол</div>
-        <div class="row-val" id="profGender">Мужской</div>
-        <div class="chevron">›</div>
-      </div>
-      <div class="profile-row" onclick="editProfile('age')">
-        <div class="row-icon">📅</div>
-        <div class="row-label">Возраст</div>
-        <div class="row-val" id="profAge">20</div>
-        <div class="chevron">›</div>
-      </div>
-      <div class="profile-row" onclick="editProfile('height')">
-        <div class="row-icon">📏</div>
-        <div class="row-label">Рост</div>
-        <div class="row-val" id="profHeight">173 см</div>
-        <div class="chevron">›</div>
-      </div>
-      <div class="profile-row" onclick="editProfile('weightGoal')">
-        <div class="row-icon">⚖️</div>
-        <div class="row-label">Целевой вес</div>
-        <div class="row-val" id="profWeightGoal">71 кг</div>
-        <div class="chevron">›</div>
-      </div>
-      <div class="profile-row" onclick="editProfile('diet')">
-        <div class="row-icon">🥗</div>
-        <div class="row-label">Диета</div>
-        <div class="row-val" id="profDiet">Без диеты</div>
-        <div class="chevron">›</div>
-      </div>
+      <div class="profile-row"><div class="row-icon">🎯</div><div class="row-label">Цель</div><div class="row-val" id="profGoal">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon">⚧️</div><div class="row-label">Пол</div><div class="row-val" id="profGender">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon">📅</div><div class="row-label">Возраст</div><div class="row-val" id="profAge">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon">📏</div><div class="row-label">Рост</div><div class="row-val" id="profHeight">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon">⚖️</div><div class="row-label">Вес</div><div class="row-val" id="profWeight">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon">🏃</div><div class="row-label">Активность</div><div class="row-val" id="profActivity">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon">🥗</div><div class="row-label">Диета</div><div class="row-val" id="profDiet">—</div><div class="chevron">›</div></div>
     </div>
-
     <div class="profile-rows">
-      <div class="profile-row" onclick="clearApiKey()" style="color:#e74c3c">
-        <div class="row-icon">🔑</div>
-        <div class="row-label" style="color:#e74c3c">Сменить API ключ</div>
+      <div class="profile-row" onclick="resetOnboarding()">
+        <div class="row-icon">🔄</div>
+        <div class="row-label" style="color:#e74c3c">Пересчитать план</div>
         <div class="chevron">›</div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modal" onclick="handleOverlayClick(event)">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
@@ -432,396 +414,429 @@ input[type=file]{display:none}
 </div>
 
 <script>
-const API_URL = 'https://api.anthropic.com/v1/messages';
+const API_KEY='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';
+const API_URL='https://api.anthropic.com/v1/messages';
 
-let state = {
-  apiKey: localStorage.getItem('mm_apikey') || '',
-  selectedDate: todayStr(),
-  meals: {},
-  goals: loadGoals(),
-  profile: loadProfile(),
-  weekOffset: 0
-};
+let obStep=0, obData={};
+let state={meals:{},goals:null,profile:null,selectedDate:todayStr(),weekOffset:0};
 
-function todayStr(){
-  return new Date().toISOString().slice(0,10);
-}
+function todayStr(){return new Date().toISOString().slice(0,10);}
+function saveState(){localStorage.setItem('mm2_state',JSON.stringify({meals:state.meals,goals:state.goals,profile:state.profile}));}
+function loadState(){const s=JSON.parse(localStorage.getItem('mm2_state')||'null');if(s){state.meals=s.meals||{};state.goals=s.goals;state.profile=s.profile;}}
 
-function loadGoals(){
-  return JSON.parse(localStorage.getItem('mm_goals') || JSON.stringify({kcal:2919,p:165,f:95,c:351}));
-}
+const STEPS=[
+  {title:'Ваша главная цель',sub:'Ваш личный план будет создан для достижения Вашей цели.',type:'choice',key:'goal',
+   choices:[{icon:'🏃',label:'Похудеть',val:'lose'},{icon:'⚖️',label:'Удержать вес',val:'maintain'},{icon:'💪',label:'Набрать вес',val:'gain'}]},
+  {title:'Выберите Ваш пол',sub:'Это стартовая точка для расчёта базового метаболизма (BMR).',type:'choice',key:'gender',
+   choices:[{icon:'♂️',label:'Мужской',val:'male'},{icon:'♀️',label:'Женский',val:'female'},{icon:'⚧️',label:'Другое',val:'other'}]},
+  {icon:'📅',title:'Когда вы родились?',sub:'Мы учтём возраст при расчёте метаболизма и вашего личного плана.',type:'birthdate',key:'birthYear'},
+  {icon:'📏',title:'Какой у Вас рост?',sub:'Это влияет на норму калорий и ваш идеальный вес.',type:'picker',key:'height',min:140,max:220,def:170,suf:' см'},
+  {icon:'⚖️',title:'Какой у Вас вес?',sub:'Это влияет на норму калорий и ваш идеальный вес.',type:'picker',key:'weight',min:40,max:200,def:75,suf:' кг'},
+  {title:'Какая у Вас активность?',sub:'Это поможет рассчитать ежедневные энергетические затраты (TDEE).',type:'choice',key:'activity',
+   choices:[
+     {icon:'🧘',label:'Минимальная активность',sub:'Сидячий образ жизни',val:1.2},
+     {icon:'🚶',label:'Лёгкая активность',sub:'Упражнения 1-2 раза в неделю',val:1.375},
+     {icon:'🏃',label:'Средняя активность',sub:'Тренировки 3-4 раза в неделю',val:1.55},
+     {icon:'🏋️',label:'Высокая активность',sub:'Интенсивные тренировки 4-5 раз в неделю',val:1.725},
+     {icon:'🤸',label:'Очень высокая активность',sub:'Интенсивные тренировки 6-7 раз в неделю',val:1.9}
+   ]},
+  {icon:'🏆',title:'Какой вес Вы хотите получить?',sub:'Мы рассчитаем, как безопасно и эффективно достичь желаемый вес.',type:'picker',key:'targetWeight',min:40,max:200,def:70,suf:' кг'},
+  {title:'Как быстро вы хотите достичь цели?',sub:'',type:'speed',key:'speed'},
+  {title:'Ваша диета?',sub:'',type:'choice',key:'diet',
+   choices:[
+     {icon:'🍽️',label:'Без диеты',val:'none'},
+     {icon:'🥗',label:'Вегетарианская',val:'veg'},
+     {icon:'🌿',label:'Веганская',val:'vegan'},
+     {icon:'🥑',label:'Кето',val:'keto'},
+     {icon:'🍖',label:'Палео',val:'paleo'},
+     {icon:'🥦',label:'LCHF (низкоуглеводная)',val:'lchf'},
+     {icon:'🫒',label:'Средиземноморская',val:'med'}
+   ]}
+];
 
-function loadProfile(){
-  return JSON.parse(localStorage.getItem('mm_profile') || JSON.stringify({gender:'Мужской',age:20,height:173,weight:76,weightGoal:71,goalDate:'06.09.2026',diet:'Без диеты'}));
-}
+function renderObStep(){
+  const step=STEPS[obStep];
+  document.getElementById('obProgress').style.width=((obStep+1)/STEPS.length*100)+'%';
+  document.getElementById('obBack').style.opacity=obStep===0?'0.3':'1';
+  const btnEl=document.getElementById('obBtn');
+  const hasVal=obData[step.key]!==undefined;
+  btnEl.disabled=!hasVal&&step.type==='choice';
 
-function saveMeals(){
-  localStorage.setItem('mm_meals', JSON.stringify(state.meals));
-}
+  let html='';
+  if(step.icon) html+=`<div class="ob-icon">${step.icon}</div>`;
+  html+=`<div class="ob-title">${step.title}</div>`;
+  if(step.sub) html+=`<div class="ob-sub">${step.sub}</div>`;
 
-function getMealsForDate(d){
-  return state.meals[d] || [];
-}
-
-function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  if(id==='main') render();
-  if(id==='profile') renderProfile();
-}
-
-function startApp(){
-  const key = document.getElementById('apiKeyField').value.trim();
-  if(!key || !key.startsWith('sk-')){
-    alert('Введи корректный API ключ (начинается с sk-)');
-    return;
+  if(step.type==='choice'){
+    html+=`<div class="choice-list">`;
+    step.choices.forEach(c=>{
+      const sel=obData[step.key]===c.val;
+      html+=`<div class="choice-item${sel?' selected':''}" onclick="selChoice('${step.key}',this)" data-val="${c.val}">
+        <span class="ch-icon">${c.icon}</span>
+        <div><div>${c.label}</div>${c.sub?`<div class="ch-sub">${c.sub}</div>`:''}</div>
+      </div>`;
+    });
+    html+=`</div>`;
+  } else if(step.type==='birthdate'){
+    const months=['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+    const sy=obData.birthYear||2000, sm=obData.birthMonth||new Date().getMonth();
+    if(!obData.birthYear){obData.birthYear=sy;obData.birthMonth=sm;}
+    html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div class="picker-wrap"><div class="picker-hl"></div>
+        <div class="picker-list" id="mPicker" onscroll="onScroll(this,'birthMonth',0)">
+          <div style="height:80px"></div>
+          ${months.map((m,i)=>`<div class="picker-item${i===sm?' active':''}" data-val="${i}">${m}</div>`).join('')}
+          <div style="height:80px"></div>
+        </div>
+      </div>
+      <div class="picker-wrap"><div class="picker-hl"></div>
+        <div class="picker-list" id="yPicker" onscroll="onScroll(this,'birthYear',1924)">
+          <div style="height:80px"></div>
+          ${Array.from({length:101},(_,i)=>1924+i).map(y=>`<div class="picker-item${y===sy?' active':''}" data-val="${y}">${y}</div>`).join('')}
+          <div style="height:80px"></div>
+        </div>
+      </div>
+    </div>`;
+    btnEl.disabled=false;
+  } else if(step.type==='picker'){
+    const sv=obData[step.key]||step.def;
+    if(!obData[step.key]) obData[step.key]=step.def;
+    html+=`<div class="picker-wrap"><div class="picker-hl"></div>
+      <div class="picker-list" id="mainPicker" onscroll="onScroll(this,'${step.key}',${step.min})">
+        <div style="height:80px"></div>
+        ${Array.from({length:step.max-step.min+1},(_,i)=>step.min+i).map(v=>`<div class="picker-item${v===sv?' active':''}" data-val="${v}">${v}${step.suf}</div>`).join('')}
+        <div style="height:80px"></div>
+      </div>
+    </div>`;
+    btnEl.disabled=false;
+  } else if(step.type==='speed'){
+    const sp=obData.speed||0.4;
+    const tw=obData.targetWeight||70, w=obData.weight||75;
+    if(!obData.speed) obData.speed=sp;
+    const sliderVal=Math.round(sp*10);
+    const {dateStr}=calcSpeedDate(sp,tw,w);
+    html+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+      <div style="background:var(--card);border-radius:14px;padding:14px"><div style="font-size:11px;color:var(--text2);font-weight:700;margin-bottom:4px">Целевой вес</div><div style="font-size:17px;font-weight:900">${tw} кг</div></div>
+      <div style="background:var(--card);border-radius:14px;padding:14px"><div style="font-size:11px;color:var(--text2);font-weight:700;margin-bottom:4px">К дате</div><div style="font-size:14px;font-weight:900" id="spDate">${dateStr}</div></div>
+    </div>
+    <div style="font-size:13px;color:var(--text2);font-weight:600;text-align:center;margin-bottom:6px">Скорость в неделю</div>
+    <div class="speed-val" id="spVal">${sp} кг</div>
+    <div class="speed-icons"><span>🐌</span><span>📍</span><span>⚡</span></div>
+    <input type="range" class="speed-slider" min="1" max="7" step="1" value="${sliderVal}" oninput="updateSpeed(this.value)"/>
+    <div class="speed-marks">
+      <div class="speed-mark"><div class="sm-val">0.1 кг</div><div class="sm-lbl">Медленно,<br>но верно</div></div>
+      <div class="speed-mark"><div class="sm-val">0.4 кг</div><div class="sm-lbl">Рекомендуемая<br>скорость</div></div>
+      <div class="speed-mark"><div class="sm-val">0.7 кг</div><div class="sm-lbl">Есть риски:<br>усталость</div></div>
+    </div>`;
+    btnEl.disabled=false;
   }
-  state.apiKey = key;
-  localStorage.setItem('mm_apikey', key);
-  showSplash();
+  document.getElementById('obContent').innerHTML=html;
+  setTimeout(()=>{
+    ['mPicker','yPicker','mainPicker'].forEach(id=>{
+      const el=document.getElementById(id); if(!el) return;
+      const a=el.querySelector('.active'); if(a) el.scrollTop=a.offsetTop-80;
+    });
+  },60);
 }
 
-function showSplash(){
-  showScreen('splash');
-  setTimeout(()=>showScreen('main'), 2000);
+function calcSpeedDate(sp,tw,w){
+  const diff=Math.max(Math.abs(w-tw),0.1);
+  const weeks=Math.round(diff/sp);
+  const d=new Date(); d.setDate(d.getDate()+weeks*7);
+  return {dateStr:d.toLocaleDateString('ru',{day:'2-digit',month:'2-digit',year:'numeric'}),weeks};
 }
 
-function clearApiKey(){
-  if(confirm('Сменить API ключ?')){
-    localStorage.removeItem('mm_apikey');
-    state.apiKey = '';
-    showScreen('apiSetup');
-  }
+function updateSpeed(v){
+  const speeds=[0.1,0.2,0.3,0.4,0.5,0.6,0.7];
+  const sp=speeds[v-1]||0.4;
+  obData.speed=sp;
+  document.getElementById('spVal').textContent=sp+' кг';
+  const tw=obData.targetWeight||70, w=obData.weight||75;
+  document.getElementById('spDate').textContent=calcSpeedDate(sp,tw,w).dateStr;
 }
 
-// ── CALENDAR ──
+function selChoice(key,el){
+  const val=el.dataset.val;
+  const numVal=parseFloat(val);
+  obData[key]=isNaN(numVal)?val:numVal;
+  el.closest('.choice-list').querySelectorAll('.choice-item').forEach(i=>i.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('obBtn').disabled=false;
+}
+
+function onScroll(el,key,base){
+  clearTimeout(el._t);
+  el._t=setTimeout(()=>{
+    const idx=Math.round(el.scrollTop/40);
+    const items=el.querySelectorAll('.picker-item');
+    items.forEach((item,i)=>item.classList.toggle('active',i===idx));
+    const val=parseInt(items[idx]?.dataset.val);
+    obData[key]=isNaN(val)?(base+idx):val;
+    el.scrollTop=idx*40;
+  },150);
+}
+
+function obNext(){
+  if(obStep<STEPS.length-1){obStep++;renderObStep();}
+  else startCalc();
+}
+function obPrev(){if(obStep>0){obStep--;renderObStep();}}
+
+function calcGoals(){
+  const g=obData;
+  const age=new Date().getFullYear()-(g.birthYear||2000);
+  const h=g.height||170, w=g.weight||75;
+  const male=g.gender==='male'||g.gender==='other';
+  const act=parseFloat(g.activity)||1.55;
+  let bmr=male?(10*w+6.25*h-5*age+5):(10*w+6.25*h-5*age-161);
+  let tdee=bmr*act;
+  let kcal=Math.round(tdee);
+  const goal=g.goal||'maintain';
+  const sp=parseFloat(g.speed)||0.4;
+  if(goal==='lose') kcal=Math.round(tdee-sp*1000);
+  if(goal==='gain') kcal=Math.round(tdee+sp*500);
+  kcal=Math.max(1200,kcal);
+  const p=Math.round(w*1.8);
+  const f=Math.round(kcal*0.25/9);
+  const c=Math.round((kcal-p*4-f*9)/4);
+  return{kcal,p:Math.max(p,0),f:Math.max(f,0),c:Math.max(c,0)};
+}
+
+function startCalc(){
+  showScreen('calcScreen');
+  let pct=0;
+  const circle=document.getElementById('calcRingCircle');
+  const pctEl=document.getElementById('calcPct');
+  const circ=502.7;
+  const iv=setInterval(()=>{
+    pct+=2; if(pct>100){pct=100;clearInterval(iv);setTimeout(()=>showResultScreen(calcGoals()),500);}
+    circle.style.strokeDashoffset=circ*(1-pct/100);
+    pctEl.textContent=pct+'%';
+  },40);
+}
+
+function showResultScreen(goals){
+  const g=obData;
+  const tw=g.targetWeight||70, w=g.weight||75;
+  const diff=Math.abs(w-tw);
+  const goal=g.goal||'maintain';
+  const sp=parseFloat(g.speed)||0.4;
+  const {dateStr}=calcSpeedDate(sp,tw,w);
+  const verbs={lose:'скинете',maintain:'сохраните',gain:'наберёте'};
+  const icons={lose:'🏃',maintain:'⚖️',gain:'💪'};
+  document.getElementById('rcVerb').textContent=verbs[goal]||'достигнете';
+  document.getElementById('rcIcon').textContent=icons[goal]||'🏆';
+  document.getElementById('rcBig').textContent=goal==='maintain'?('свой вес → '+dateStr):(diff+' кг → '+dateStr);
+  document.getElementById('rcKcal').textContent=goals.kcal;
+  document.getElementById('rcP').textContent=goals.p+'г';
+  document.getElementById('rcF').textContent=goals.f+'г';
+  document.getElementById('rcC').textContent=goals.c+'г';
+  state.goals=goals;
+  state.profile={goal:g.goal,gender:g.gender,birthYear:g.birthYear,height:g.height,weight:g.weight,activity:g.activity,targetWeight:g.targetWeight,speed:g.speed,diet:g.diet};
+  saveState();
+  showScreen('resultScreen');
+}
+
+function startMain(){showScreen('main');renderCalendar();render();}
+function resetOnboarding(){if(confirm('Пересчитать план?')){obStep=0;obData={};showScreen('onboarding');renderObStep();}}
+
+// CALENDAR
 function renderCalendar(){
-  const today = new Date();
-  const base = new Date(today);
-  base.setDate(base.getDate() + state.weekOffset * 7);
-  const mon = new Date(base);
-  const dayOfWeek = (base.getDay() + 6) % 7;
-  mon.setDate(base.getDate() - dayOfWeek);
-
-  const months = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
-  document.getElementById('calMonth').textContent = months[mon.getMonth()] + ' ' + mon.getFullYear();
-
-  const container = document.getElementById('calDays');
-  container.innerHTML = '';
+  const today=new Date();
+  const base=new Date(today);
+  base.setDate(base.getDate()+state.weekOffset*7);
+  const mon=new Date(base);
+  mon.setDate(base.getDate()-((base.getDay()+6)%7));
+  const months=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+  document.getElementById('calMonth').textContent=months[mon.getMonth()]+' '+mon.getFullYear();
+  const container=document.getElementById('calDays');
+  container.innerHTML='';
   for(let i=0;i<7;i++){
-    const d = new Date(mon);
-    d.setDate(mon.getDate()+i);
-    const ds = d.toISOString().slice(0,10);
-    const isToday = ds === todayStr();
-    const isSelected = ds === state.selectedDate;
-    const hasMeals = getMealsForDate(ds).length > 0;
-    const div = document.createElement('div');
-    div.className = 'cal-day' + (isToday||isSelected?' today':'') + (hasMeals?' has-data':'');
-    if(isSelected && !isToday) div.style.cssText='background:var(--green);color:#fff;border-radius:12px';
-    div.textContent = d.getDate();
-    div.onclick = ()=>{ state.selectedDate=ds; renderCalendar(); render(); };
+    const d=new Date(mon); d.setDate(mon.getDate()+i);
+    const ds=d.toISOString().slice(0,10);
+    const div=document.createElement('div');
+    const isToday=ds===todayStr(), isSel=ds===state.selectedDate;
+    const hasMeals=(state.meals[ds]||[]).length>0;
+    div.className='cal-day'+(isToday?' today':isSel?' selected':'')+(hasMeals?' has-data':'');
+    div.textContent=d.getDate();
+    div.onclick=()=>{state.selectedDate=ds;renderCalendar();render();};
     container.appendChild(div);
   }
 }
+function prevWeek(){state.weekOffset--;renderCalendar();}
+function nextWeek(){state.weekOffset++;renderCalendar();}
+function goToday(){state.weekOffset=0;state.selectedDate=todayStr();renderCalendar();render();}
 
-function prevWeek(){ state.weekOffset--; renderCalendar(); }
-function nextWeek(){ state.weekOffset++; renderCalendar(); }
-function goToday(){ state.weekOffset=0; state.selectedDate=todayStr(); renderCalendar(); render(); }
-
-// ── RENDER ──
+// RENDER
 function render(){
-  const meals = getMealsForDate(state.selectedDate);
-  const g = state.goals;
-  const totKcal = meals.reduce((s,m)=>s+m.kcal,0);
-  const totP = meals.reduce((s,m)=>s+m.protein,0);
-  const totF = meals.reduce((s,m)=>s+m.fat,0);
-  const totC = meals.reduce((s,m)=>s+m.carbs,0);
-
-  document.getElementById('remainKcal').textContent = Math.max(0, g.kcal - totKcal);
-  document.getElementById('eatenKcal').textContent = totKcal;
-  document.getElementById('goalKcalLabel').textContent = g.kcal;
-
-  const pct = Math.min(totKcal/g.kcal, 1);
-  const circ = 2*Math.PI*33;
-  const ring = document.getElementById('mainRing');
-  ring.style.strokeDashoffset = circ*(1-pct);
-  ring.style.stroke = pct>1?'#e74c3c':pct>.8?'#f39c12':'#8DC63F';
-
-  setRing('ringP', totP, g.p, 131.9);
-  setRing('ringF', totF, g.f, 131.9);
-  setRing('ringC', totC, g.c, 131.9);
-
-  document.getElementById('valP').textContent=totP;
-  document.getElementById('valF').textContent=totF;
-  document.getElementById('valC').textContent=totC;
-  document.getElementById('goalP').textContent=g.p;
-  document.getElementById('goalF').textContent=g.f;
-  document.getElementById('goalC').textContent=g.c;
-
-  // health score (simple heuristic)
-  const score = Math.min(10, Math.round((Math.min(totP/g.p,1)*3 + Math.min(1-Math.max(0,totF/g.f-1),1)*3 + Math.min(totKcal/g.kcal,1)*4)));
-  document.getElementById('healthScore').textContent = score+'/10';
-  document.getElementById('healthFill').style.width = (score*10)+'%';
-
-  const list = document.getElementById('mealsList');
+  const meals=state.meals[state.selectedDate]||[];
+  const g=state.goals||{kcal:2000,p:150,f:65,c:250};
+  const tK=meals.reduce((s,m)=>s+m.kcal,0);
+  const tP=meals.reduce((s,m)=>s+m.protein,0);
+  const tF=meals.reduce((s,m)=>s+m.fat,0);
+  const tC=meals.reduce((s,m)=>s+m.carbs,0);
+  document.getElementById('remainKcal').textContent=Math.max(0,g.kcal-tK);
+  document.getElementById('eatenKcal').textContent=tK;
+  document.getElementById('goalKcalLbl').textContent=g.kcal;
+  document.getElementById('goalPd').textContent=g.p;
+  document.getElementById('goalFd').textContent=g.f;
+  document.getElementById('goalCd').textContent=g.c;
+  document.getElementById('valP').textContent=tP;
+  document.getElementById('valF').textContent=tF;
+  document.getElementById('valC').textContent=tC;
+  const pct=Math.min(tK/g.kcal,1);
+  const ring=document.getElementById('mainRing');
+  ring.style.strokeDashoffset=194.8*(1-pct);
+  ring.style.stroke=pct>1?'#e74c3c':pct>.85?'#f39c12':'#8DC63F';
+  setRing('ringP',tP,g.p,119.4);
+  setRing('ringF',tF,g.f,119.4);
+  setRing('ringC',tC,g.c,119.4);
+  const list=document.getElementById('mealsList');
   if(!meals.length){
-    list.innerHTML=`<div class="empty-history"><div class="plate">🍽️</div><p>Пока ничего нет.<br>Добавь сюда свою еду.</p></div>`;
+    list.innerHTML=`<div class="empty-history"><div class="empty-plate">🍽️</div><p>Пока ничего нет.<br>Нажми «+ Добавить» и сфотографируй блюдо.</p></div>`;
     return;
   }
-  list.innerHTML = meals.map(m=>`
+  list.innerHTML=meals.map(m=>`
     <div class="meal-item">
-      ${m.img?`<img src="${m.img}" class="meal-thumb"/>` : `<div class="meal-thumb-placeholder">🍽️</div>`}
+      ${m.img?`<img src="${m.img}" class="meal-thumb"/>`:`<div class="meal-thumb-ph">🍽️</div>`}
       <div class="meal-info">
         <div class="meal-name">${m.name}</div>
         <div class="meal-time">${m.time}</div>
-        <div class="meal-bju">
-          <span>Б <b>${m.protein}г</b></span>
-          <span>Ж <b>${m.fat}г</b></span>
-          <span>У <b>${m.carbs}г</b></span>
-        </div>
+        <div class="meal-bju"><span>Б <b>${m.protein}г</b></span><span>Ж <b>${m.fat}г</b></span><span>У <b>${m.carbs}г</b></span></div>
       </div>
       <div class="meal-kcal">${m.kcal}</div>
-      <button class="meal-delete" onclick="deleteMeal(${m.id})">✕</button>
-    </div>
-  `).join('');
+      <button class="meal-del" onclick="deleteMeal(${m.id})">✕</button>
+    </div>`).join('');
 }
 
-function setRing(id, val, goal, circ){
-  const el = document.getElementById(id);
-  if(!el) return;
-  el.style.strokeDashoffset = circ*(1-Math.min(val/goal,1));
-}
+function setRing(id,val,goal,circ){const el=document.getElementById(id);if(el)el.style.strokeDashoffset=circ*(1-Math.min(val/Math.max(goal,1),1));}
+function deleteMeal(id){state.meals[state.selectedDate]=(state.meals[state.selectedDate]||[]).filter(m=>m.id!==id);saveState();render();renderCalendar();}
 
-function deleteMeal(id){
-  state.meals[state.selectedDate] = getMealsForDate(state.selectedDate).filter(m=>m.id!==id);
-  saveMeals();
-  render();
-  renderCalendar();
-}
-
-// ── CAMERA / ANALYZE ──
-function openCamera(){
-  document.getElementById('fileInput').click();
-}
-
+// CAMERA
+function openCamera(){document.getElementById('fileInput').click();}
 function handleFile(input){
-  const file = input.files[0];
-  if(!file) return;
-  const reader = new FileReader();
-  reader.onload = e => {
-    const dataUrl = e.target.result;
-    openModal();
-    showAnalyzing(dataUrl);
-    analyzeImage(dataUrl);
-  };
+  const file=input.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=e=>{const d=e.target.result;openModal();showAnalyzing(d);analyzeImage(d);};
   reader.readAsDataURL(file);
   input.value='';
 }
-
 function showAnalyzing(dataUrl){
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">Анализ блюда</div>
-    <img src="${dataUrl}" class="photo-preview" id="previewImg"/>
-    <div class="analyzing">
-      <div class="spinner"></div>
-      <p>ИИ анализирует блюдо...</p>
-    </div>
-  `;
+    <img src="${dataUrl}" class="photo-preview"/>
+    <div class="analyzing"><div class="spinner"></div><p>ИИ анализирует блюдо...</p></div>`;
 }
-
 async function analyzeImage(dataUrl){
-  const base64 = dataUrl.split(',')[1];
-  const mediaType = dataUrl.split(';')[0].split(':')[1];
+  const base64=dataUrl.split(',')[1];
+  const mediaType=dataUrl.split(';')[0].split(':')[1];
   try{
-    const resp = await fetch(API_URL,{
+    const resp=await fetch(API_URL,{
       method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':state.apiKey,'anthropic-version':'2023-06-01'},
+      headers:{'Content-Type':'application/json','x-api-key':API_KEY,'anthropic-version':'2023-06-01'},
       body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:1000,
+        model:'claude-sonnet-4-20250514',max_tokens:800,
         messages:[{role:'user',content:[
           {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
-          {type:'text',text:`Проанализируй блюдо на фото. Ответь ТОЛЬКО валидным JSON без markdown:
-{"name":"название по-русски","description":"краткое описание 1-2 предложения","kcal":число,"protein":число,"fat":число,"carbs":число,"portion":"описание порции","health":число от 1 до 10}
-Все значения БЖУ в граммах, калории в ккал, health — насколько блюдо полезно (1=вредно, 10=очень полезно).`}
+          {type:'text',text:'Проанализируй блюдо на фото. Ответь ТОЛЬКО валидным JSON без markdown:\n{"name":"название по-русски","description":"краткое описание 1-2 предложения","kcal":число,"protein":число,"fat":число,"carbs":число,"portion":"описание порции"}\nВсе значения БЖУ в граммах, калории в ккал. Если на фото нет еды — верни {"error":"no_food"}.'}
         ]}]
       })
     });
-    const data = await resp.json();
-    let text = data.content[0].text.trim();
+    if(!resp.ok){const err=await resp.json();throw new Error(err.error?.message||'Ошибка API '+resp.status);}
+    const data=await resp.json();
+    let text=data.content[0].text.trim();
     let result;
-    try{ result=JSON.parse(text); }
-    catch{ const m=text.match(/\{[\s\S]*\}/); result=m?JSON.parse(m[0]):null; }
-    if(!result) throw new Error('Не удалось распознать ответ ИИ');
-    showResult(result, dataUrl);
+    try{result=JSON.parse(text);}catch{const m=text.match(/\{[\s\S]*\}/);result=m?JSON.parse(m[0]):null;}
+    if(!result) throw new Error('Не удалось распознать ответ');
+    if(result.error==='no_food') throw new Error('На фото не обнаружена еда. Попробуйте другое фото.');
+    window._pm={r:result,imgData:dataUrl};
+    showResult2(result,dataUrl);
   }catch(err){
     document.getElementById('modalContent').innerHTML=`
       <div class="modal-title">Ошибка</div>
-      <div class="error-msg">😕 ${err.message||'Не удалось проанализировать. Проверь API ключ и попробуй снова.'}</div>
-      <button class="cancel-btn" onclick="closeModal()">Закрыть</button>
-    `;
+      <div class="error-msg">😕 ${err.message||'Не удалось проанализировать фото. Попробуйте ещё раз.'}</div>
+      <button class="cancel-btn" onclick="closeModal()">Закрыть</button>`;
   }
 }
-
-function showResult(r, imgData){
+function showResult2(r,imgData){
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">Результат</div>
     <img src="${imgData}" class="photo-preview"/>
     <div class="result-dish">${r.name}</div>
     <div class="result-desc">${r.description}${r.portion?' · '+r.portion:''}</div>
     <div class="result-kcal-big">${Math.round(r.kcal)}</div>
-    <div class="result-kcal-label">ккал в порции</div>
+    <div class="result-kcal-lbl">ккал в порции</div>
     <div class="result-macros">
       <div class="result-macro blue"><div class="rval">${Math.round(r.protein)}г</div><div class="rlbl">Белки</div></div>
       <div class="result-macro yellow"><div class="rval">${Math.round(r.fat)}г</div><div class="rlbl">Жиры</div></div>
       <div class="result-macro purple"><div class="rval">${Math.round(r.carbs)}г</div><div class="rlbl">Углеводы</div></div>
     </div>
-    <button class="confirm-btn" onclick="addMeal(${JSON.stringify(r).replace(/"/g,'&quot;')}, '${imgData.substring(0,50)}...')">+ Добавить в дневник</button>
-    <button class="cancel-btn" onclick="closeModal()">Отмена</button>
-  `;
-  // store pending
-  window._pendingMeal = {r, imgData};
-  document.querySelector('.confirm-btn').onclick = ()=>addMealFromPending();
+    <button class="confirm-btn" onclick="addMealFromPending()">+ Добавить в дневник</button>
+    <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
 }
-
 function addMealFromPending(){
-  if(!window._pendingMeal) return;
-  const {r, imgData} = window._pendingMeal;
-  const meals = getMealsForDate(state.selectedDate);
-  meals.push({
-    id: Date.now(),
-    name: r.name,
-    kcal: Math.round(r.kcal),
-    protein: Math.round(r.protein),
-    fat: Math.round(r.fat),
-    carbs: Math.round(r.carbs),
-    health: r.health||5,
-    time: new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'}),
-    img: imgData
+  if(!window._pm) return;
+  const{r,imgData}=window._pm;
+  if(!state.meals[state.selectedDate]) state.meals[state.selectedDate]=[];
+  state.meals[state.selectedDate].push({
+    id:Date.now(),name:r.name,kcal:Math.round(r.kcal),
+    protein:Math.round(r.protein),fat:Math.round(r.fat),carbs:Math.round(r.carbs),
+    time:new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'}),img:imgData
   });
-  state.meals[state.selectedDate] = meals;
-  saveMeals();
-  closeModal();
-  render();
-  renderCalendar();
+  saveState();closeModal();render();renderCalendar();
 }
 
-// ── MODAL ──
-function openModal(){ document.getElementById('modal').classList.add('open'); }
-function closeModal(){ document.getElementById('modal').classList.remove('open'); window._pendingMeal=null; }
-function handleOverlayClick(e){ if(e.target===document.getElementById('modal')) closeModal(); }
+// MODAL
+function openModal(){document.getElementById('modal').classList.add('open');}
+function closeModal(){document.getElementById('modal').classList.remove('open');window._pm=null;}
+function handleOverlayClick(e){if(e.target===document.getElementById('modal'))closeModal();}
 
-// ── PROFILE ──
+// PROFILE
 function renderProfile(){
-  const p = state.profile;
-  const g = state.goals;
-  document.getElementById('profileKcal').textContent = g.kcal;
-  document.getElementById('profileP').textContent = g.p;
-  document.getElementById('profileF').textContent = g.f;
-  document.getElementById('profileC').textContent = g.c;
-  document.getElementById('weightNow').textContent = p.weight;
-  document.getElementById('goalDate').textContent = p.goalDate;
-  document.getElementById('profGender').textContent = p.gender;
-  document.getElementById('profAge').textContent = p.age;
-  document.getElementById('profHeight').textContent = p.height+' см';
-  document.getElementById('profWeightGoal').textContent = p.weightGoal+' кг';
-  document.getElementById('profDiet').textContent = p.diet;
+  const g=state.goals||{};const p=state.profile||{};
+  document.getElementById('profileKcal').textContent=g.kcal||'—';
+  document.getElementById('profileP').textContent=g.p||'—';
+  document.getElementById('profileF').textContent=g.f||'—';
+  document.getElementById('profileC').textContent=g.c||'—';
+  const gl={lose:'Похудеть',maintain:'Удержать вес',gain:'Набрать вес'};
+  document.getElementById('profGoal').textContent=gl[p.goal]||'—';
+  const gnl={male:'Мужской',female:'Женский',other:'Другое'};
+  document.getElementById('profGender').textContent=gnl[p.gender]||'—';
+  document.getElementById('profAge').textContent=p.birthYear?(new Date().getFullYear()-p.birthYear)+' лет':'—';
+  document.getElementById('profHeight').textContent=p.height?p.height+' см':'—';
+  document.getElementById('profWeight').textContent=p.weight?p.weight+' кг':'—';
+  const al={1.2:'Минимальная',1.375:'Лёгкая',1.55:'Средняя',1.725:'Высокая',1.9:'Очень высокая'};
+  document.getElementById('profActivity').textContent=al[p.activity]||'—';
+  const dl={none:'Без диеты',veg:'Вегетарианская',vegan:'Веганская',keto:'Кето',paleo:'Палео',lchf:'LCHF',med:'Средиземноморская'};
+  document.getElementById('profDiet').textContent=dl[p.diet]||'—';
 }
-
 function editGoal(field){
-  const labels = {kcal:'Калории (ккал)',p:'Белки (г)',f:'Жиры (г)',c:'Углеводы (г)'};
-  const val = state.goals[field];
+  const labels={kcal:'Калории (ккал)',p:'Белки (г)',f:'Жиры (г)',c:'Углеводы (г)'};
   openModal();
   document.getElementById('modalContent').innerHTML=`
-    <div class="modal-title">Изменить цель</div>
-    <div class="edit-field">
-      <label>${labels[field]}</label>
-      <input type="number" id="editVal" value="${val}"/>
-    </div>
+    <div class="modal-title">Изменить</div>
+    <div class="edit-field"><label>${labels[field]}</label>
+    <input type="number" id="editVal" value="${state.goals[field]||''}"/></div>
     <button class="confirm-btn" onclick="saveGoalField('${field}')">Сохранить</button>
-    <button class="cancel-btn" onclick="closeModal()">Отмена</button>
-  `;
+    <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
 }
-
 function saveGoalField(field){
-  const val = parseInt(document.getElementById('editVal').value);
-  if(!isNaN(val) && val>0){
-    state.goals[field] = val;
-    localStorage.setItem('mm_goals', JSON.stringify(state.goals));
-    closeModal();
-    renderProfile();
-    render();
-  }
+  const val=parseInt(document.getElementById('editVal').value);
+  if(!isNaN(val)&&val>0){state.goals[field]=val;saveState();closeModal();renderProfile();render();}
 }
 
-function editProfile(field){
-  const labels = {gender:'Пол',age:'Возраст',height:'Рост (см)',weight:'Вес (кг)',weightGoal:'Целевой вес (кг)',goalDate:'Целевая дата',diet:'Диета'};
-  const val = state.profile[field];
-  openModal();
-  let inputHtml = '';
-  if(field==='gender'){
-    inputHtml=`<select id="editVal"><option ${val==='Мужской'?'selected':''}>Мужской</option><option ${val==='Женский'?'selected':''}>Женский</option></select>`;
-  } else if(field==='diet'){
-    inputHtml=`<select id="editVal"><option ${val==='Без диеты'?'selected':''}>Без диеты</option><option ${val==='Кето'?'selected':''}>Кето</option><option ${val==='Вегетарианская'?'selected':''}>Вегетарианская</option><option ${val==='Веганская'?'selected':''}>Веганская</option><option ${val==='Средиземноморская'?'selected':''}>Средиземноморская</option></select>`;
-  } else if(field==='goalDate'){
-    inputHtml=`<input type="date" id="editVal" value="${val.split('.').reverse().join('-')}"/>`;
-  } else {
-    inputHtml=`<input type="${field==='age'||field==='height'||field==='weight'||field==='weightGoal'?'number':'text'}" id="editVal" value="${val}"/>`;
-  }
-  document.getElementById('modalContent').innerHTML=`
-    <div class="modal-title">${labels[field]}</div>
-    <div class="edit-field"><label>${labels[field]}</label>${inputHtml}</div>
-    <button class="confirm-btn" onclick="saveProfileField('${field}')">Сохранить</button>
-    <button class="cancel-btn" onclick="closeModal()">Отмена</button>
-  `;
+function showScreen(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(id==='profile')renderProfile();
+  if(id==='main'){renderCalendar();render();}
 }
 
-function saveProfileField(field){
-  let val = document.getElementById('editVal').value;
-  if(field==='goalDate'){
-    const parts = val.split('-');
-    val = parts[2]+'.'+parts[1]+'.'+parts[0];
-  } else if(['age','height','weight','weightGoal'].includes(field)){
-    val = parseInt(val);
-  }
-  state.profile[field] = val;
-  localStorage.setItem('mm_profile', JSON.stringify(state.profile));
-  closeModal();
-  renderProfile();
-  if(field==='weight'||field==='weightGoal') recalcPlan();
-}
-
-function recalcPlan(){
-  const p = state.profile;
-  // Mifflin-St Jeor
-  let bmr;
-  if(p.gender==='Мужской'){
-    bmr = 10*p.weight + 6.25*(p.height||173) - 5*(p.age||20) + 5;
-  } else {
-    bmr = 10*p.weight + 6.25*(p.height||163) - 5*(p.age||20) - 161;
-  }
-  const tdee = Math.round(bmr * 1.4);
-  const diff = p.weightGoal < p.weight ? -300 : 300;
-  state.goals.kcal = Math.max(1200, tdee + diff);
-  state.goals.p = Math.round(p.weight * 1.8);
-  state.goals.f = Math.round(state.goals.kcal * 0.25 / 9);
-  state.goals.c = Math.round((state.goals.kcal - state.goals.p*4 - state.goals.f*9) / 4);
-  localStorage.setItem('mm_goals', JSON.stringify(state.goals));
-  renderProfile();
-  render();
-}
-
-// ── INIT ──
 function init(){
-  state.meals = JSON.parse(localStorage.getItem('mm_meals') || '{}');
-  if(!state.apiKey){
-    showScreen('apiSetup');
-  } else {
-    showSplash();
-  }
-  renderCalendar();
+  loadState();
+  if(state.goals&&state.profile){showScreen('main');renderCalendar();render();}
+  else{showScreen('splash');setTimeout(()=>{showScreen('onboarding');renderObStep();},2000);}
 }
-
 init();
 </script>
 </body>
