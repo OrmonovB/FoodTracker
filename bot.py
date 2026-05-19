@@ -29,6 +29,7 @@ async def handle_options(request):
 
 async def handle_proxy(request):
     try:
+        # Read raw body with large limit
         body = await request.json()
         async with ClientSession() as session:
             async with session.post(
@@ -39,7 +40,7 @@ async def handle_proxy(request):
                     "anthropic-version": "2023-06-01"
                 },
                 json=body,
-                timeout=aiohttp.ClientTimeout(total=60)
+                timeout=aiohttp.ClientTimeout(total=120)
             ) as resp:
                 data = await resp.json()
                 return web.Response(
@@ -87,7 +88,8 @@ async def start_bot():
         logger.error(f"Bot error: {e}")
 
 async def main():
-    app_web = web.Application()
+    # 50MB limit for large photos
+    app_web = web.Application(client_max_size=50*1024*1024)
     app_web.router.add_get("/", handle_health)
     app_web.router.add_get("/health", handle_health)
     app_web.router.add_post("/proxy", handle_proxy)
@@ -100,7 +102,6 @@ async def main():
     logger.info(f"Web server running on port {PORT}")
 
     await start_bot()
-
     await asyncio.Event().wait()
 
 if __name__ == "__main__":
