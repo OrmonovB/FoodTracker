@@ -33,7 +33,7 @@ async def handle_proxy(request):
                     content_type="application/json",
                     headers={
                         "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Headers": "*",
+                        "Access-Control-Allow-Headers": "Content-Type",
                         "Access-Control-Allow-Methods": "POST, OPTIONS"
                     }
                 )
@@ -47,19 +47,25 @@ async def handle_proxy(request):
         )
 
 async def handle_options(request):
-    return web.Response(headers={
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "*",
-        "Access-Control-Allow-Methods": "POST, OPTIONS"
-    })
+    return web.Response(
+        status=200,
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": "POST, OPTIONS"
+        }
+    )
 
 async def handle_health(request):
-    return web.Response(text="OK")
+    return web.Response(text="OK", status=200)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     name = user.first_name or "друг"
-    keyboard = [[InlineKeyboardButton(text="🍽️ Открыть MealMeter", web_app=WebAppInfo(url=WEBAPP_URL))]]
+    keyboard = [[InlineKeyboardButton(
+        text="🍽️ Открыть MealMeter",
+        web_app=WebAppInfo(url=WEBAPP_URL)
+    )]]
     await update.message.reply_text(
         f"👋 Привет, {name}!\n\n"
         f"🍏 *MealMeter* — твой умный счётчик калорий.\n\n"
@@ -76,23 +82,32 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
         parse_mode="Markdown"
     )
 
-async def main():
-    app_web = web.Application()
-    app_web.router.add_post("/proxy", handle_proxy)
-    app_web.router.add_options("/proxy", handle_options)
-    app_web.router.add_get("/health", handle_health)
-    runner = web.AppRunner(app_web)
-    await runner.setup()
-    await web.TCPSite(runner, "0.0.0.0", PORT).start()
-    logger.info(f"Proxy started on port {PORT}")
-
-    app_bot = Application.builder().token(BOT_TOKEN).build()
-    app_bot.add_handler(CommandHandler("start", start))
-    app_bot.add_handler(CommandHandler("help", help_cmd))
+async def run_bot(app_bot):
     await app_bot.initialize()
     await app_bot.start()
     await app_bot.updater.start_polling(allowed_updates=Update.ALL_TYPES)
-    logger.info("Bot started")
+    logger.info("Bot polling started")
+
+async def main():
+    # Web server first
+    app_web = web.Application()
+    app_web.router.add_get("/", handle_health)
+    app_web.router.add_get("/health", handle_health)
+    app_web.router.add_post("/proxy", handle_proxy)
+    app_web.router.add_options("/proxy", handle_options)
+
+    runner = web.AppRunner(app_web)
+    await runner.setup()
+    site = web.TCPSite(runner, "0.0.0.0", PORT)
+    await site.start()
+    logger.info(f"Web server started on port {PORT}")
+
+    # Bot
+    app_bot = Application.builder().token(BOT_TOKEN).build()
+    app_bot.add_handler(CommandHandler("start", start))
+    app_bot.add_handler(CommandHandler("help", help_cmd))
+
+    await run_bot(app_bot)
 
     try:
         await asyncio.Event().wait()
