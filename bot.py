@@ -1,5 +1,8 @@
 import os
 import logging
+import asyncio
+import json
+from aiohttp import web, ClientSession
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, WebAppInfo
 from telegram.ext import Application, CommandHandler, ContextTypes
 
@@ -8,6 +11,50 @@ logger = logging.getLogger(__name__)
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
 WEBAPP_URL = os.environ.get("WEBAPP_URL", "")
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
+PORT = int(os.environ.get("PORT", 8080))
+
+async def handle_proxy(request):
+    try:
+        body = await request.json()
+        async with ClientSession() as session:
+            async with session.post(
+                "https://api.anthropic.com/v1/messages",
+                headers={
+                    "Content-Type": "application/json",
+                    "x-api-key": ANTHROPIC_API_KEY,
+                    "anthropic-version": "2023-06-01"
+                },
+                json=body
+            ) as resp:
+                data = await resp.json()
+                return web.Response(
+                    text=json.dumps(data),
+                    content_type="application/json",
+                    headers={
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Headers": "*",
+                        "Access-Control-Allow-Methods": "POST, OPTIONS"
+                    }
+                )
+    except Exception as e:
+        logger.error(f"Proxy error: {e}")
+        return web.Response(
+            text=json.dumps({"error": str(e)}),
+            status=500,
+            content_type="application/json",
+            headers={"Access-Control-Allow-Origin": "*"}
+        )
+
+async def handle_options(request):
+    return web.Response(headers={
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Allow-Methods": "POST, OPTIONS"
+    })
+
+async def handle_health(request):
+    return web.Response(text="OK")
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
@@ -25,22 +72,35 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
-        "ℹ️ *MealMeter — помощь*\n\n"
-        "*/start* — открыть приложение\n\n"
-        "Как пользоваться:\n"
-        "1. Нажми «Открыть MealMeter»\n"
-        "2. Пройди короткий опрос (1 раз)\n"
-        "3. Нажми «+ Добавить» и сфотографируй блюдо\n"
-        "4. ИИ покажет КБЖУ автоматически",
+        "ℹ️ *MealMeter*\n\n*/start* — открыть приложение",
         parse_mode="Markdown"
     )
 
-def main():
-    app = Application.builder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(CommandHandler("help", help_cmd))
-    logger.info("MealMeter bot started...")
-    app.run_polling(allowed_updates=Update.ALL_TYPES)
+async def main():
+    app_web = web.Application()
+    app_web.router.add_post("/proxy", handle_proxy)
+    app_web.router.add_options("/proxy", handle_options)
+    app_web.router.add_get("/health", handle_health)
+    runner = web.AppRunner(app_web)
+    await runner.setup()
+    await web.TCPSite(runner, "0.0.0.0", PORT).start()
+    logger.info(f"Proxy started on port {PORT}")
+
+    app_bot = Application.builder().token(BOT_TOKEN).build()
+    app_bot.add_handler(CommandHandler("start", start))
+    app_bot.add_handler(CommandHandler("help", help_cmd))
+    await app_bot.initialize()
+    await app_bot.start()
+    await app_bot.updater.start_polling(allowed_updates=Update.ALL_TYPES)
+    logger.info("Bot started")
+
+    try:
+        await asyncio.Event().wait()
+    finally:
+        await app_bot.updater.stop()
+        await app_bot.stop()
+        await app_bot.shutdown()
+        await runner.cleanup()
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
