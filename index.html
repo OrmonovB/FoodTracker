@@ -13,14 +13,14 @@
   --bg:#f4f4f4;--card:#fff;--text:#1a1a1a;--text2:#888;--text3:#bbb;
   --border:#ececec;--blue-bg:#e8f4ff;--blue-text:#3b9ede;
   --yellow-bg:#fff8e1;--yellow-text:#e6a817;--purple-bg:#f3eeff;--purple-text:#8b5cf6;
+  --orange:#ff6b35;--pink:#ec4899;
   --radius:18px;--radius-sm:12px;
 }
 html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color:var(--text);overflow-x:hidden}
 .screen{display:none;flex-direction:column;min-height:100vh}
 .screen.active{display:flex}
 
-/* SPLASH */
-#splash{background:var(--green);align-items:center;justify-content:center;gap:0}
+#splash{background:var(--green);align-items:center;justify-content:center}
 .splash-icon{font-size:80px;margin-bottom:24px;animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both}
 .splash-title{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;animation:fadeUp .5s .3s both}
 .splash-sub{font-size:16px;color:rgba(255,255,255,.75);font-weight:600;margin-top:6px;animation:fadeUp .5s .45s both}
@@ -54,7 +54,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .picker-item.active{font-size:24px;font-weight:900;color:var(--text)}
 .picker-hl{position:absolute;top:50%;left:0;right:0;height:44px;transform:translateY(-50%);background:rgba(141,198,63,.08);border-radius:12px;pointer-events:none;border:1.5px solid rgba(141,198,63,.2)}
 .speed-val{font-size:36px;font-weight:900;text-align:center;margin-bottom:4px}
-.speed-lbl{font-size:13px;color:var(--text2);font-weight:600;text-align:center;margin-bottom:16px}
 .speed-icons{display:flex;justify-content:space-between;margin-bottom:8px;font-size:28px;padding:0 4px}
 .speed-slider{width:100%;accent-color:var(--green);cursor:pointer;margin-bottom:12px}
 .speed-marks{display:flex;justify-content:space-between}
@@ -62,7 +61,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .sm-val{font-size:12px;font-weight:800}
 .sm-lbl{font-size:10px;color:var(--text2);font-weight:600;line-height:1.3}
 
-/* CALC */
 #calcScreen{background:var(--bg);align-items:center;justify-content:center;padding:40px 24px;text-align:center}
 .calc-icon{font-size:64px;margin-bottom:20px}
 .calc-title{font-size:24px;font-weight:900;margin-bottom:8px}
@@ -72,7 +70,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .calc-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;color:var(--green)}
 .calc-hint{font-size:13px;color:var(--text2);font-weight:600}
 
-/* RESULT */
 #resultScreen{background:var(--bg);overflow-y:auto}
 .result-header{padding:24px 20px 0;text-align:center}
 .result-header h2{font-size:22px;font-weight:900;line-height:1.3;margin-bottom:20px}
@@ -105,7 +102,9 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .header-logo{display:flex;align-items:center;gap:8px}
 .logo-icon{width:34px;height:34px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
 .logo-text{font-size:17px;font-weight:900}
-.profile-btn{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:7px 12px;font-size:13px;font-weight:700;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:5px}
+.header-right{display:flex;align-items:center;gap:8px}
+.streak-badge{background:linear-gradient(135deg,#ff6b35,#ff8c42);color:#fff;border-radius:20px;padding:6px 12px;font-size:13px;font-weight:900;display:flex;align-items:center;gap:4px}
+.profile-btn{background:var(--bg);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;font-size:16px;font-weight:700;color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center}
 .calendar-section{background:var(--card);padding:10px 16px 14px;border-bottom:1px solid var(--border)}
 .cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .cal-month{font-size:15px;font-weight:800}
@@ -119,7 +118,7 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .cal-day.selected{background:#1a1a1a;color:#fff}
 .cal-day.has-data::after{content:'';width:4px;height:4px;background:var(--green);border-radius:50%;position:absolute;bottom:3px}
 .cal-day.today::after,.cal-day.selected::after{background:#fff}
-.main-scroll{flex:1;overflow-y:auto;padding:14px 14px 100px}
+.main-scroll{flex:1;overflow-y:auto;padding:14px 14px 110px}
 .calories-card{background:var(--card);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px}
 .cal-card-top{display:flex;align-items:center;justify-content:space-between}
 .cal-left .clabel{font-size:13px;color:var(--text2);font-weight:700;display:flex;align-items:center;gap:4px;margin-bottom:4px}
@@ -136,7 +135,16 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .bju-ring-lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
 .bju-nums{font-size:11px;font-weight:700;margin-bottom:1px}
 .bju-title{font-size:10px;color:var(--text2);font-weight:600}
-.section-title{font-size:16px;font-weight:900;margin-bottom:8px;padding:0 2px}
+
+/* QUICK ACTIONS */
+.quick-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
+.qa-btn{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:12px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .1s}
+.qa-btn:active{transform:scale(.95)}
+.qa-icon{font-size:22px}
+.qa-label{font-size:10px;font-weight:700;color:var(--text2);text-align:center;line-height:1.2}
+
+.section-title{font-size:16px;font-weight:900;margin-bottom:8px;padding:0 2px;display:flex;justify-content:space-between;align-items:center}
+.section-title .see-all{font-size:12px;color:var(--green);font-weight:700;cursor:pointer}
 .meal-item{background:var(--card);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .meal-thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;flex-shrink:0}
 .meal-thumb-ph{width:52px;height:52px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
@@ -147,12 +155,45 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .meal-bju span{font-size:10px;font-weight:700;color:var(--text2)}
 .meal-bju span b{color:var(--text)}
 .meal-kcal{font-size:18px;font-weight:900;white-space:nowrap}
-.meal-del{width:26px;height:26px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.meal-actions{display:flex;flex-direction:column;gap:2px;align-items:flex-end}
+.meal-fav{background:none;border:none;cursor:pointer;font-size:14px;padding:2px}
+.meal-del{width:24px;height:24px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .empty-history{background:var(--card);border-radius:var(--radius);padding:36px 20px;text-align:center}
 .empty-plate{font-size:52px;margin-bottom:10px;opacity:.3}
 .empty-history p{font-size:14px;color:var(--text2);font-weight:600;line-height:1.5}
+
+/* FAVORITES SCROLL */
+.favs-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 2px 4px;margin-bottom:10px;scrollbar-width:none}
+.favs-scroll::-webkit-scrollbar{display:none}
+.fav-card{flex-shrink:0;width:120px;background:var(--card);border-radius:14px;padding:10px;cursor:pointer;position:relative;transition:transform .1s}
+.fav-card:active{transform:scale(.96)}
+.fav-thumb{width:100%;height:80px;border-radius:8px;object-fit:cover;margin-bottom:6px;background:var(--bg)}
+.fav-thumb-ph{width:100%;height:80px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:6px}
+.fav-name{font-size:11px;font-weight:800;line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fav-kcal{font-size:11px;color:var(--green);font-weight:800}
+.fav-remove{position:absolute;top:4px;right:4px;background:rgba(255,255,255,.95);border:none;border-radius:50%;width:22px;height:22px;font-size:11px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center}
+
+/* FAB */
 .add-fab{position:fixed;bottom:22px;right:18px;background:#1a1a1a;color:#fff;border:none;border-radius:28px;padding:13px 20px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.2);z-index:50;transition:transform .1s}
 .add-fab:active{transform:scale(.96)}
+
+/* CHAT (AI DIETITIAN) */
+#chat{background:var(--bg)}
+.chat-header{background:var(--card);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
+.chat-header h2{font-size:17px;font-weight:900;flex:1}
+.chat-header .chat-sub{font-size:11px;color:var(--green);font-weight:700}
+.chat-messages{flex:1;overflow-y:auto;padding:16px 14px 120px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:80%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.5;font-weight:600;word-wrap:break-word}
+.msg.user{align-self:flex-end;background:var(--green);color:#fff;border-bottom-right-radius:4px}
+.msg.ai{align-self:flex-start;background:var(--card);color:var(--text);border-bottom-left-radius:4px}
+.msg.typing{background:var(--card);align-self:flex-start;color:var(--text2);font-style:italic}
+.chat-input-wrap{position:fixed;bottom:0;left:0;right:0;background:var(--card);padding:12px 14px;display:flex;gap:8px;border-top:1px solid var(--border);padding-bottom:max(12px, env(safe-area-inset-bottom, 12px))}
+.chat-input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:24px;padding:12px 16px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;font-weight:600}
+.chat-input:focus{border-color:var(--green)}
+.chat-send{background:var(--green);color:#fff;border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:18px;flex-shrink:0;font-weight:900}
+.chat-suggestions{display:flex;gap:8px;overflow-x:auto;padding:0 14px 10px;scrollbar-width:none}
+.chat-suggestions::-webkit-scrollbar{display:none}
+.chat-suggest{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif}
 
 /* PROFILE */
 #profile{background:var(--bg)}
@@ -161,6 +202,10 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .profile-header h2{font-size:17px;font-weight:900;flex:1;text-align:center}
 .spacer{width:34px}
 .profile-content{padding:14px;overflow-y:auto;height:calc(100vh - 63px)}
+.streak-card{background:linear-gradient(135deg,#ff6b35,#ff8c42);color:#fff;border-radius:var(--radius);padding:18px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
+.streak-card .sc-icon{font-size:40px}
+.streak-card .sc-info .sc-num{font-size:32px;font-weight:900;line-height:1}
+.streak-card .sc-info .sc-lbl{font-size:12px;font-weight:700;opacity:.9}
 .cal-goal-card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:10px}
 .glabel{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:5px;display:flex;align-items:center;gap:4px}
 .gval{font-size:34px;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;gap:8px}
@@ -193,7 +238,7 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:92vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s}
+.modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:92vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s;padding-bottom:max(60px, env(safe-area-inset-bottom, 60px))}
 .modal-overlay.open .modal-sheet{transform:translateY(0)}
 .modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 18px}
 .modal-title{font-size:19px;font-weight:900;margin-bottom:14px}
@@ -202,28 +247,40 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .spinner{width:42px;height:42px;border:4px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .analyzing p{font-size:14px;color:var(--text2);font-weight:700}
-.result-dish{font-size:19px;font-weight:900;margin-bottom:4px}
-.result-desc{font-size:13px;color:var(--text2);font-weight:600;margin-bottom:14px;line-height:1.5}
-.result-kcal-big{font-size:48px;font-weight:900;letter-spacing:-2px;line-height:1;margin-bottom:4px}
-.result-kcal-lbl{font-size:13px;color:var(--text2);font-weight:700;margin-bottom:14px}
-.result-macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
-.result-macro{border-radius:var(--radius-sm);padding:12px;text-align:center}
-.result-macro.blue{background:var(--blue-bg)}
-.result-macro.yellow{background:var(--yellow-bg)}
-.result-macro.purple{background:var(--purple-bg)}
-.rval{font-size:19px;font-weight:900}
-.result-macro.blue .rval{color:var(--blue-text)}
-.result-macro.yellow .rval{color:var(--yellow-text)}
-.result-macro.purple .rval{color:var(--purple-text)}
-.rlbl{font-size:11px;font-weight:700;color:var(--text2);margin-top:2px}
+
+/* DISH RESULT */
+.dish-card{background:var(--bg);border-radius:14px;padding:14px;margin-bottom:10px;position:relative}
+.dish-card.selected{background:#e8f9cc;border:2px solid var(--green)}
+.dish-name-r{font-size:16px;font-weight:900;margin-bottom:4px}
+.dish-desc-r{font-size:12px;color:var(--text2);font-weight:600;margin-bottom:10px;line-height:1.4}
+.dish-stats{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.dish-kcal-big{font-size:28px;font-weight:900;color:var(--text)}
+.dish-kcal-lbl{font-size:11px;color:var(--text2);font-weight:700}
+.dish-macros-mini{display:flex;gap:8px}
+.dish-macros-mini .dm{text-align:center}
+.dm-val{font-size:13px;font-weight:900}
+.dm-lbl{font-size:9px;color:var(--text2);font-weight:600}
+.dm.blue .dm-val{color:var(--blue-text)}
+.dm.yellow .dm-val{color:var(--yellow-text)}
+.dm.purple .dm-val{color:var(--purple-text)}
+.dish-checkbox{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:900;color:#fff}
+.dish-card.selected .dish-checkbox{background:var(--green);border-color:var(--green)}
+
 .confirm-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px}
 .cancel-btn{width:100%;background:transparent;border:1.5px solid var(--border);border-radius:16px;padding:13px;font-size:14px;font-weight:700;color:var(--text2);cursor:pointer;font-family:'Nunito',sans-serif}
 .error-msg{color:#e74c3c;font-size:14px;font-weight:700;text-align:center;padding:16px 0;line-height:1.5}
 input[type=file]{display:none}
 .edit-field{margin-bottom:12px}
 .edit-field label{font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:5px}
-.edit-field input,.edit-field select{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 12px;font-size:15px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;outline:none}
-.edit-field input:focus{border-color:var(--green)}
+.edit-field input,.edit-field select,.edit-field textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 12px;font-size:15px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;outline:none}
+.edit-field input:focus,.edit-field textarea:focus{border-color:var(--green)}
+.edit-field textarea{resize:vertical;min-height:60px}
+
+/* MANUAL ENTRY FORM */
+.manual-form .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tab-switcher{display:flex;background:var(--bg);border-radius:12px;padding:3px;margin-bottom:14px}
+.tab-btn{flex:1;padding:9px;border:none;background:transparent;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;color:var(--text2);font-family:'Nunito',sans-serif}
+.tab-btn.active{background:#1a1a1a;color:#fff}
 </style>
 </head>
 <body>
@@ -285,7 +342,10 @@ input[type=file]{display:none}
       <div class="logo-icon">🍽️</div>
       <div class="logo-text">MealMeter</div>
     </div>
-    <button class="profile-btn" onclick="showScreen('profile')">👤 Профиль</button>
+    <div class="header-right">
+      <div class="streak-badge" id="streakBadge" onclick="showScreen('profile')">🔥 <span id="streakNum">0</span></div>
+      <button class="profile-btn" onclick="showScreen('profile')">👤</button>
+    </div>
   </div>
   <div class="calendar-section">
     <div class="cal-header">
@@ -355,11 +415,61 @@ input[type=file]{display:none}
         <div class="bju-title">Углеводы</div>
       </div>
     </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="quick-actions">
+      <div class="qa-btn" onclick="openCamera()">
+        <div class="qa-icon">📸</div>
+        <div class="qa-label">Камера</div>
+      </div>
+      <div class="qa-btn" onclick="openGallery()">
+        <div class="qa-icon">🖼️</div>
+        <div class="qa-label">Галерея</div>
+      </div>
+      <div class="qa-btn" onclick="openManualEntry()">
+        <div class="qa-icon">✏️</div>
+        <div class="qa-label">Вручную</div>
+      </div>
+      <div class="qa-btn" onclick="showScreen('chat')">
+        <div class="qa-icon">💬</div>
+        <div class="qa-label">Диетолог</div>
+      </div>
+    </div>
+
+    <!-- FAVORITES -->
+    <div id="favoritesSection" style="display:none">
+      <div class="section-title">⭐ Избранное</div>
+      <div class="favs-scroll" id="favsScroll"></div>
+    </div>
+
     <div class="section-title">История</div>
     <div id="mealsList"></div>
   </div>
-  <button class="add-fab" onclick="openCamera()"><span style="font-size:18px;font-weight:900">+</span> Добавить</button>
-  <input type="file" id="fileInput" accept="image/*" capture="environment" onchange="handleFile(this)"/>
+  <button class="add-fab" onclick="openAddMenu()"><span style="font-size:18px;font-weight:900">+</span> Добавить</button>
+  <input type="file" id="fileInputCamera" accept="image/*" capture="environment" onchange="handleFile(this)"/>
+  <input type="file" id="fileInputGallery" accept="image/*" onchange="handleFile(this)"/>
+</div>
+
+<!-- CHAT SCREEN -->
+<div class="screen" id="chat">
+  <div class="chat-header">
+    <div class="back-btn" onclick="showScreen('main')">‹</div>
+    <div>
+      <h2 style="text-align:left">🥗 ИИ-Диетолог</h2>
+      <div class="chat-sub">● онлайн</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-suggestions" id="chatSuggestions">
+    <div class="chat-suggest" onclick="sendSuggest('Что приготовить на обед?')">🍳 Что приготовить?</div>
+    <div class="chat-suggest" onclick="sendSuggest('Как набрать белок?')">💪 Больше белка</div>
+    <div class="chat-suggest" onclick="sendSuggest('Полезные перекусы')">🥜 Перекусы</div>
+    <div class="chat-suggest" onclick="sendSuggest('Анализируй мой рацион сегодня')">📊 Мой рацион</div>
+  </div>
+  <div class="chat-input-wrap">
+    <input class="chat-input" id="chatInput" placeholder="Спроси у диетолога..." onkeypress="if(event.key==='Enter')sendChatMessage()"/>
+    <button class="chat-send" onclick="sendChatMessage()">➤</button>
+  </div>
 </div>
 
 <div class="screen" id="profile">
@@ -369,22 +479,20 @@ input[type=file]{display:none}
     <div class="spacer"></div>
   </div>
   <div class="profile-content">
+    <div class="streak-card">
+      <div class="sc-info">
+        <div class="sc-num" id="profStreakNum">0</div>
+        <div class="sc-lbl">Дней подряд</div>
+      </div>
+      <div class="sc-icon">🔥</div>
+    </div>
     <div class="cal-goal-card">
       <div class="glabel">🔥 Калории</div>
       <div class="gval"><span id="profileKcal">—</span> <span class="edit-icon" onclick="editGoal('kcal')">✏️</span></div>
       <div class="mgrid">
-        <div class="mg-card blue">
-          <div class="mg-lbl"><div class="mg-badge">Б</div> Белки</div>
-          <div class="mg-val"><span id="profileP">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('p')">✏️</span></div>
-        </div>
-        <div class="mg-card yellow">
-          <div class="mg-lbl"><div class="mg-badge">Ж</div> Жиры</div>
-          <div class="mg-val"><span id="profileF">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('f')">✏️</span></div>
-        </div>
-        <div class="mg-card purple">
-          <div class="mg-lbl"><div class="mg-badge">У</div> Углев.</div>
-          <div class="mg-val"><span id="profileC">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('c')">✏️</span></div>
-        </div>
+        <div class="mg-card blue"><div class="mg-lbl"><div class="mg-badge">Б</div> Белки</div><div class="mg-val"><span id="profileP">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('p')">✏️</span></div></div>
+        <div class="mg-card yellow"><div class="mg-lbl"><div class="mg-badge">Ж</div> Жиры</div><div class="mg-val"><span id="profileF">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('f')">✏️</span></div></div>
+        <div class="mg-card purple"><div class="mg-lbl"><div class="mg-badge">У</div> Углев.</div><div class="mg-val"><span id="profileC">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('c')">✏️</span></div></div>
       </div>
     </div>
     <div class="profile-rows">
@@ -397,11 +505,7 @@ input[type=file]{display:none}
       <div class="profile-row"><div class="row-icon">🥗</div><div class="row-label">Диета</div><div class="row-val" id="profDiet">—</div><div class="chevron">›</div></div>
     </div>
     <div class="profile-rows">
-      <div class="profile-row" onclick="resetOnboarding()">
-        <div class="row-icon">🔄</div>
-        <div class="row-label" style="color:#e74c3c">Пересчитать план</div>
-        <div class="chevron">›</div>
-      </div>
+      <div class="profile-row" onclick="resetOnboarding()"><div class="row-icon">🔄</div><div class="row-label" style="color:#e74c3c">Пересчитать план</div><div class="chevron">›</div></div>
     </div>
   </div>
 </div>
@@ -414,33 +518,65 @@ input[type=file]{display:none}
 </div>
 
 <script>
-const API_KEY='';
-const API_URL='https://foodtracker-production-f4cc.up.railway.app/proxy';
+const PROXY_URL='https://foodtracker-production-f4cc.up.railway.app/proxy';
 
 let obStep=0, obData={};
-let state={meals:{},goals:null,profile:null,selectedDate:todayStr(),weekOffset:0};
+let state={meals:{},goals:null,profile:null,selectedDate:todayStr(),weekOffset:0,favorites:[],streak:{count:0,lastDate:null},chatHistory:[]};
 
 function todayStr(){return new Date().toISOString().slice(0,10);}
-function saveState(){localStorage.setItem('mm2_state',JSON.stringify({meals:state.meals,goals:state.goals,profile:state.profile}));}
-function loadState(){const s=JSON.parse(localStorage.getItem('mm2_state')||'null');if(s){state.meals=s.meals||{};state.goals=s.goals;state.profile=s.profile;}}
+function saveState(){localStorage.setItem('mm3_state',JSON.stringify(state));}
+function loadState(){
+  const s=JSON.parse(localStorage.getItem('mm3_state')||'null');
+  if(s){
+    state.meals=s.meals||{};
+    state.goals=s.goals;
+    state.profile=s.profile;
+    state.favorites=s.favorites||[];
+    state.streak=s.streak||{count:0,lastDate:null};
+    state.chatHistory=s.chatHistory||[];
+  }
+}
 
+// ── STREAK ──
+function updateStreak(){
+  const today=todayStr();
+  const meals=state.meals[today]||[];
+  if(meals.length===0) return;
+  if(state.streak.lastDate===today) return;
+  const yesterday=new Date(); yesterday.setDate(yesterday.getDate()-1);
+  const yStr=yesterday.toISOString().slice(0,10);
+  if(state.streak.lastDate===yStr) state.streak.count++;
+  else state.streak.count=1;
+  state.streak.lastDate=today;
+  saveState();
+}
+
+function checkStreakBreak(){
+  if(!state.streak.lastDate) return;
+  const last=new Date(state.streak.lastDate);
+  const today=new Date(todayStr());
+  const diffDays=Math.floor((today-last)/(1000*60*60*24));
+  if(diffDays>1) state.streak.count=0;
+}
+
+// ── ONBOARDING ──
 const STEPS=[
   {title:'Ваша главная цель',sub:'Ваш личный план будет создан для достижения Вашей цели.',type:'choice',key:'goal',
    choices:[{icon:'🏃',label:'Похудеть',val:'lose'},{icon:'⚖️',label:'Удержать вес',val:'maintain'},{icon:'💪',label:'Набрать вес',val:'gain'}]},
-  {title:'Выберите Ваш пол',sub:'Это стартовая точка для расчёта базового метаболизма (BMR).',type:'choice',key:'gender',
+  {title:'Выберите Ваш пол',sub:'Это стартовая точка для расчёта базового метаболизма.',type:'choice',key:'gender',
    choices:[{icon:'♂️',label:'Мужской',val:'male'},{icon:'♀️',label:'Женский',val:'female'},{icon:'⚧️',label:'Другое',val:'other'}]},
-  {icon:'📅',title:'Когда вы родились?',sub:'Мы учтём возраст при расчёте метаболизма и вашего личного плана.',type:'birthdate',key:'birthYear'},
-  {icon:'📏',title:'Какой у Вас рост?',sub:'Это влияет на норму калорий и ваш идеальный вес.',type:'picker',key:'height',min:140,max:220,def:170,suf:' см'},
-  {icon:'⚖️',title:'Какой у Вас вес?',sub:'Это влияет на норму калорий и ваш идеальный вес.',type:'picker',key:'weight',min:40,max:200,def:75,suf:' кг'},
-  {title:'Какая у Вас активность?',sub:'Это поможет рассчитать ежедневные энергетические затраты (TDEE).',type:'choice',key:'activity',
+  {icon:'📅',title:'Когда вы родились?',sub:'Мы учтём возраст при расчёте плана.',type:'birthdate',key:'birthYear'},
+  {icon:'📏',title:'Какой у Вас рост?',sub:'Это влияет на норму калорий.',type:'picker',key:'height',min:140,max:220,def:170,suf:' см'},
+  {icon:'⚖️',title:'Какой у Вас вес?',sub:'Это влияет на норму калорий.',type:'picker',key:'weight',min:40,max:200,def:75,suf:' кг'},
+  {title:'Какая у Вас активность?',sub:'Это поможет рассчитать TDEE.',type:'choice',key:'activity',
    choices:[
-     {icon:'🧘',label:'Минимальная активность',sub:'Сидячий образ жизни',val:1.2},
-     {icon:'🚶',label:'Лёгкая активность',sub:'Упражнения 1-2 раза в неделю',val:1.375},
-     {icon:'🏃',label:'Средняя активность',sub:'Тренировки 3-4 раза в неделю',val:1.55},
-     {icon:'🏋️',label:'Высокая активность',sub:'Интенсивные тренировки 4-5 раз в неделю',val:1.725},
-     {icon:'🤸',label:'Очень высокая активность',sub:'Интенсивные тренировки 6-7 раз в неделю',val:1.9}
+     {icon:'🧘',label:'Минимальная',sub:'Сидячий образ жизни',val:1.2},
+     {icon:'🚶',label:'Лёгкая',sub:'Упражнения 1-2 раза в неделю',val:1.375},
+     {icon:'🏃',label:'Средняя',sub:'Тренировки 3-4 раза в неделю',val:1.55},
+     {icon:'🏋️',label:'Высокая',sub:'Тренировки 4-5 раз в неделю',val:1.725},
+     {icon:'🤸',label:'Очень высокая',sub:'Тренировки 6-7 раз в неделю',val:1.9}
    ]},
-  {icon:'🏆',title:'Какой вес Вы хотите получить?',sub:'Мы рассчитаем, как безопасно и эффективно достичь желаемый вес.',type:'picker',key:'targetWeight',min:40,max:200,def:70,suf:' кг'},
+  {icon:'🏆',title:'Какой вес Вы хотите получить?',sub:'Мы рассчитаем, как безопасно достичь.',type:'picker',key:'targetWeight',min:40,max:200,def:70,suf:' кг'},
   {title:'Как быстро вы хотите достичь цели?',sub:'',type:'speed',key:'speed'},
   {title:'Ваша диета?',sub:'',type:'choice',key:'diet',
    choices:[
@@ -449,7 +585,7 @@ const STEPS=[
      {icon:'🌿',label:'Веганская',val:'vegan'},
      {icon:'🥑',label:'Кето',val:'keto'},
      {icon:'🍖',label:'Палео',val:'paleo'},
-     {icon:'🥦',label:'LCHF (низкоуглеводная)',val:'lchf'},
+     {icon:'🥦',label:'LCHF',val:'lchf'},
      {icon:'🫒',label:'Средиземноморская',val:'med'}
    ]}
 ];
@@ -459,14 +595,11 @@ function renderObStep(){
   document.getElementById('obProgress').style.width=((obStep+1)/STEPS.length*100)+'%';
   document.getElementById('obBack').style.opacity=obStep===0?'0.3':'1';
   const btnEl=document.getElementById('obBtn');
-  const hasVal=obData[step.key]!==undefined;
-  btnEl.disabled=!hasVal&&step.type==='choice';
-
+  btnEl.disabled=!obData[step.key]&&step.type==='choice';
   let html='';
   if(step.icon) html+=`<div class="ob-icon">${step.icon}</div>`;
   html+=`<div class="ob-title">${step.title}</div>`;
   if(step.sub) html+=`<div class="ob-sub">${step.sub}</div>`;
-
   if(step.type==='choice'){
     html+=`<div class="choice-list">`;
     step.choices.forEach(c=>{
@@ -524,9 +657,9 @@ function renderObStep(){
     <div class="speed-icons"><span>🐌</span><span>📍</span><span>⚡</span></div>
     <input type="range" class="speed-slider" min="1" max="7" step="1" value="${sliderVal}" oninput="updateSpeed(this.value)"/>
     <div class="speed-marks">
-      <div class="speed-mark"><div class="sm-val">0.1 кг</div><div class="sm-lbl">Медленно,<br>но верно</div></div>
-      <div class="speed-mark"><div class="sm-val">0.4 кг</div><div class="sm-lbl">Рекомендуемая<br>скорость</div></div>
-      <div class="speed-mark"><div class="sm-val">0.7 кг</div><div class="sm-lbl">Есть риски:<br>усталость</div></div>
+      <div class="speed-mark"><div class="sm-val">0.1 кг</div><div class="sm-lbl">Медленно</div></div>
+      <div class="speed-mark"><div class="sm-val">0.4 кг</div><div class="sm-lbl">Рекоменд.</div></div>
+      <div class="speed-mark"><div class="sm-val">0.7 кг</div><div class="sm-lbl">Быстро</div></div>
     </div>`;
     btnEl.disabled=false;
   }
@@ -640,7 +773,7 @@ function showResultScreen(goals){
 function startMain(){showScreen('main');renderCalendar();render();}
 function resetOnboarding(){if(confirm('Пересчитать план?')){obStep=0;obData={};showScreen('onboarding');renderObStep();}}
 
-// CALENDAR
+// ── CALENDAR ──
 function renderCalendar(){
   const today=new Date();
   const base=new Date(today);
@@ -667,7 +800,7 @@ function prevWeek(){state.weekOffset--;renderCalendar();}
 function nextWeek(){state.weekOffset++;renderCalendar();}
 function goToday(){state.weekOffset=0;state.selectedDate=todayStr();renderCalendar();render();}
 
-// RENDER
+// ── RENDER ──
 function render(){
   const meals=state.meals[state.selectedDate]||[];
   const g=state.goals||{kcal:2000,p:150,f:65,c:250};
@@ -684,6 +817,7 @@ function render(){
   document.getElementById('valP').textContent=tP;
   document.getElementById('valF').textContent=tF;
   document.getElementById('valC').textContent=tC;
+  document.getElementById('streakNum').textContent=state.streak.count;
   const pct=Math.min(tK/g.kcal,1);
   const ring=document.getElementById('mainRing');
   ring.style.strokeDashoffset=194.8*(1-pct);
@@ -691,13 +825,15 @@ function render(){
   setRing('ringP',tP,g.p,119.4);
   setRing('ringF',tF,g.f,119.4);
   setRing('ringC',tC,g.c,119.4);
+  renderFavorites();
   const list=document.getElementById('mealsList');
   if(!meals.length){
-    list.innerHTML=`<div class="empty-history"><div class="empty-plate">🍽️</div><p>Пока ничего нет.<br>Нажми «+ Добавить» и сфотографируй блюдо.</p></div>`;
+    list.innerHTML=`<div class="empty-history"><div class="empty-plate">🍽️</div><p>Пока ничего нет.<br>Нажми «+ Добавить» или одну из кнопок выше.</p></div>`;
     return;
   }
-  list.innerHTML=meals.map(m=>`
-    <div class="meal-item">
+  list.innerHTML=meals.map(m=>{
+    const isFav=state.favorites.some(f=>f.name===m.name);
+    return `<div class="meal-item">
       ${m.img?`<img src="${m.img}" class="meal-thumb"/>`:`<div class="meal-thumb-ph">🍽️</div>`}
       <div class="meal-info">
         <div class="meal-name">${m.name}</div>
@@ -705,99 +841,363 @@ function render(){
         <div class="meal-bju"><span>Б <b>${m.protein}г</b></span><span>Ж <b>${m.fat}г</b></span><span>У <b>${m.carbs}г</b></span></div>
       </div>
       <div class="meal-kcal">${m.kcal}</div>
-      <button class="meal-del" onclick="deleteMeal(${m.id})">✕</button>
+      <div class="meal-actions">
+        <button class="meal-fav" onclick="toggleFavorite(${m.id})">${isFav?'⭐':'☆'}</button>
+        <button class="meal-del" onclick="deleteMeal(${m.id})">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderFavorites(){
+  const section=document.getElementById('favoritesSection');
+  const scroll=document.getElementById('favsScroll');
+  if(!state.favorites.length){section.style.display='none';return;}
+  section.style.display='block';
+  scroll.innerHTML=state.favorites.map((f,i)=>`
+    <div class="fav-card" onclick="addFromFavorite(${i})">
+      ${f.img?`<img src="${f.img}" class="fav-thumb"/>`:`<div class="fav-thumb-ph">🍽️</div>`}
+      <div class="fav-name">${f.name}</div>
+      <div class="fav-kcal">${f.kcal} ккал</div>
+      <button class="fav-remove" onclick="event.stopPropagation();removeFavorite(${i})">✕</button>
     </div>`).join('');
 }
 
 function setRing(id,val,goal,circ){const el=document.getElementById(id);if(el)el.style.strokeDashoffset=circ*(1-Math.min(val/Math.max(goal,1),1));}
 function deleteMeal(id){state.meals[state.selectedDate]=(state.meals[state.selectedDate]||[]).filter(m=>m.id!==id);saveState();render();renderCalendar();}
 
-// CAMERA
-function openCamera(){document.getElementById('fileInput').click();}
+function toggleFavorite(id){
+  const meals=state.meals[state.selectedDate]||[];
+  const meal=meals.find(m=>m.id===id);
+  if(!meal) return;
+  const idx=state.favorites.findIndex(f=>f.name===meal.name);
+  if(idx>=0) state.favorites.splice(idx,1);
+  else state.favorites.unshift({name:meal.name,kcal:meal.kcal,protein:meal.protein,fat:meal.fat,carbs:meal.carbs,img:meal.img});
+  if(state.favorites.length>10) state.favorites=state.favorites.slice(0,10);
+  saveState();render();
+}
+
+function removeFavorite(i){state.favorites.splice(i,1);saveState();render();}
+
+function addFromFavorite(i){
+  const f=state.favorites[i];
+  const saveDate=todayStr();
+  if(!state.meals[saveDate]) state.meals[saveDate]=[];
+  state.meals[saveDate].push({
+    id:Date.now(),name:f.name,kcal:f.kcal,protein:f.protein,fat:f.fat,carbs:f.carbs,
+    time:new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'}),img:f.img
+  });
+  state.selectedDate=saveDate;
+  state.weekOffset=0;
+  updateStreak();
+  saveState();renderCalendar();render();
+}
+
+// ── ADD MENU ──
+function openAddMenu(){
+  openModal();
+  document.getElementById('modalContent').innerHTML=`
+    <div class="modal-title">Добавить блюдо</div>
+    <div class="quick-actions" style="margin-bottom:0">
+      <div class="qa-btn" onclick="closeModal();openCamera()">
+        <div class="qa-icon">📸</div>
+        <div class="qa-label">Камера</div>
+      </div>
+      <div class="qa-btn" onclick="closeModal();openGallery()">
+        <div class="qa-icon">🖼️</div>
+        <div class="qa-label">Галерея</div>
+      </div>
+      <div class="qa-btn" onclick="closeModal();openManualEntry()">
+        <div class="qa-icon">✏️</div>
+        <div class="qa-label">Вручную</div>
+      </div>
+      <div class="qa-btn" onclick="closeModal();openBarcode()">
+        <div class="qa-icon">📊</div>
+        <div class="qa-label">Штрих-код</div>
+      </div>
+    </div>
+    <button class="cancel-btn" style="margin-top:14px" onclick="closeModal()">Отмена</button>`;
+}
+
+function openCamera(){document.getElementById('fileInputCamera').click();}
+function openGallery(){document.getElementById('fileInputGallery').click();}
+
+function openManualEntry(){
+  openModal();
+  document.getElementById('modalContent').innerHTML=`
+    <div class="modal-title">Добавить вручную</div>
+    <div class="tab-switcher">
+      <button class="tab-btn active" onclick="switchManualTab(this,'ai')">🤖 Через ИИ</button>
+      <button class="tab-btn" onclick="switchManualTab(this,'form')">📝 Форма</button>
+    </div>
+    <div id="manualAITab">
+      <div class="edit-field">
+        <label>Опишите что вы съели</label>
+        <textarea id="aiDesc" placeholder="Например: тарелка борща с говядиной и сметаной, кусок хлеба"></textarea>
+      </div>
+      <button class="confirm-btn" onclick="analyzeManualText()">Проанализировать</button>
+    </div>
+    <div id="manualFormTab" style="display:none">
+      <div class="manual-form">
+        <div class="edit-field"><label>Название</label><input id="mName" placeholder="Куриная грудка"/></div>
+        <div class="edit-field"><label>Калории (ккал)</label><input type="number" id="mKcal" placeholder="200"/></div>
+        <div class="row3">
+          <div class="edit-field"><label>Белки (г)</label><input type="number" id="mP" placeholder="20"/></div>
+          <div class="edit-field"><label>Жиры (г)</label><input type="number" id="mF" placeholder="5"/></div>
+          <div class="edit-field"><label>Углев. (г)</label><input type="number" id="mC" placeholder="0"/></div>
+        </div>
+        <button class="confirm-btn" onclick="saveManualMeal()">Добавить</button>
+      </div>
+    </div>
+    <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
+}
+
+function switchManualTab(btn,tab){
+  btn.parentElement.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('manualAITab').style.display=tab==='ai'?'block':'none';
+  document.getElementById('manualFormTab').style.display=tab==='form'?'block':'none';
+}
+
+function saveManualMeal(){
+  const name=document.getElementById('mName').value.trim();
+  const kcal=parseInt(document.getElementById('mKcal').value)||0;
+  if(!name||!kcal){alert('Заполни название и калории');return;}
+  const meal={
+    name,kcal,
+    protein:parseInt(document.getElementById('mP').value)||0,
+    fat:parseInt(document.getElementById('mF').value)||0,
+    carbs:parseInt(document.getElementById('mC').value)||0
+  };
+  saveMealsToToday([meal]);
+}
+
+async function analyzeManualText(){
+  const desc=document.getElementById('aiDesc').value.trim();
+  if(!desc){alert('Опиши что съел');return;}
+  document.getElementById('modalContent').innerHTML=`
+    <div class="modal-title">Анализ</div>
+    <div class="analyzing"><div class="spinner"></div><p>ИИ анализирует...</p></div>`;
+  try{
+    const result=await callAI({
+      messages:[{role:'user',content:`Проанализируй описание еды и верни ТОЛЬКО валидный JSON массив блюд (даже если одно блюдо — всё равно массив):
+[{"name":"название","description":"краткое описание","kcal":число,"protein":число,"fat":число,"carbs":число,"portion":"порция"}]
+Описание: "${desc}"
+БЖУ в граммах, калории в ккал. Если несколько блюд — раздели на отдельные элементы массива.`}]
+    });
+    const text=result.content[0].text.trim();
+    let dishes;
+    try{dishes=JSON.parse(text);}catch{const m=text.match(/\[[\s\S]*\]/);dishes=m?JSON.parse(m[0]):null;}
+    if(!dishes||!dishes.length) throw new Error('Не удалось распознать');
+    showMultiDishResult(dishes,null);
+  }catch(err){
+    showError(err.message);
+  }
+}
+
+function openBarcode(){
+  openModal();
+  document.getElementById('modalContent').innerHTML=`
+    <div class="modal-title">Штрих-код</div>
+    <div class="ob-sub" style="text-align:left;margin-bottom:16px">📸 Сфотографируй штрих-код на упаковке — ИИ распознает продукт и его КБЖУ.</div>
+    <button class="confirm-btn" onclick="closeModal();document.getElementById('fileInputCamera').setAttribute('data-mode','barcode');document.getElementById('fileInputCamera').click()">📸 Сфотографировать</button>
+    <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
+}
+
+// ── FILE HANDLING ──
 function handleFile(input){
   const file=input.files[0]; if(!file) return;
+  const isBarcode=input.dataset.mode==='barcode';
+  input.removeAttribute('data-mode');
   const reader=new FileReader();
-  reader.onload=e=>{const d=e.target.result;openModal();showAnalyzing(d);analyzeImage(d);};
+  reader.onload=e=>{
+    const d=e.target.result;
+    openModal();
+    showAnalyzing(d);
+    if(isBarcode) analyzeBarcode(d);
+    else analyzeImage(d);
+  };
   reader.readAsDataURL(file);
   input.value='';
 }
+
 function showAnalyzing(dataUrl){
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">Анализ блюда</div>
     <img src="${dataUrl}" class="photo-preview"/>
-    <div class="analyzing"><div class="spinner"></div><p>ИИ анализирует блюдо...</p></div>`;
+    <div class="analyzing"><div class="spinner"></div><p>ИИ анализирует...</p></div>`;
 }
+
+async function callAI(body){
+  const fullBody={
+    model:'claude-sonnet-4-20250514',
+    max_tokens:1500,
+    ...body
+  };
+  const resp=await fetch(PROXY_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(fullBody)
+  });
+  if(!resp.ok) throw new Error('Ошибка API '+resp.status);
+  const data=await resp.json();
+  if(data.error) throw new Error(data.error.message||data.error);
+  return data;
+}
+
 async function analyzeImage(dataUrl){
   const base64=dataUrl.split(',')[1];
   const mediaType=dataUrl.split(';')[0].split(':')[1];
   try{
-    const resp=await fetch(API_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',max_tokens:800,
-        messages:[{role:'user',content:[
-          {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
-          {type:'text',text:'Проанализируй блюдо на фото. Ответь ТОЛЬКО валидным JSON без markdown:\n{"name":"название по-русски","description":"краткое описание 1-2 предложения","kcal":число,"protein":число,"fat":число,"carbs":число,"portion":"описание порции"}\nВсе значения БЖУ в граммах, калории в ккал. Если на фото нет еды — верни {"error":"no_food"}.'}
-        ]}]
-      })
+    const result=await callAI({
+      messages:[{role:'user',content:[
+        {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
+        {type:'text',text:`Проанализируй фото. Это может быть блюдо, напиток (газировка, сок, кофе) или несколько разных блюд/продуктов на одном фото.
+
+Верни ТОЛЬКО валидный JSON массив (всегда массив, даже если один элемент):
+[{"name":"название по-русски","description":"краткое описание 1 предложение","kcal":число,"protein":число,"fat":число,"carbs":число,"portion":"описание порции"}]
+
+Если несколько блюд/продуктов — раздели на отдельные элементы.
+Если напиток в упаковке (банка, бутылка) — определи бренд/тип и используй стандартные значения для этого продукта.
+Все значения БЖУ в граммах, калории в ккал.
+Если на фото нет еды или напитков — верни {"error":"no_food"}.`}
+      ]}]
     });
-    if(!resp.ok){const err=await resp.json();throw new Error(err.error?.message||'Ошибка API '+resp.status);}
-    const data=await resp.json();
-    let text=data.content[0].text.trim();
-    let result;
-    try{result=JSON.parse(text);}catch{const m=text.match(/\{[\s\S]*\}/);result=m?JSON.parse(m[0]):null;}
-    if(!result) throw new Error('Не удалось распознать ответ');
-    if(result.error==='no_food') throw new Error('На фото не обнаружена еда. Попробуйте другое фото.');
-    window._pm={r:result,imgData:dataUrl};
-    showResult2(result,dataUrl);
+    const text=result.content[0].text.trim();
+    let dishes;
+    try{dishes=JSON.parse(text);}catch{const m=text.match(/\[[\s\S]*\]/);dishes=m?JSON.parse(m[0]):null;}
+    if(!dishes){
+      try{const o=JSON.parse(text);if(o.error==='no_food') throw new Error('На фото не обнаружена еда');}catch{}
+      throw new Error('Не удалось распознать ответ');
+    }
+    if(!Array.isArray(dishes)) dishes=[dishes];
+    showMultiDishResult(dishes,dataUrl);
   }catch(err){
-    document.getElementById('modalContent').innerHTML=`
-      <div class="modal-title">Ошибка</div>
-      <div class="error-msg">😕 ${err.message||'Не удалось проанализировать фото. Попробуйте ещё раз.'}</div>
-      <button class="cancel-btn" onclick="closeModal()">Закрыть</button>`;
+    showError(err.message);
   }
 }
-function showResult2(r,imgData){
+
+async function analyzeBarcode(dataUrl){
+  const base64=dataUrl.split(',')[1];
+  const mediaType=dataUrl.split(';')[0].split(':')[1];
+  try{
+    const result=await callAI({
+      messages:[{role:'user',content:[
+        {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
+        {type:'text',text:`На фото штрих-код или упаковка продукта. Определи продукт по штрих-коду или внешнему виду упаковки и верни ТОЛЬКО валидный JSON массив:
+[{"name":"название продукта","description":"краткое описание","kcal":число,"protein":число,"fat":число,"carbs":число,"portion":"стандартная порция, например 100г"}]
+БЖУ на стандартную порцию (обычно 100г или 1 единица). Если не можешь определить — верни {"error":"unknown"}.`}
+      ]}]
+    });
+    const text=result.content[0].text.trim();
+    let dishes;
+    try{dishes=JSON.parse(text);}catch{const m=text.match(/\[[\s\S]*\]/);dishes=m?JSON.parse(m[0]):null;}
+    if(!dishes){
+      try{const o=JSON.parse(text);if(o.error) throw new Error('Не удалось распознать продукт');}catch{}
+      throw new Error('Не удалось распознать');
+    }
+    if(!Array.isArray(dishes)) dishes=[dishes];
+    showMultiDishResult(dishes,dataUrl);
+  }catch(err){
+    showError(err.message);
+  }
+}
+
+function showError(msg){
   document.getElementById('modalContent').innerHTML=`
-    <div class="modal-title">Результат</div>
-    <img src="${imgData}" class="photo-preview"/>
-    <div class="result-dish">${r.name}</div>
-    <div class="result-desc">${r.description}${r.portion?' · '+r.portion:''}</div>
-    <div class="result-kcal-big">${Math.round(r.kcal)}</div>
-    <div class="result-kcal-lbl">ккал в порции</div>
-    <div class="result-macros">
-      <div class="result-macro blue"><div class="rval">${Math.round(r.protein)}г</div><div class="rlbl">Белки</div></div>
-      <div class="result-macro yellow"><div class="rval">${Math.round(r.fat)}г</div><div class="rlbl">Жиры</div></div>
-      <div class="result-macro purple"><div class="rval">${Math.round(r.carbs)}г</div><div class="rlbl">Углеводы</div></div>
-    </div>
-    <button class="confirm-btn" onclick="addMealFromPending()">+ Добавить в дневник</button>
+    <div class="modal-title">Ошибка</div>
+    <div class="error-msg">😕 ${msg||'Что-то пошло не так'}</div>
+    <button class="cancel-btn" onclick="closeModal()">Закрыть</button>`;
+}
+
+function showMultiDishResult(dishes,imgData){
+  window._pendingDishes=dishes.map((d,i)=>({...d,_idx:i,_selected:true,_img:imgData}));
+  renderMultiDish();
+}
+
+function renderMultiDish(){
+  const dishes=window._pendingDishes;
+  const imgData=dishes[0]?._img;
+  const selectedCount=dishes.filter(d=>d._selected).length;
+  const totalKcal=dishes.filter(d=>d._selected).reduce((s,d)=>s+Math.round(d.kcal),0);
+  document.getElementById('modalContent').innerHTML=`
+    <div class="modal-title">${dishes.length>1?`Найдено ${dishes.length} блюд`:'Результат'}</div>
+    ${imgData?`<img src="${imgData}" class="photo-preview"/>`:''}
+    ${dishes.length>1?`<div style="font-size:13px;color:var(--text2);font-weight:600;margin-bottom:10px">Нажми на блюдо чтобы исключить/включить</div>`:''}
+    ${dishes.map((d,i)=>`
+      <div class="dish-card ${d._selected?'selected':''}" onclick="toggleDish(${i})">
+        ${dishes.length>1?`<div class="dish-checkbox">${d._selected?'✓':''}</div>`:''}
+        <div class="dish-name-r">${d.name}</div>
+        <div class="dish-desc-r">${d.description||''}${d.portion?' · '+d.portion:''}</div>
+        <div class="dish-stats">
+          <div>
+            <div class="dish-kcal-big">${Math.round(d.kcal)}</div>
+            <div class="dish-kcal-lbl">ккал</div>
+          </div>
+          <div class="dish-macros-mini">
+            <div class="dm blue"><div class="dm-val">${Math.round(d.protein)}г</div><div class="dm-lbl">Б</div></div>
+            <div class="dm yellow"><div class="dm-val">${Math.round(d.fat)}г</div><div class="dm-lbl">Ж</div></div>
+            <div class="dm purple"><div class="dm-val">${Math.round(d.carbs)}г</div><div class="dm-lbl">У</div></div>
+          </div>
+        </div>
+      </div>`).join('')}
+    ${dishes.length>1?`<div style="text-align:center;font-size:14px;font-weight:800;margin:10px 0;color:var(--text)">Итого: ${totalKcal} ккал (${selectedCount} ${selectedCount===1?'блюдо':'блюд'})</div>`:''}
+    <button class="confirm-btn" onclick="addSelectedDishes()">+ Добавить в дневник</button>
     <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
 }
-function addMealFromPending(){
-  if(!window._pm) return;
-  const{r,imgData}=window._pm;
-  if(!state.meals[state.selectedDate]) state.meals[state.selectedDate]=[];
-  state.meals[state.selectedDate].push({
-    id:Date.now(),name:r.name,kcal:Math.round(r.kcal),
-    protein:Math.round(r.protein),fat:Math.round(r.fat),carbs:Math.round(r.carbs),
-    time:new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'}),img:imgData
-  });
-  saveState();closeModal();render();renderCalendar();
+
+function toggleDish(i){
+  window._pendingDishes[i]._selected=!window._pendingDishes[i]._selected;
+  renderMultiDish();
 }
 
-// MODAL
+function addSelectedDishes(){
+  const selected=window._pendingDishes.filter(d=>d._selected);
+  if(!selected.length){alert('Выбери хотя бы одно блюдо');return;}
+  const imgData=window._pendingDishes[0]._img;
+  const meals=selected.map(d=>({
+    name:d.name,
+    kcal:Math.round(d.kcal),
+    protein:Math.round(d.protein),
+    fat:Math.round(d.fat),
+    carbs:Math.round(d.carbs),
+    img:imgData
+  }));
+  saveMealsToToday(meals);
+}
+
+function saveMealsToToday(meals){
+  const saveDate=todayStr();
+  if(!state.meals[saveDate]) state.meals[saveDate]=[];
+  meals.forEach(m=>{
+    state.meals[saveDate].push({
+      id:Date.now()+Math.random(),
+      ...m,
+      time:new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})
+    });
+  });
+  state.selectedDate=saveDate;
+  state.weekOffset=0;
+  updateStreak();
+  saveState();
+  closeModal();
+  renderCalendar();
+  render();
+}
+
+// ── MODAL ──
 function openModal(){document.getElementById('modal').classList.add('open');}
-function closeModal(){document.getElementById('modal').classList.remove('open');window._pm=null;}
+function closeModal(){document.getElementById('modal').classList.remove('open');window._pendingDishes=null;}
 function handleOverlayClick(e){if(e.target===document.getElementById('modal'))closeModal();}
 
-// PROFILE
+// ── PROFILE ──
 function renderProfile(){
   const g=state.goals||{};const p=state.profile||{};
   document.getElementById('profileKcal').textContent=g.kcal||'—';
   document.getElementById('profileP').textContent=g.p||'—';
   document.getElementById('profileF').textContent=g.f||'—';
   document.getElementById('profileC').textContent=g.c||'—';
+  document.getElementById('profStreakNum').textContent=state.streak.count;
   const gl={lose:'Похудеть',maintain:'Удержать вес',gain:'Набрать вес'};
   document.getElementById('profGoal').textContent=gl[p.goal]||'—';
   const gnl={male:'Мужской',female:'Женский',other:'Другое'};
@@ -810,6 +1210,7 @@ function renderProfile(){
   const dl={none:'Без диеты',veg:'Вегетарианская',vegan:'Веганская',keto:'Кето',paleo:'Палео',lchf:'LCHF',med:'Средиземноморская'};
   document.getElementById('profDiet').textContent=dl[p.diet]||'—';
 }
+
 function editGoal(field){
   const labels={kcal:'Калории (ккал)',p:'Белки (г)',f:'Жиры (г)',c:'Углеводы (г)'};
   openModal();
@@ -820,9 +1221,78 @@ function editGoal(field){
     <button class="confirm-btn" onclick="saveGoalField('${field}')">Сохранить</button>
     <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
 }
+
 function saveGoalField(field){
   const val=parseInt(document.getElementById('editVal').value);
   if(!isNaN(val)&&val>0){state.goals[field]=val;saveState();closeModal();renderProfile();render();}
+}
+
+// ── CHAT (AI DIETITIAN) ──
+function renderChat(){
+  const c=document.getElementById('chatMessages');
+  if(!state.chatHistory.length){
+    c.innerHTML=`<div class="msg ai">Привет! Я твой ИИ-диетолог 🥗 Спроси меня о питании, диете, рецептах или попроси проанализировать твой рацион!</div>`;
+    return;
+  }
+  c.innerHTML=state.chatHistory.map(m=>`<div class="msg ${m.role}">${m.text.replace(/\n/g,'<br>')}</div>`).join('');
+  setTimeout(()=>{c.scrollTop=c.scrollHeight;},50);
+}
+
+function sendSuggest(text){
+  document.getElementById('chatInput').value=text;
+  sendChatMessage();
+}
+
+async function sendChatMessage(){
+  const input=document.getElementById('chatInput');
+  const text=input.value.trim();
+  if(!text) return;
+  input.value='';
+  state.chatHistory.push({role:'user',text});
+  renderChat();
+  const c=document.getElementById('chatMessages');
+  c.innerHTML+=`<div class="msg ai typing" id="typingMsg">печатает...</div>`;
+  c.scrollTop=c.scrollHeight;
+  try{
+    // Build context with user profile and today's meals
+    const today=todayStr();
+    const meals=state.meals[today]||[];
+    const totKcal=meals.reduce((s,m)=>s+m.kcal,0);
+    const totP=meals.reduce((s,m)=>s+m.protein,0);
+    const totF=meals.reduce((s,m)=>s+m.fat,0);
+    const totC=meals.reduce((s,m)=>s+m.carbs,0);
+    const p=state.profile||{};
+    const g=state.goals||{};
+    const goalLabels={lose:'похудение',maintain:'поддержание веса',gain:'набор массы'};
+    const dietLabels={none:'без диеты',veg:'вегетарианская',vegan:'веганская',keto:'кето',paleo:'палео',lchf:'LCHF',med:'средиземноморская'};
+    const systemContext=`Ты — дружелюбный ИИ-диетолог в приложении MealMeter. Отвечай кратко (2-4 предложения), по-русски, давай конкретные практичные советы.
+
+Профиль пользователя:
+- Цель: ${goalLabels[p.goal]||'неизвестно'}
+- Возраст: ${p.birthYear?new Date().getFullYear()-p.birthYear:'?'} лет, ${p.gender==='male'?'мужчина':'женщина'}
+- Рост ${p.height||'?'} см, вес ${p.weight||'?'} кг, целевой вес ${p.targetWeight||'?'} кг
+- Диета: ${dietLabels[p.diet]||'без диеты'}
+- Дневная норма: ${g.kcal||'?'} ккал, ${g.p||'?'}г белков, ${g.f||'?'}г жиров, ${g.c||'?'}г углеводов
+
+Сегодня уже съедено: ${totKcal} ккал, ${totP}г белков, ${totF}г жиров, ${totC}г углеводов.
+Список блюд сегодня: ${meals.map(m=>m.name).join(', ')||'пока ничего'}.`;
+
+    const history=state.chatHistory.slice(-10).map(m=>({role:m.role==='user'?'user':'assistant',content:m.text}));
+    const result=await callAI({
+      system:systemContext,
+      messages:history
+    });
+    const reply=result.content[0].text;
+    document.getElementById('typingMsg')?.remove();
+    state.chatHistory.push({role:'ai',text:reply});
+    if(state.chatHistory.length>50) state.chatHistory=state.chatHistory.slice(-50);
+    saveState();
+    renderChat();
+  }catch(err){
+    document.getElementById('typingMsg')?.remove();
+    state.chatHistory.push({role:'ai',text:'😕 Что-то пошло не так. Попробуй ещё раз.'});
+    renderChat();
+  }
 }
 
 function showScreen(id){
@@ -830,14 +1300,22 @@ function showScreen(id){
   document.getElementById(id).classList.add('active');
   if(id==='profile')renderProfile();
   if(id==='main'){renderCalendar();render();}
+  if(id==='chat')renderChat();
 }
 
 function init(){
   loadState();
+  checkStreakBreak();
   if(state.goals&&state.profile){showScreen('main');renderCalendar();render();}
   else{showScreen('splash');setTimeout(()=>{showScreen('onboarding');renderObStep();},2000);}
 }
 init();
+
+// Telegram Web App expand
+if(window.Telegram?.WebApp){
+  Telegram.WebApp.expand();
+  Telegram.WebApp.ready();
+}
 </script>
 </body>
 </html>
