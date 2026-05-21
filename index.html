@@ -238,7 +238,7 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:92vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s;padding-bottom:max(60px, env(safe-area-inset-bottom, 60px))}
+.modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:88vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s;padding-bottom:calc(100px + env(safe-area-inset-bottom, 0px))}
 .modal-overlay.open .modal-sheet{transform:translateY(0)}
 .modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 18px}
 .modal-title{font-size:19px;font-weight:900;margin-bottom:14px}
@@ -526,7 +526,22 @@ let state={meals:{},goals:null,profile:null,selectedDate:todayStr(),weekOffset:0
 function todayStr(){return new Date().toISOString().slice(0,10);}
 function saveState(){localStorage.setItem('mm3_state',JSON.stringify(state));}
 function loadState(){
-  const s=JSON.parse(localStorage.getItem('mm3_state')||'null');
+  let s=JSON.parse(localStorage.getItem('mm3_state')||'null');
+  // Migration from old keys
+  if(!s){
+    const old=JSON.parse(localStorage.getItem('mm2_state')||'null');
+    if(old){
+      s={
+        meals:old.meals||{},
+        goals:old.goals,
+        profile:old.profile,
+        favorites:[],
+        streak:{count:0,lastDate:null},
+        chatHistory:[]
+      };
+      localStorage.setItem('mm3_state',JSON.stringify(s));
+    }
+  }
   if(s){
     state.meals=s.meals||{};
     state.goals=s.goals;
@@ -543,10 +558,15 @@ function updateStreak(){
   const meals=state.meals[today]||[];
   if(meals.length===0) return;
   if(state.streak.lastDate===today) return;
-  const yesterday=new Date(); yesterday.setDate(yesterday.getDate()-1);
-  const yStr=yesterday.toISOString().slice(0,10);
-  if(state.streak.lastDate===yStr) state.streak.count++;
-  else state.streak.count=1;
+  if(!state.streak.lastDate){
+    state.streak.count=1;
+  } else {
+    const last=new Date(state.streak.lastDate);
+    const todayDate=new Date(today);
+    const diffDays=Math.round((todayDate-last)/(1000*60*60*24));
+    if(diffDays===1) state.streak.count++;
+    else state.streak.count=1;
+  }
   state.streak.lastDate=today;
   saveState();
 }
@@ -555,8 +575,12 @@ function checkStreakBreak(){
   if(!state.streak.lastDate) return;
   const last=new Date(state.streak.lastDate);
   const today=new Date(todayStr());
-  const diffDays=Math.floor((today-last)/(1000*60*60*24));
-  if(diffDays>1) state.streak.count=0;
+  const diffDays=Math.round((today-last)/(1000*60*60*24));
+  if(diffDays>1){
+    state.streak.count=0;
+    state.streak.lastDate=null;
+    saveState();
+  }
 }
 
 // ── ONBOARDING ──
@@ -771,7 +795,17 @@ function showResultScreen(goals){
 }
 
 function startMain(){showScreen('main');renderCalendar();render();}
-function resetOnboarding(){if(confirm('Пересчитать план?')){obStep=0;obData={};showScreen('onboarding');renderObStep();}}
+function resetOnboarding(){
+  if(confirm('Пересчитать план? Текущие цели будут заменены новыми.')){
+    obStep=0;
+    obData={};
+    state.goals=null;
+    state.profile=null;
+    saveState();
+    showScreen('onboarding');
+    renderObStep();
+  }
+}
 
 // ── CALENDAR ──
 function renderCalendar(){
@@ -1005,20 +1039,66 @@ function openBarcode(){
 }
 
 // ── FILE HANDLING ──
-function handleFile(input){
+async function compressImage(file, maxSizeBytes=4*1024*1024){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=e=>{
+      const img=new Image();
+      img.onload=()=>{
+        // Start with max 1600px on longest side
+        let maxDim=1600;
+        let quality=0.85;
+        const tryCompress=()=>{
+          let w=img.width, h=img.height;
+          if(w>maxDim||h>maxDim){
+            if(w>h){h=Math.round(h*maxDim/w);w=maxDim;}
+            else{w=Math.round(w*maxDim/h);h=maxDim;}
+          }
+          const canvas=document.createElement('canvas');
+          canvas.width=w; canvas.height=h;
+          const ctx=canvas.getContext('2d');
+          ctx.drawImage(img,0,0,w,h);
+          const dataUrl=canvas.toDataURL('image/jpeg',quality);
+          // Calculate base64 size in bytes (approx)
+          const sizeBytes=Math.floor((dataUrl.length-22)*0.75);
+          if(sizeBytes<=maxSizeBytes||quality<=0.4&&maxDim<=800){
+            resolve(dataUrl);
+          } else if(quality>0.5){
+            quality-=0.1;
+            tryCompress();
+          } else {
+            maxDim=Math.max(800,Math.floor(maxDim*0.8));
+            quality=0.7;
+            tryCompress();
+          }
+        };
+        tryCompress();
+      };
+      img.onerror=()=>reject(new Error('Не удалось прочитать изображение'));
+      img.src=e.target.result;
+    };
+    reader.onerror=()=>reject(new Error('Ошибка чтения файла'));
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleFile(input){
   const file=input.files[0]; if(!file) return;
   const isBarcode=input.dataset.mode==='barcode';
   input.removeAttribute('data-mode');
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const d=e.target.result;
-    openModal();
-    showAnalyzing(d);
-    if(isBarcode) analyzeBarcode(d);
-    else analyzeImage(d);
-  };
-  reader.readAsDataURL(file);
   input.value='';
+  try{
+    openModal();
+    document.getElementById('modalContent').innerHTML=`
+      <div class="modal-title">Подготовка</div>
+      <div class="analyzing"><div class="spinner"></div><p>Обрабатываем фото...</p></div>`;
+    const dataUrl=await compressImage(file);
+    showAnalyzing(dataUrl);
+    if(isBarcode) analyzeBarcode(dataUrl);
+    else analyzeImage(dataUrl);
+  }catch(err){
+    showError(err.message);
+  }
 }
 
 function showAnalyzing(dataUrl){
@@ -1031,9 +1111,11 @@ function showAnalyzing(dataUrl){
 async function callAI(body){
   const fullBody={
     model:'claude-sonnet-4-20250514',
-    max_tokens:1500,
+    max_tokens:body.max_tokens||1500,
     ...body
   };
+  // Remove max_tokens from spread if it was in body
+  if(body.max_tokens){fullBody.max_tokens=body.max_tokens;}
   const resp=await fetch(PROXY_URL,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -1166,12 +1248,34 @@ function addSelectedDishes(){
   saveMealsToToday(meals);
 }
 
-function saveMealsToToday(meals){
+async function makeThumbnail(dataUrl, size=200){
+  return new Promise(resolve=>{
+    const img=new Image();
+    img.onload=()=>{
+      const canvas=document.createElement('canvas');
+      let w=img.width, h=img.height;
+      if(w>h){h=Math.round(h*size/w);w=size;}
+      else{w=Math.round(w*size/h);h=size;}
+      canvas.width=w; canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      resolve(canvas.toDataURL('image/jpeg',0.7));
+    };
+    img.onerror=()=>resolve(dataUrl);
+    img.src=dataUrl;
+  });
+}
+
+async function saveMealsToToday(meals){
   const saveDate=todayStr();
   if(!state.meals[saveDate]) state.meals[saveDate]=[];
-  meals.forEach(m=>{
+  // Make thumbnails to save localStorage space
+  for(let m of meals){
+    if(m.img) m.img=await makeThumbnail(m.img,200);
+  }
+  let baseId=Date.now();
+  meals.forEach((m,i)=>{
     state.meals[saveDate].push({
-      id:Date.now()+Math.random(),
+      id:baseId+i,
       ...m,
       time:new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})
     });
@@ -1179,7 +1283,17 @@ function saveMealsToToday(meals){
   state.selectedDate=saveDate;
   state.weekOffset=0;
   updateStreak();
-  saveState();
+  try{
+    saveState();
+  }catch(e){
+    // localStorage full - remove old meals
+    const dates=Object.keys(state.meals).sort();
+    if(dates.length>30){
+      const toRemove=dates.slice(0,dates.length-30);
+      toRemove.forEach(d=>delete state.meals[d]);
+      saveState();
+    }
+  }
   closeModal();
   renderCalendar();
   render();
@@ -1280,7 +1394,8 @@ async function sendChatMessage(){
     const history=state.chatHistory.slice(-10).map(m=>({role:m.role==='user'?'user':'assistant',content:m.text}));
     const result=await callAI({
       system:systemContext,
-      messages:history
+      messages:history,
+      max_tokens:2000
     });
     const reply=result.content[0].text;
     document.getElementById('typingMsg')?.remove();
