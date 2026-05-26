@@ -27,7 +27,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 @keyframes popIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-/* ONBOARDING */
 #onboarding{background:var(--bg)}
 .ob-header{padding:16px 20px 8px;display:flex;align-items:center;gap:12px}
 .ob-back{width:36px;height:36px;background:var(--card);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--text2);font-weight:700;flex-shrink:0}
@@ -96,7 +95,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .rc-mlbl{font-size:11px;color:var(--text2);font-weight:600;margin-top:2px}
 .result-start-btn{display:block;margin:0 16px 40px;background:var(--green);color:#fff;border:none;border-radius:28px;width:calc(100% - 32px);padding:18px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif}
 
-/* MAIN */
 #main{background:var(--bg)}
 .header{padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--card);border-bottom:1px solid var(--border)}
 .header-logo{display:flex;align-items:center;gap:8px}
@@ -136,7 +134,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .bju-nums{font-size:11px;font-weight:700;margin-bottom:1px}
 .bju-title{font-size:10px;color:var(--text2);font-weight:600}
 
-/* QUICK ACTIONS */
 .quick-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
 .qa-btn{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:12px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .1s}
 .qa-btn:active{transform:scale(.95)}
@@ -162,7 +159,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .empty-plate{font-size:52px;margin-bottom:10px;opacity:.3}
 .empty-history p{font-size:14px;color:var(--text2);font-weight:600;line-height:1.5}
 
-/* FAVORITES SCROLL */
 .favs-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 2px 4px;margin-bottom:10px;scrollbar-width:none}
 .favs-scroll::-webkit-scrollbar{display:none}
 .fav-card{flex-shrink:0;width:120px;background:var(--card);border-radius:14px;padding:10px;cursor:pointer;position:relative;transition:transform .1s}
@@ -173,11 +169,9 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .fav-kcal{font-size:11px;color:var(--green);font-weight:800}
 .fav-remove{position:absolute;top:4px;right:4px;background:rgba(255,255,255,.95);border:none;border-radius:50%;width:22px;height:22px;font-size:11px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center}
 
-/* FAB */
 .add-fab{position:fixed;bottom:22px;right:18px;background:#1a1a1a;color:#fff;border:none;border-radius:28px;padding:13px 20px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.2);z-index:50;transition:transform .1s}
 .add-fab:active{transform:scale(.96)}
 
-/* CHAT (AI DIETITIAN) */
 #chat{background:var(--bg)}
 .chat-header{background:var(--card);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
 .chat-header h2{font-size:17px;font-weight:900;flex:1}
@@ -195,7 +189,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .chat-suggestions::-webkit-scrollbar{display:none}
 .chat-suggest{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif}
 
-/* PROFILE */
 #profile{background:var(--bg)}
 .profile-header{background:var(--card);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
 .back-btn{width:34px;height:34px;background:var(--bg);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;flex-shrink:0}
@@ -235,7 +228,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .row-val{font-size:12px;color:var(--text2);font-weight:700;margin-right:4px;text-align:right;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chevron{color:var(--text3);font-size:14px}
 
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:88vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s;padding-bottom:calc(100px + env(safe-area-inset-bottom, 0px))}
@@ -248,7 +240,6 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 @keyframes spin{to{transform:rotate(360deg)}}
 .analyzing p{font-size:14px;color:var(--text2);font-weight:700}
 
-/* DISH RESULT */
 .dish-card{background:var(--bg);border-radius:14px;padding:14px;margin-bottom:10px;position:relative}
 .dish-card.selected{background:#e8f9cc;border:2px solid var(--green)}
 .dish-name-r{font-size:16px;font-weight:900;margin-bottom:4px}
@@ -276,7 +267,6 @@ input[type=file]{display:none}
 .edit-field input:focus,.edit-field textarea:focus{border-color:var(--green)}
 .edit-field textarea{resize:vertical;min-height:60px}
 
-/* MANUAL ENTRY FORM */
 .manual-form .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .tab-switcher{display:flex;background:var(--bg);border-radius:12px;padding:3px;margin-bottom:14px}
 .tab-btn{flex:1;padding:9px;border:none;background:transparent;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;color:var(--text2);font-family:'Nunito',sans-serif}
@@ -416,7 +406,6 @@ input[type=file]{display:none}
       </div>
     </div>
 
-    <!-- QUICK ACTIONS -->
     <div class="quick-actions">
       <div class="qa-btn" onclick="openCamera()">
         <div class="qa-icon">📸</div>
@@ -436,7 +425,6 @@ input[type=file]{display:none}
       </div>
     </div>
 
-    <!-- FAVORITES -->
     <div id="favoritesSection" style="display:none">
       <div class="section-title">⭐ Избранное</div>
       <div class="favs-scroll" id="favsScroll"></div>
@@ -450,7 +438,6 @@ input[type=file]{display:none}
   <input type="file" id="fileInputGallery" accept="image/*" onchange="handleFile(this)"/>
 </div>
 
-<!-- CHAT SCREEN -->
 <div class="screen" id="chat">
   <div class="chat-header">
     <div class="back-btn" onclick="showScreen('main')">‹</div>
@@ -527,7 +514,7 @@ function todayStr(){return new Date().toISOString().slice(0,10);}
 function saveState(){localStorage.setItem('mm3_state',JSON.stringify(state));}
 function loadState(){
   let s=JSON.parse(localStorage.getItem('mm3_state')||'null');
-  // Migration from old keys
+  
   if(!s){
     const old=JSON.parse(localStorage.getItem('mm2_state')||'null');
     if(old){
@@ -552,7 +539,6 @@ function loadState(){
   }
 }
 
-// ── STREAK ──
 function updateStreak(){
   const today=todayStr();
   const meals=state.meals[today]||[];
@@ -583,7 +569,6 @@ function checkStreakBreak(){
   }
 }
 
-// ── ONBOARDING ──
 const STEPS=[
   {title:'Ваша главная цель',sub:'Ваш личный план будет создан для достижения Вашей цели.',type:'choice',key:'goal',
    choices:[{icon:'🏃',label:'Похудеть',val:'lose'},{icon:'⚖️',label:'Удержать вес',val:'maintain'},{icon:'💪',label:'Набрать вес',val:'gain'}]},
@@ -807,7 +792,6 @@ function resetOnboarding(){
   }
 }
 
-// ── CALENDAR ──
 function renderCalendar(){
   const today=new Date();
   const base=new Date(today);
@@ -834,7 +818,6 @@ function prevWeek(){state.weekOffset--;renderCalendar();}
 function nextWeek(){state.weekOffset++;renderCalendar();}
 function goToday(){state.weekOffset=0;state.selectedDate=todayStr();renderCalendar();render();}
 
-// ── RENDER ──
 function render(){
   const meals=state.meals[state.selectedDate]||[];
   const g=state.goals||{kcal:2000,p:150,f:65,c:250};
@@ -927,7 +910,6 @@ function addFromFavorite(i){
   saveState();renderCalendar();render();
 }
 
-// ── ADD MENU ──
 function openAddMenu(){
   openModal();
   document.getElementById('modalContent').innerHTML=`
@@ -1038,14 +1020,13 @@ function openBarcode(){
     <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
 }
 
-// ── FILE HANDLING ──
 async function compressImage(file, maxSizeBytes=4*1024*1024){
   return new Promise((resolve,reject)=>{
     const reader=new FileReader();
     reader.onload=e=>{
       const img=new Image();
       img.onload=()=>{
-        // Start with max 1600px on longest side
+        
         let maxDim=1600;
         let quality=0.85;
         const tryCompress=()=>{
@@ -1059,7 +1040,7 @@ async function compressImage(file, maxSizeBytes=4*1024*1024){
           const ctx=canvas.getContext('2d');
           ctx.drawImage(img,0,0,w,h);
           const dataUrl=canvas.toDataURL('image/jpeg',quality);
-          // Calculate base64 size in bytes (approx)
+          
           const sizeBytes=Math.floor((dataUrl.length-22)*0.75);
           if(sizeBytes<=maxSizeBytes||quality<=0.4&&maxDim<=800){
             resolve(dataUrl);
@@ -1114,7 +1095,7 @@ async function callAI(body){
     max_tokens:body.max_tokens||1500,
     ...body
   };
-  // Remove max_tokens from spread if it was in body
+  
   if(body.max_tokens){fullBody.max_tokens=body.max_tokens;}
   const resp=await fetch(PROXY_URL,{
     method:'POST',
@@ -1268,7 +1249,7 @@ async function makeThumbnail(dataUrl, size=200){
 async function saveMealsToToday(meals){
   const saveDate=todayStr();
   if(!state.meals[saveDate]) state.meals[saveDate]=[];
-  // Make thumbnails to save localStorage space
+  
   for(let m of meals){
     if(m.img) m.img=await makeThumbnail(m.img,200);
   }
@@ -1286,7 +1267,7 @@ async function saveMealsToToday(meals){
   try{
     saveState();
   }catch(e){
-    // localStorage full - remove old meals
+    
     const dates=Object.keys(state.meals).sort();
     if(dates.length>30){
       const toRemove=dates.slice(0,dates.length-30);
@@ -1299,12 +1280,10 @@ async function saveMealsToToday(meals){
   render();
 }
 
-// ── MODAL ──
 function openModal(){document.getElementById('modal').classList.add('open');}
 function closeModal(){document.getElementById('modal').classList.remove('open');window._pendingDishes=null;}
 function handleOverlayClick(e){if(e.target===document.getElementById('modal'))closeModal();}
 
-// ── PROFILE ──
 function renderProfile(){
   const g=state.goals||{};const p=state.profile||{};
   document.getElementById('profileKcal').textContent=g.kcal||'—';
@@ -1341,7 +1320,6 @@ function saveGoalField(field){
   if(!isNaN(val)&&val>0){state.goals[field]=val;saveState();closeModal();renderProfile();render();}
 }
 
-// ── CHAT (AI DIETITIAN) ──
 function renderChat(){
   const c=document.getElementById('chatMessages');
   if(!state.chatHistory.length){
@@ -1368,7 +1346,7 @@ async function sendChatMessage(){
   c.innerHTML+=`<div class="msg ai typing" id="typingMsg">печатает...</div>`;
   c.scrollTop=c.scrollHeight;
   try{
-    // Build context with user profile and today's meals
+    
     const today=todayStr();
     const meals=state.meals[today]||[];
     const totKcal=meals.reduce((s,m)=>s+m.kcal,0);
@@ -1426,7 +1404,6 @@ function init(){
 }
 init();
 
-// Telegram Web App expand
 if(window.Telegram?.WebApp){
   Telegram.WebApp.expand();
   Telegram.WebApp.ready();
