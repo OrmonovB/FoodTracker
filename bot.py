@@ -18,7 +18,6 @@ logger.info(f"Starting MealMeter on port {PORT}")
 logger.info(f"BOT_TOKEN set: {bool(BOT_TOKEN)}")
 logger.info(f"ANTHROPIC_API_KEY set: {bool(ANTHROPIC_API_KEY)}")
 
-# Store users who pressed /start (for reminders)
 USERS_FILE = "/tmp/mm_users.json"
 
 def load_users():
@@ -35,7 +34,6 @@ def save_users(users):
     except Exception as e:
         logger.error(f"Save users error: {e}")
 
-# ── PROXY ──
 async def handle_health(request):
     return web.Response(text="OK")
 
@@ -79,7 +77,6 @@ async def handle_proxy(request):
             headers={"Access-Control-Allow-Origin": "*"}
         )
 
-# ── BOT ──
 async def start_bot():
     if not BOT_TOKEN:
         logger.warning("BOT_TOKEN not set, skipping bot")
@@ -91,7 +88,7 @@ async def start_bot():
         async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
             user = update.effective_user
             name = user.first_name or "друг"
-            # Save user for reminders
+            
             users = load_users()
             users[str(user.id)] = {
                 "name": name,
@@ -167,16 +164,14 @@ async def start_bot():
         await app_bot.updater.start_polling(allowed_updates=Update.ALL_TYPES)
         logger.info("Bot polling started")
 
-        # Start reminder task
         asyncio.create_task(reminder_loop(app_bot.bot))
 
     except Exception as e:
         logger.error(f"Bot error: {e}")
 
-# ── REMINDERS ──
 async def reminder_loop(bot):
     """Send reminders at 9:00, 14:00, 19:00 (MSK)"""
-    # MSK = UTC+3
+    
     msk = timezone(timedelta(hours=3))
     reminder_times = [
         (9, 0, "🌅 Доброе утро! Не забудь записать завтрак в MealMeter 🥐"),
@@ -201,15 +196,14 @@ async def reminder_loop(bot):
                             except Exception as e:
                                 logger.error(f"Reminder send error for {uid}: {e}")
                     sent_today.add(key)
-                    # Cleanup old keys
+                    
                     sent_today = {k for k in sent_today if k[0] == now.date()}
 
-            await asyncio.sleep(45)  # check every 45 seconds
+            await asyncio.sleep(45)  
         except Exception as e:
             logger.error(f"Reminder loop error: {e}")
             await asyncio.sleep(60)
 
-# ── MAIN ──
 async def main():
     app_web = web.Application(client_max_size=50*1024*1024)
     app_web.router.add_get("/", handle_health)
