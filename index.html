@@ -684,6 +684,20 @@ function renderObStep(){
   } else if(step.type==='picker'){
     const sv=obData[step.key]||step.def;
     if(!obData[step.key]) obData[step.key]=step.def;
+    if(step.key==='targetWeight'){
+      const w=obData.weight||75, tw=sv;
+      const selectedGoal=obData.goal;
+      const actualGoal=Math.abs(w-tw)<1?'maintain':(w>tw?'lose':'gain');
+      const conflict=(selectedGoal==='lose'&&actualGoal==='gain')||(selectedGoal==='gain'&&actualGoal==='lose');
+      const goalNames={lose:'похудеть',gain:'набрать вес',maintain:'удержать вес'};
+      if(conflict){
+        html+=`<div id="twWarning" style="background:#fff3cd;border:1.5px solid #f0b840;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;font-weight:700;color:#7a5c00">
+          ⚠️ Вы выбрали цель «${goalNames[selectedGoal]}», но целевой вес предполагает «${goalNames[actualGoal]}». Мы автоматически скорректируем план.
+        </div>`;
+      } else {
+        html+=`<div id="twWarning" style="display:none;background:#fff3cd;border:1.5px solid #f0b840;border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:13px;font-weight:700;color:#7a5c00"></div>`;
+      }
+    }
     html+=`<div class="picker-wrap"><div class="picker-hl"></div>
       <div class="picker-list" id="mainPicker" onscroll="onScroll(this,'${step.key}',${step.min})">
         <div style="height:80px"></div>
@@ -756,7 +770,20 @@ function onScroll(el,key,base){
     const val=parseInt(items[idx]?.dataset.val);
     obData[key]=isNaN(val)?(base+idx):val;
     el.scrollTop=idx*40;
+    if(key==='targetWeight') updateTargetWeightWarning(obData[key]);
   },150);
+}
+
+function updateTargetWeightWarning(tw){
+  const warn=document.getElementById('twWarning');
+  if(!warn) return;
+  const w=obData.weight||75;
+  const selectedGoal=obData.goal;
+  const actualGoal=Math.abs(w-tw)<1?'maintain':(w>tw?'lose':'gain');
+  const conflict=(selectedGoal==='lose'&&actualGoal==='gain')||(selectedGoal==='gain'&&actualGoal==='lose');
+  const goalNames={lose:'похудеть',gain:'набрать вес',maintain:'удержать вес'};
+  warn.style.display=conflict?'block':'none';
+  if(conflict) warn.innerHTML=`⚠️ Вы выбрали «${goalNames[selectedGoal]}», но целевой вес предполагает «${goalNames[actualGoal]}». Мы скорректируем план автоматически.`;
 }
 
 function obNext(){
@@ -769,15 +796,18 @@ function calcGoals(){
   const g=obData;
   const age=new Date().getFullYear()-(g.birthYear||2000);
   const h=g.height||170, w=g.weight||75;
+  const tw=g.targetWeight||w;
   const male=g.gender==='male'||g.gender==='other';
   const act=parseFloat(g.activity)||1.55;
   let bmr=male?(10*w+6.25*h-5*age+5):(10*w+6.25*h-5*age-161);
   let tdee=bmr*act;
   let kcal=Math.round(tdee);
-  const goal=g.goal||'maintain';
+  const wdiff=w-tw;
+  const effectiveGoal=Math.abs(wdiff)<1?'maintain':(wdiff>0?'lose':'gain');
+  g.goal=effectiveGoal;
   const sp=parseFloat(g.speed)||0.4;
-  if(goal==='lose') kcal=Math.round(tdee-sp*1000);
-  if(goal==='gain') kcal=Math.round(tdee+sp*500);
+  if(effectiveGoal==='lose') kcal=Math.round(tdee-sp*1000);
+  if(effectiveGoal==='gain') kcal=Math.round(tdee+sp*500);
   kcal=Math.max(1200,kcal);
   const p=Math.round(w*1.8);
   const f=Math.round(kcal*0.25/9);
@@ -809,7 +839,8 @@ function showResultScreen(goals){
   const icons={lose:'🏃',maintain:'⚖️',gain:'💪'};
   document.getElementById('rcVerb').textContent=verbs[goal]||'достигнете';
   document.getElementById('rcIcon').textContent=icons[goal]||'🏆';
-  document.getElementById('rcBig').textContent=goal==='maintain'?('свой вес → '+dateStr):(diff+' кг → '+dateStr);
+  const diffLabel=diff<1?'текущий вес':(goal==='lose'?'-'+diff+' кг':'+'+diff+' кг');
+  document.getElementById('rcBig').textContent=goal==='maintain'?('свой вес → '+dateStr):(diffLabel+' → '+dateStr);
   document.getElementById('rcKcal').textContent=goals.kcal;
   document.getElementById('rcP').textContent=goals.p+'г';
   document.getElementById('rcF').textContent=goals.f+'г';
