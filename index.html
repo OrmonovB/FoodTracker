@@ -768,16 +768,16 @@ function obPrev(){if(obStep>0){obStep--;renderObStep();}}
 function calcGoals(){
   const g=obData;
   const age=new Date().getFullYear()-(g.birthYear||2000);
-  const h=g.height||170, w=g.weight||75;
+  const h=g.height||170, w=g.weight||75, tw=g.targetWeight||w;
   const male=g.gender==='male'||g.gender==='other';
   const act=parseFloat(g.activity)||1.55;
   let bmr=male?(10*w+6.25*h-5*age+5):(10*w+6.25*h-5*age-161);
   let tdee=bmr*act;
   let kcal=Math.round(tdee);
-  const goal=g.goal||'maintain';
   const sp=parseFloat(g.speed)||0.4;
-  if(goal==='lose') kcal=Math.round(tdee-sp*1000);
-  if(goal==='gain') kcal=Math.round(tdee+sp*500);
+  const diff=tw-w;
+  if(diff<-1) kcal=Math.round(tdee-sp*1000);
+  else if(diff>1) kcal=Math.round(tdee+sp*500);
   kcal=Math.max(1200,kcal);
   const p=Math.round(w*1.8);
   const f=Math.round(kcal*0.25/9);
@@ -801,24 +801,16 @@ function startCalc(){
 function showResultScreen(goals){
   const g=obData;
   const tw=g.targetWeight||70, w=g.weight||75;
-  const diff=Math.abs(w-tw);
-  const goal=g.goal||'maintain';
+  const diff=tw-w;
   const sp=parseFloat(g.speed)||0.4;
   const {dateStr}=calcSpeedDate(sp,tw,w);
-  const verbs={lose:'скинете',maintain:'сохраните',gain:'наберёте'};
-  const icons={lose:'🏃',maintain:'⚖️',gain:'💪'};
-  document.getElementById('rcVerb').textContent=verbs[goal]||'достигнете';
-  document.getElementById('rcIcon').textContent=icons[goal]||'🏆';
-  document.getElementById('rcBig').textContent=goal==='maintain'?('свой вес → '+dateStr):(diff+' кг → '+dateStr);
-  document.getElementById('rcKcal').textContent=goals.kcal;
-  document.getElementById('rcP').textContent=goals.p+'г';
-  document.getElementById('rcF').textContent=goals.f+'г';
-  document.getElementById('rcC').textContent=goals.c+'г';
-  state.goals=goals;
-  state.profile={goal:g.goal,gender:g.gender,birthYear:g.birthYear,height:g.height,weight:g.weight,activity:g.activity,targetWeight:g.targetWeight,speed:g.speed,diet:g.diet};
-  saveState();
-  showScreen('resultScreen');
-}
+  let verb,icon,bigText;
+  if(diff<-1){verb='скинете';icon='🏃';bigText=Math.abs(diff).toFixed(1)+' кг → '+dateStr;}
+  else if(diff>1){verb='наберёте';icon='💪';bigText=Math.abs(diff).toFixed(1)+' кг → '+dateStr;}
+  else{verb='сохраните';icon='⚖️';bigText='свой вес → '+dateStr;}
+  document.getElementById('rcVerb').textContent=verb;
+  document.getElementById('rcIcon').textContent=icon;
+  document.getElementById('rcBig').textContent=bigText;
 
 function startMain(){showScreen('main');renderCalendar();render();}
 function resetOnboarding(){
