@@ -46,7 +46,8 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .ob-btn:active{transform:scale(.97)}
 .ob-btn:disabled{opacity:.4;cursor:default}
 .choice-list{display:flex;flex-direction:column;gap:10px}
-.choice-item{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .15s;font-size:16px;font-weight:700}
+.choice-item{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .18s cubic-bezier(.22,1,.36,1);font-size:16px;font-weight:700}
+.choice-item:active{transform:scale(.97)}
 .choice-item.selected{background:var(--text);border-color:var(--text);color:var(--card)}
 .ch-icon{font-size:26px;flex-shrink:0}
 .ch-sub{font-size:12px;font-weight:600;color:var(--text2);margin-top:2px}
@@ -243,6 +244,39 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .analyzing{display:flex;flex-direction:column;align-items:center;padding:28px 0;gap:12px}
 .spinner{width:42px;height:42px;border:4px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.screen{transition:opacity .25s}
+.screen-enter{animation:slideUp .32s cubic-bezier(.22,1,.36,1) both}
+.screen-enter-left{animation:slideInLeft .32s cubic-bezier(.22,1,.36,1) both}
+.screen-enter-right{animation:slideInRight .32s cubic-bezier(.22,1,.36,1) both}
+.meal-item{animation:slideUp .3s cubic-bezier(.22,1,.36,1) both}
+.calories-card{animation:scaleIn .35s cubic-bezier(.22,1,.36,1) both}
+.bju-card{animation:slideUp .3s cubic-bezier(.22,1,.36,1) both}
+.bju-card:nth-child(1){animation-delay:.05s}
+.bju-card:nth-child(2){animation-delay:.1s}
+.bju-card:nth-child(3){animation-delay:.15s}
+.fav-card{animation:scaleIn .25s cubic-bezier(.22,1,.36,1) both}
+.ob-icon{animation:popIn .5s cubic-bezier(.34,1.56,.64,1) both}
+.ob-title{animation:fadeUp .4s .1s both}
+.ob-sub{animation:fadeUp .4s .18s both}
+.choice-list{animation:slideUp .35s .12s cubic-bezier(.22,1,.36,1) both}
+.picker-wrap{animation:slideUp .35s .1s cubic-bezier(.22,1,.36,1) both}
+.add-fab{animation:scaleIn .4s .2s cubic-bezier(.34,1.56,.64,1) both}
+.qa-btn{animation:slideUp .3s cubic-bezier(.22,1,.36,1) both}
+.qa-btn:nth-child(1){animation-delay:.05s}
+.qa-btn:nth-child(2){animation-delay:.1s}
+.qa-btn:nth-child(3){animation-delay:.15s}
+.qa-btn:nth-child(4){animation-delay:.2s}
+.streak-card{animation:slideUp .3s cubic-bezier(.22,1,.36,1) both}
+.cal-goal-card{animation:slideUp .3s .08s cubic-bezier(.22,1,.36,1) both}
+.profile-rows{animation:slideUp .3s .14s cubic-bezier(.22,1,.36,1) both}
+.msg.ai{animation:slideInLeft .25s cubic-bezier(.22,1,.36,1) both}
+.msg.user{animation:slideInRight .2s cubic-bezier(.22,1,.36,1) both}
+.dish-card{animation:slideUp .28s cubic-bezier(.22,1,.36,1) both}
 .analyzing p{font-size:14px;color:var(--text2);font-weight:700}
 
 .dish-card{background:var(--bg);border-radius:14px;padding:14px;margin-bottom:10px;position:relative}
@@ -787,10 +821,22 @@ function updateTargetWeightWarning(tw){
 }
 
 function obNext(){
-  if(obStep<STEPS.length-1){obStep++;renderObStep();}
+  if(obStep<STEPS.length-1){animateObStep('forward');obStep++;renderObStep();}
   else startCalc();
 }
-function obPrev(){if(obStep>0){obStep--;renderObStep();}}
+function obPrev(){if(obStep>0){animateObStep('back');obStep--;renderObStep();}}
+function animateObStep(dir){
+  const el=document.getElementById('obContent');
+  el.style.animation='none';
+  el.style.opacity='0';
+  el.style.transform=dir==='forward'?'translateX(-20px)':'translateX(20px)';
+  setTimeout(()=>{
+    el.style.transition='opacity .25s,transform .25s';
+    el.style.opacity='1';
+    el.style.transform='translateX(0)';
+    setTimeout(()=>{el.style.transition='';},280);
+  },30);
+}
 
 function calcGoals(){
   const g=obData;
@@ -920,9 +966,11 @@ function render(){
     list.innerHTML=`<div class="empty-history"><div class="empty-plate">🍽️</div><p>Пока ничего нет.<br>Нажми «+ Добавить» или одну из кнопок выше.</p></div>`;
     return;
   }
-  list.innerHTML=meals.map(m=>{
+  list.innerHTML=meals.map((m,idx)=>{
+    const delay=(idx*0.06).toFixed(2);
+    const animStyle=`style="animation-delay:${delay}s"`;
     const isFav=state.favorites.some(f=>f.name===m.name);
-    return `<div class="meal-item">
+    return `<div class="meal-item" data-id="${m.id}" ${animStyle}>
       ${m.img?`<img src="${m.img}" class="meal-thumb"/>`:`<div class="meal-thumb-ph">🍽️</div>`}
       <div class="meal-info">
         <div class="meal-name">${m.name}</div>
@@ -953,7 +1001,17 @@ function renderFavorites(){
 }
 
 function setRing(id,val,goal,circ){const el=document.getElementById(id);if(el)el.style.strokeDashoffset=circ*(1-Math.min(val/Math.max(goal,1),1));}
-function deleteMeal(id){state.meals[state.selectedDate]=(state.meals[state.selectedDate]||[]).filter(m=>m.id!==id);saveState();render();renderCalendar();}
+function deleteMeal(id){
+  const el=document.querySelector(`.meal-item[data-id="${id}"]`);
+  if(el){
+    el.style.transition='opacity .2s,transform .2s,max-height .25s';
+    el.style.opacity='0';el.style.transform='translateX(40px)';el.style.maxHeight='0';el.style.overflow='hidden';
+    el.style.marginBottom='0';el.style.padding='0';
+    setTimeout(()=>{state.meals[state.selectedDate]=(state.meals[state.selectedDate]||[]).filter(m=>m.id!==id);saveState();render();renderCalendar();},220);
+  } else {
+    state.meals[state.selectedDate]=(state.meals[state.selectedDate]||[]).filter(m=>m.id!==id);saveState();render();renderCalendar();
+  }
+}
 
 function toggleFavorite(id){
   const meals=state.meals[state.selectedDate]||[];
@@ -1463,9 +1521,19 @@ async function sendChatMessage(){
   }
 }
 
+const screenOrder=['splash','onboarding','calcScreen','resultScreen','main','chat','profile'];
 function showScreen(id){
-  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+  const prev=document.querySelector('.screen.active');
+  const prevId=prev?prev.id:null;
+  document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('active','screen-enter','screen-enter-left','screen-enter-right');});
+  const el=document.getElementById(id);
+  el.classList.add('active');
+  if(prevId&&prevId!==id){
+    const pi=screenOrder.indexOf(prevId), ni=screenOrder.indexOf(id);
+    if(ni>pi) el.classList.add('screen-enter');
+    else el.classList.add('screen-enter-left');
+    setTimeout(()=>el.classList.remove('screen-enter','screen-enter-left','screen-enter-right'),400);
+  }
   if(id==='profile')renderProfile();
   if(id==='main'){renderCalendar();render();}
   if(id==='chat')renderChat();
