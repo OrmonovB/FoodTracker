@@ -4,29 +4,38 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>MealMeter</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAhcElEQVR42u2de5RcVb3nv7+99zl1qqqrOt1JupNODIRHIJAEEuQVBUXAuVdHl4o8ZARm4ZJZEFkLAQcvL//gXvWOoi6B8MfMnTWMyiMNy3udESGgQZhJckHBuYRHXkQxD5LuNN1dz/PY+zd/nFOd7pCEflRXv/aXlSyohOqqsz/ne777t1+EcRYzEwAJQBMR117fsn9/0+wmeZpQOF1rPpOAkxnoAGEOgZoBNMFqMqvI4D4wugnYy8B2KelPJsIbB4v6zWXt7cUPY2A8ROMIsgBARKRrr/VxdUmkq58Ktb7YGHMOgToyXkZR8jEijqC1hjEGxhiLzCSWEAJCCEgpoUjFbQ5GuVqO2PBeocTLjpS/VdL7XTN52wZxIQEwEZkpAfThIO/jQpsK9WUEutywWZ1zcykDhs9VBEEAY4whxHctgyn5f8kiM/nFzAyAB7efEEK4rosUeRAgFIKCL0hsZHBn5Min5lPuwHiCTXX8cvTCCy/Iiy66KAKAfYWDy6QrbgTh8ianaW4EjbJfgjGm5tgi4dbCOy05h0mcXGZSWShIFMNiFxidOjAPz8/N3gIAGzZsUJ/85CfrFkWoTt9A1hx5T3/XqcqV3xIkrs66Wa8UlRAGoU5+krDuOyPpNmDAcR2ZVVmUglLVsHk0CvQPFuTnvn04QxMGdBL2BRHpbd3b8rOb228H6Ja0yuT6/T4YYyIA0kJsNQhuLYRQ+VQzKlG5APBPDvbt/+GSOUv6kxhixuLWNIYPJ2r5Z2/1wGcUOT/KublT+oN+aK0tyFYfCraUUuXdPApBYWvE4a0dXtvTh7PVEKBrj4dtvC2Vq87+vuemboEAKpWKBdlqxGCn02kFA1QD/ydvv/dvf3fR4ouqo40gIwZvA7O6iCjaVdl3fJNIP9rkNp3fW+01zAZEQthmsho52MYQCczyZoliUNxUNJWrF6fn/7nG2rgBzcyKiKJ3y3s/kXWafu6q1MJCpT8iSgqRVlZjc+wol86rIPJ3l8LqVxdl2n5fY67uQNfeeE+p+4ue4zxOUriVakULIaRtCqt6yRij015asuagGgZXLcjO+eVIoBYjgXl3Yd8VaTfVqdm4lWrFWJit6i0hhKxUK0azdtNuqnN3Yd8VRBQx87BSAA0X5ndL732xKZXtjKJIRCZiIrJ52Wo844dRQpFSyhT90uWLsvOG5dQ0nGrGnvKBC9Ju+rlIR26kLcxWDYRaKlJSBZWgcumCTNtLH1b9EMd4MxHD3LPIFc4TAFKRjoyF2apRIiIR6cgASKWk+/iecs8iItLJfKHhA83M1NnZSVuYXSLdmU5l5lf8iiYim5mtGg21rPgV7bnpDiLduYXZ7ezspGSUeniRo2bru4v7fzwnO+eWnkqPLc1ZTXT8iFrTraq71P2ThU3t3zxa9PiAQ6/jdXFurnRf2pRuuqXP74usM1tNBqfu8/uipnTTLXsq3ZcSkV7H6+QxHTqxcTqAAxnjy9c8xzuxXK2wEDY3W028jGGT8dJUDas7RUqvbENbGfGcaj6aQwsiMkEZ325JtZxU8Svawmw1WSQEiYpf0S2plpOCMr6dTGASR3TopOfIB6p9J4DM60SUinRkV49YTbYszUoqZmYfLJa3ec3vxIkknp03QHdn/CJHJrg7l8qnwyhkC7PVJMzSFEYh51L5dGSCu4mIOwcZM9XcmQDe7XcvcUn9PwY7xhiCXR5lNUmNWgjBBAoDjs5YmJqzjROXFgNgE7EC3Zxzc6koitjCbDWZjTqKIs65uZQC3Yy4UxgvUGVmIiLe2793LjnO20o6LWEUwsYNq8mepR3lINLh+xyGp3bkO7qYmQTiDUAAx/lys9fSGkaBsTBbTY0sHZhmr6UVjvPl5GUpkCw3h8HVESIm2Cqd1RSBGgIRIobB1clLhgBgf2X/SSDnDSZ2jTa2umE1ZWKHkIIIFMCEp7en23cIAGCoS/KpZpc1RxZmq6kUO1hzlHebXYa6BEjq0MzmEgNj6xpWUzF3wMCA2cRA7+N9WRDO9rla22/MymoqxQ7pcxUgnL2P92UFh2opkZgfhIG9OlZTUkEYgEjM51AtFRTQinQq7RhtbLnOakrmaKONSafSDgW0QkDwCgKhtiWqldXUi9HEBAIErxAgLEnSiL0yVlM1SdfIXiKY0RFxBNi4YTWFc0fEEZjRIYgwRxuNoy06tLKa9P7MTNpoEGGOYFCz0cZORrKa6h1DMKhZENBkD+ixmuoyxoCAJjsTyWpaaVLttcFgMDMYjPioN0pejSWIQHZ8vuFtYuLDrg5rk/i/aZK1iZpMF80RCp5yoYSCZg3DBgRCbeG5rwP4OgBAEDbyj+8jPIHYlQ5S0oUkAc0Ghg0ECUiSiEyEqg4QmmjSmM2EA63ZICUdeDKFrsr7+MOBN7Dl4E68VzqIg9VeeMpF3m3C0pbFOHfecizKzUNoIlQiH9LusDBubZJWKSghsbfUhS3dO7D1/T9jf7kH/UERrd4szM/OwemzT8TSlsWYm25BRfsIdDjhbaIm+sLlnAwOVHrwi63r8PSul7C31IWq9kEkIJI7vuYKc9Kz8KmF5+C6pZ/DkpbjUAzKAMHGkDo+KcFA3s1ie++7eOStX+GF3X9Ad6UXgQkhSIBAMGAwG3gyhY7sXHx28QW4+pS/RVu6FYWwPKFQ075K94QMERo2aE7l8L93vYR//MN/x+7ifngqBVc6EBAD2ZkGLjYQmQjlqIq824T/tPwy3HD6ZShHVTDzpBwXYgDJYau1y51kzkkIc3INM8rDf3vjl3j49U70B0WklQdHqMQ0BrcJwcAg0CGqkY+FuXb83VnX4zOLL0CfX8BE7U80IUAbNsi7WTzy1v/Cd//wT5AkkZYpaJgEgKN82CRPRyZCISzjP5zyGdx7ztcRsoY2ZtLkasMGDEAJCUeoAcfSbBCaCJGJzyGdLJtSGWZIIaBI4r5X/it+8fbTyDkZKKGS73KMNiGChEBF+9BscOdHr8d1Sz+H/qA0Id+v4UBrNmh2m/Av77yA2166H1knDUEChodfC6+B3VPtw5dPvhTfXf0NhCaacKjjCg2QddKQJNDrF7Cv3I1iUAIANLlZzM/MwaxUDpoNSmEFyeHmEw6zIxTu3Pggnty+Hq1eM0xSbRquam1YCiv44QW34gsnXIS+oNjw+NFQoA0bpJWHrb1/wTXP3oXIaCghkh71KDoAJNHj9+Oyky7Gd1ffPKFQazbwpAslJP71vS349a4X8VrXVnRV3kclqgIA0srD3HQLVs49BZ9dfCHOnbcMkdGo6mBCcudQmB/AUzt+i9ZUHhGP7oRiQYTIGCgh8bNP/z1OaTkelajaUKduONBZJ41bXvwBnt71fzArlRv1xTsEtUCPXzgEtY6gubFQazbIuRn8tbAfP3z1Efz23ZdR1T5SyoVDauCzGGaEHMGPAngyhYsXnYPbV12Hj+TaUQga25kyzJAk4MjBMOcQsRlje0j0BgX8zaLV+Okn70ApqiR9osZINPICZp00/njgLfzur68g52bHDDMARGzQksrjqR3P466ND8KRClKMLMLUo1Lzyntv4Nr1d+PXu15CSjqYlcohJV0IItS6hYIIKekmf+bg17tewrXr78Yr772BnJOBbtBnNmxiZ5YKd218EE/teB4tqfyYYY7bQyPvZPG7Pa9g075/Q5NKN6wtGgo0Ix44eXHPq3V/DGnWaEk148kdz+HOjQ8kHTE56igz0ifOloM7sOaF72F/+SBavGYYMDSbgUx9eNVDs4EBo8Vrxv7yQax54XvYcnAHss74N37szHIgZjy54zm0pJqh62AuhzqKAtUowIt7XoUUakRZfMoALUmgFFbwyv4tcIQCw9TZKTVaU814asdvcdfGB+FKJ3FqHrcbVAmFPr+IOzc9gP6ghIyTRmSGf5JvZCJknDT6gxLu3PQA+vwi1DgCMJCZpcKd/7cWM+oLc3xtDFzp4NWut1AKK5ANPACiIUAz4rzWH5TQVemFFBLjwVnEGi2pPJ7c8Rzu2vRg7NRCHLMUOKYIpTw88tavsKV7J3JuFtqMHAxtNHJuFlu6d+KRt36FrPLG5SbkBGa31gHcWYsZehx+VmxgPdU+FIISJImGuXRjHJoBSRKFsDzuvd5a/Ojcvh53b3wIrnAg6uzUzIArHOwtdeGfd25Ak5MeFcyDoW5y0vjnnRuwt9QFVzh1veENM4QQcIWDuzY+hKd2PD8uznx4Ga8S+SiG5bi9G5Q6GuTQABEQ6jCeyJKMOo0v1Hl0HubU9YLaIJ7rsPm917G31AVHOmNyIAbDkfENsvm915FWKZg6RbLBpbm7Nj2Izh3PjZszD/5GAoTQRAhMBEo6xtMqQzdamg1aUjl0bn8ucer6Qk0E/Kl7azIjsA7vl3Qy/9S9FfWqOJpBMePujQ+hc/tzaEkGdaarpvXZgzop6XXueA4M4Lur1yDA2AdfBAi+DrGn2BX3B+r0FJNCYk+xC74OByZm1QPmOzc+lFQz8uMaMyzQDYH6UEeRiPH3598MIBwb1ETQxqASVeo6049AqEQVaGMwFps+FDMc3LXpATyZ1JmnO8wzAughmXr782AGvrv6ZgQcjmFEkSGI4Eq3rr13BsNNBmPiXiGNDmaKO4BxnXnmwDytM/TRnfp53LXxgTHVqQ0zUtLFvMxs6GTmXD0ytDYa8zKzkZLuqD+XFAKudHDXDIR5RgE9tPrxPO7c+CBc4UDS6KAmIpw++8S6zpQby3sOdeYH0TkDYZ5xQB+COocnd6xPnFqNGGoBQjXycf68FZjtzUJYB2hC1pjtzcL581agGvkj6hQOwCxV4szrk2qGnmnNOzMPVBlc/bh709o4fowAaiKCrwOc2LwQl3zkXBSDMpQY/fCuEhLFoIxLPnIuTmxeCF8Hw3bpoTHjoYE683QuzVmgjwa114x125/FPZsfGjnUSenuhmVfQntmNqpRMKoRUJFM5GnPzMYNy74EX4fDrpx8MGasTyYazdyNg2b0smlt4kz9xLb1uGdTDep4EehwXLqqAxyX78C9596AiDW00SOa0yxJQBuNiDXuPfcGHJfvQHWY7mzAkERwpYO7N8V15tYZmJkt0EeJH09sX4+7Nz0EV7qQGN6EptqEq88e/3F8f/XNiFijFFWghDymWwsSUEKiFFUQscb3V9+Mzx7/cfQnE3k+TMwMCQFXurh700NYt3193eYzT3UpWA10FNdtXw8i4L7z1iAwwxt8idcOFvHFEy/GnHQL/vGP/wNvHtwJR6pkgxb5gZ9VjioIdYTTZp+IO876j7igYxV6/eGtvzs0Aujgns01mHMz3pkt0Edz6m3rASRQcxjP1RgG1H1BER+bfyZ+/u/+Ab965/f49a4Xsb33ryiGpYFcLojQ5GSxdM5ifHbxhfj8CZ9A3skOezEpD8rM92x+CE9sWz8jS3MW6BE69RPb1gMM3Hf+GgR6eCOKkgSKYRmOULhu6edw+UmX4M+FvXi3/z0c9PsAALNTzViUn4fjcx3IOGkUwzKKw9yY5VBpzsE9mx7CE9aZLdAjzdSoxY9hQi2SKkmvX4AkgZOaP4JTWxYPVC0YjMhE8HWI3mQzFjFSmDfXYLbObIEekVPnP+jUMB864EGJWwNAJQoA+IP2TYp/F0TDroYYHMmZLcwW6NFCfZhTDydTH3JswliO52XrzCOW3b5zmE5dG3wR47jw9vCYIcQgmG0H0AJdb6jv3bx2YK9kHkeobTXDAt2Q6sfj257FvZvWIqUc0DhBzcwQJJCSDu7ZvDaB2VYzLNDjUv3I4bFtz+DeTWvhSQeCqK7xwzAnuys5uHfzWjyx7dlpvwbQAj1JoL5n88NJ/KgP1HFpLt4q7J7ND+Oxbc9YmC3QjYI6j8e3PYN7E6jj/evGto1Bbd+7ezc/jMe3PTOjp4CORbZsNwaoH9v2DBjAfefdCH+EJb0jZ+bBMNvMbB16QjqKNad2IEbYURwM8yFnth1AC3TtyzR4o/NDmfo3A5l6uNWP+EwTMSgz/2ZCMvN0Ox5vWgFdiXwAjT0V61Cm/g3u2Vyrfhx78MUkzuwlpbnHt/2m4Zm5do1q18wCPcnEAM6ftwKGGQZmgqAeGj+OBLU5YsxoPMwmOaDp/HkrGrp/swV6WI/NeO/p60//Am5bdQ36gxKIJsKpayW9tfDUB5dz1ZZNeSp25okozVF8sCMKQQm3rboG15/+BZTCyqQ5kcsCPdBQQCEs4xvLrsQ3z/wq+oNSww/lPOTUz+LeTQ8jpVIQyXKu2rKplErh3k1r8fi2ZycsZhSCEm5deQ3WLLsShaA8rQ4unVYZmgD06xJuPuMq3LryqyhMCNR6oKT3nc1r4Uk3PmyzVmfetBaPDcCsGwszAYWwhNtWXotvnHEV+nVpUh5YaoEe1GgEQl9QxM1nfAW3rbxmQqF+dOtv8J3Na5FWKaRVCt/ZvDapZkwQzEEJt628Bt8440r0+gXQNDxUetoNrFBy/HCvX8CaM64EQLj/tf+JnJMFgRrWAapB/YutTyOlXADAL7Y+jVavufEwowbztVhzxhUxzETT8oz0aTlSWIO6zy/GUBPj/ld/jpybAXEjoTZo8WKoAaDFy09QB7CM21ZdgzUrrkRfDWbGtNS0HfqOG5PQ5xewZsVVAAP3v/Yz5N0s0ECoDTMyyhv498be1EB/EjPWrLgqgVkMrHC0QE/BTiJIJE59FUDA/a/+rOHxo5EgD44Z/UlpLoa5OAjm6atpP5ejdjh8zalvW3kNCmHjO4oTU80Y7Mw07WGeEUAPhTp26oHqB6YX1EM7gNdgzRk1Z54ZMM8YoAdnyj6/EEO9ano59RBnXlWDudDwEVOboSeg0fv8AtYsvwrAxGTqcXXmVddgzfLBMYNmUhPPvPnQsVML9AVDM/VUdbLak2dIZg5q1Qyaac07Myf4fyBTr7p2QuZ+1OuJE1czrp2RmdkCPcTZatWPKwc6ijRFOoof6AAOHjSZsTjP8DWFk6VOPWqYwzJuX3UdblpxxYypM1uHHlb8wKE69aprUQjLkzZ+HKpmlHH7qmsTmGvVDCu7SPYI8eP2VdeiGJSHuOFkcuZicDjMMztmWKCPVf3wC7hpxRW4fZI59dGdWViYLdBHjx8igfrGGtTBxEM9eNbc7auuxY0JzMJmZgv0sABKoF6z4gp8qwb1BMWPQ9WMMr616lqsGeTMVhboETl172CnnoD4cXjMuHHFFQNHWVhntkCPwqlpSKZuZEfxWB1AKwv0mKsfN624omElvcHOfJutZligxxPquKM4flNPB48A2tKcBXocoY5HFGOorxsXpx6amQ8fAbQwW6Dr3FH8oFPXL1MPrmZ80JmtLNDjBnVS0luedBTr4NQ1Zy4m1Yw1y684bEGrlQV6nKHuDYZmasbotqaNd/8fmpl7AwvzaGV38B8l1LUtEm5ccQWkEPgvf3wEnnThSgeRGd5GMkpI+DpEoAN8+6PX4+vLvmRjhnXoieso1obJb1h2GX584e1whYP3q/EWW5IkBBEO/yc+FlmCQHi/WkBKOvjxBd/CDcsuQ79fTAZNLM7WoSfKEUig1y/i3x9/IY7PzcfDrz+J3+/+A0pRFa504Ag55PD6UGsEOkRWefjb4z+GG5dfjmWzTxo48N7KAj2oSjAxziZJoC8o4pSWxfjpJ+7AHw+8iQ27X8G/7t+CA+WDCHQIAHClg/bMbJzTvgwXLTwbZ7WdBsMGfUFx2sHMmJi5L2r6XEDGRG5vJUkMHO9wVttSnDdvOfqCIophBeWwCgDIOB6anDSa3SaEJkIprADgaenMNNAmFugpHD9iRyqFFXAC+Sw3h9ZUHkC8JZhmjff9wsAEKLvOxAI9JXJ1TRFHgDlkW3GH0WZlC/RUzvbWhBtnJvYSWFmgraws0FZWFmgrKwu0lQXaysoCbWVlgbayskBbWVmgrSzQVlYWaCsrC7SVlQXaysoCbWWBtrKyQFtZzRCgiQDNjLTy4KkUDAzquYyDmeFKB1knDc3GLhAZTpsAMGyQUWm40qnzglaCgYGnUkirFJgNGrWtdcMc2rBB3s0io1IwzHXjmQAYGKSki5ZUHprre7NMZ6QNG7R4OaSkE7dJHe8Ww4yM8pB3stDGTDOHBkEbjbybxQnNH0Fgovrt2UCE0GjMy8xGR9NcRCaE3eR+eE/NwIToyLahPTMHYR3bhEAITIQTmxeiOdWUPDVp+gCNxEVd6eCc9tOhja7bFxQg+JGPM+eegtneLIR1fO/p7c+xEcz2mnHGnCXwI39Um00e7b2N0Th33nI4QsE0cH8O0bgfJFCNAlzYsQpt6RaEJqwLeIw4P1+66LzkRrEaaY7+9KLz4EinLtjFN0qItnQrLuhYiUrko5H7qAoGikKMP9dEhIr2saTlOHzppItRCEqQQo7pPSVJ9AdlfLxjJS7sWIVSWBmyJ4bVhzQ+CZTCCj6x4Cx8fP6ZcZvQGNtECBSCEr508sU4edYiVHXQkIOOhBBgoCgI3CekADPz+F9AQims4rqln8dJsxahFFZGvemKIEJkImSdNG5acSVAmLSHzU9mMeIO+pozrkTG8RCZaNTRQyY3yMktx+G6pZ9DKazWLcYc8zsws5ACBO4TzOiWQoKIxp2GQ4+jFnx39c1wpUJVB1AjdAVJAoYZxbCMe875OlbNPTW5eNadR+fSVZw19zTcffbXUQjLMDzy/fYUSVR1gJR08b3VN2OOV79YOYynP0shwYxuQYS9ilRczG3QBSyEZZzdfjp+euEdyLtZ9AbxvsjyGHsj1/ZjrrlAaCLcd/5NuOzES9A/DXfvbKTi3VML+PJJl+K+826MN5KM4qfnsQ75rG1rJpITDfJuE376iTtwVttpKIblxhkMMytSIMJeeftd//ls13HPC6OQQY3pJAoiVHWAU1uOw8c7VuLdwj7s6t+LSuRDCgElJAQJCIohJiJoNihHVfg6wNLWxfiH1d/A50+4CIXkZrAaex/H1wHOnbccp7WeiG29f8Ge4gGEJoIkecQ2iVijGFag2eBj88/E/RfcirPalqI/KDXYYIhdxxVhGDxN+4rd12eymX8qVUqGGnyAtGaDtEwBAF7c+yr+5Z0NeK1rKw6Ue+K6KBHADEECrV4zTm89AZ9ZfAH+5riPIaNSKI4hg1sdvU2anDTKURXP/GUjfr3rJbzZsxM91X4YNgARmBmOUGjPtOLMuafgCydchAsXrAIDsSk1uE2Y2WTTWVEulb9Ge4OujwojNoLgGG2YGnz2rmEGEZBVaRABfy0ewNs9u3Cg3IPu6vtodnOYm2nFklmLcEJ+AZRQKIUVaNbWmcetTQwkSWSdNCIT4Z3+PdjW+xd0ld9HX1DAHK8FbZlWLG1djIVNbWA+tIWwaPCoVtIhJDBCI8xq2sf7sqiqN1Mpb1G1Wm040IMvIhDvcu9JF0QCzAxKHCHQIXwdwIDt4e0NqX7EbSJASCWHIdXagigeNvd1MHA6wUSZCzOz53nk+9V34UWnqfk0v7Sv3PVKirxFPvkaE7TFbu2ChCaCn1ykIX+eHFEsLcqNSaVJZxEAfB2gov0j9oUm+ilJRDpFnvK5+sp8ml8S8YvieQGByVDGrfWcD/9FdoLGhHYYj9gmk8FcOB6FJhLPx8YHgBA93x/0BSRJcYPKd1ZW9YgbJEn1+30BIYqBZmbRnm7foSP9csbNMoGMvVRWUyMWkcm4WdZav9yebt/BzELUXBoCjyooYlieraZKx9VAQREEHq3FegEgPsc3DJ/sq77f4yhX2NhhNRXihqNc0Vd9vwdh+GTyshZExMwsO/IdXUT0WJPTRMxsbdpqsgNtmpwmIqLHOvIdXcwsiYjFgHszUwR+oBAUfKVUfG6ildUk5VkpRYWg4EfgB8A8wGtStiOzDhALvblbwyh8LOfmhTHGurTVpJQxxuTcvAij8LGF3tyt6wBBFBczaJCFCwB8oNp3Asi8TkSpSEdEtgBsNcmys5KKmdkHi+VtXvM7sSfHQA8M8yQviPb0rJ2BDn+Ud/OHOoxWVpNHOu/mRaDDH7WnZ+3EIHce4tAJ/QSADuBAxvjyNc/xTixXKyzsLCCrSRE12GS8NFXD6k6R0ivb0FYGwIMXpwwBlYi4E53UTu1Fw7iJQKSkNLaDaDUpOoJSGgKRYdzUTu3FTnTS4Sut6Cg5RRKR3l3c/+M52Tm39FR6IiKy54JbTWR2jlrTraq71P2ThU3t36wxevjfO1qUMOvWrZO92bY7eqo9L+fTeWWMsXnaaqKqGjqfzqueas/Lvdm2O9atWyeBIw9p0zHuCEFEZk+5Z1FKik1Cyo5qUNVEY1znbmU1MmfWnutJHUX7AsPnLci0vltj80h//6idPSIyzCwXZFrf9XVwFQBfSSXsKKJVA2E2SioBwA9MeGUCszwazMcEOoFaM7NakGl7qeiXvqKkMkooOzRu1RiYhSIllSn6pa8syLS9xMzqSLl52EAnUEfMrBZl5/2yXCleraQySio7kmg1npnZKKmEksqUK8WrF2Xn/TKBOfpQXkdwxygiivaUur/oOe7jJMmtVCtaCGEztVVdO4BpLy1Zm6AahlctyM4ZNszDcujDnXpBds4vS1H102x4dz7TLJk5ss1gVaeYEeUzzZIN7y5FpU+PFOYRAV2DegOzWpRp+31/VLqgGlQ2taRbFADDbCOI1WhBNgaAaUm3qGpQ2RREpQsWZTp+v2GEMI8ochx2J0ki0ht2bfBOnbfie56bugUCqFQqEQBpJzRZDZMjBqDT6bSCAaqB/5OCd/DbS2iJf7SBk3EBOvkwA7XAvdUDn1Hk/Cjn5k7pD/qhtbZgW30oyFJKlXfzKASFrRGHt3Z4bU8fztZINepJR0mdmphZdnhtT/cWus4pR6X7lFCFWekWJYQgZo7sci6rwSAzcySEoFnpFqWEKpSj0n29ha5zOry2p5lZMjONFuYxOfSRIggA7OnvOlW58luCxNVZN+uVohLCIKxtrS+sa89INzZgwHEdmVVZlIJS1bB5NAr0Dxbk5759OENjUV2mhSYDMLRhwwa1ID/37Xav9WtRoM8uBsW1zNw1KzNLNqVzMnFtnfxi2Fl809iI43YWQlBTOidnZWZJZu4qBsW1UaDPbvdav7YgP/ftDRs2qMSV6zJXiMbh24iY8fgD7uNCmwr1ZQS63LBZnXNzKQOGz1UEQQBjjCHEUwAZ8Xxs6+JTyn15cPsJIYTrukiRBwFCISj4gsRGBndGjnxqPuUO1BwZ8VzmulbHaBy/7BCwAaCPq0siXf1UqPXFJjLnkKCOjJdRtS2lIo6gtYYxBnYgcnJLCAEhBKSUUMnMYgajXC1HDN4rhHjZkfK3Snq/ayZv2+B4Oh4gjzvQg74AAZAA9ODJ2Fv272+a3SRPEwqna81nEnAyAx0gzCFQM4Ami82kVpHBfWB0E7CXge1S0p9MhDcOFvWby9rbix/GwHjo/wOCBOfJrwPEBAAAAABJRU5ErkJggg=="/>
+<link rel="apple-touch-icon" href="data:image/png;base64,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"/>
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 :root{
-  --green:#8DC63F;--green-dark:#6a9e2a;
-  --bg:#f4f4f4;--card:#fff;--text:#1a1a1a;--text2:#888;--text3:#bbb;
-  --border:#ececec;--blue-bg:#e8f4ff;--blue-text:#3b9ede;
-  --yellow-bg:#fff8e1;--yellow-text:#e6a817;--purple-bg:#f3eeff;--purple-text:#8b5cf6;
-  --orange:#ff6b35;--pink:#ec4899;
-  --radius:18px;--radius-sm:12px;
+  --green:#1FA34A;--green-dark:#178a3d;--green-grad:linear-gradient(150deg,#5AD17A,#22A24C);
+  --bg:#F4F3F0;--card:#fff;--text:#15171C;--text2:#8A8F98;--text3:#C4C2BB;
+  --border:#F0EEE9;--blue-bg:#EAF2FD;--blue-text:#2B86E0;
+  --yellow-bg:#FBF1DD;--yellow-text:#D8901C;--purple-bg:#EFEAFB;--purple-text:#6E5CE6;
+  --orange:#FF6A2C;--orange-text:#F4521C;--orange-bg:#FFEDE2;--pink:#ec4899;
+  --accent-bg:#E7F7EC;--accent-border:#C9EED4;--red:#E5484D;
+  --track:#E4E2DC;--icon:#4A4F57;
+  --radius:22px;--radius-sm:18px;--radius-chip:14px;
 }
 [data-theme="dark"]{
-  --bg:#121212;--card:#1e1e1e;--text:#f0f0f0;--text2:#999;--text3:#555;
-  --border:#2a2a2a;--blue-bg:#1a2a38;--blue-text:#5ab0f0;
-  --yellow-bg:#2a2210;--yellow-text:#f0b840;--purple-bg:#211a38;--purple-text:#a87ef8;
+  --bg:#0C0D10;--card:#15171B;--text:#fff;--text2:#7E838C;--text3:#4C515A;
+  --border:rgba(255,255,255,.06);--blue-bg:rgba(59,158,255,.12);--blue-text:#3B9EFF;
+  --yellow-bg:rgba(246,169,60,.12);--yellow-text:#F6A93C;--purple-bg:rgba(139,123,255,.12);--purple-text:#8B7BFF;
+  --orange-text:#FF8A4D;--orange-bg:rgba(255,106,44,.16);
+  --green:#5AD17A;--accent-bg:#1A1C21;--accent-border:rgba(90,209,122,.25);
+  --track:#17191E;--icon:#C4C8CF;
 }
-html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color:var(--text);overflow-x:hidden}
+html,body{height:100%;background:var(--bg);font-family:'Golos Text',sans-serif;color:var(--text);overflow-x:hidden}
 .screen{display:none;flex-direction:column;min-height:100vh}
 .screen.active{display:flex}
 
-#splash{background:var(--green);align-items:center;justify-content:center}
-.splash-icon{font-size:80px;margin-bottom:24px;animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both}
+#splash{background:var(--green-grad);align-items:center;justify-content:center}
+.splash-icon{margin-bottom:24px;display:flex;align-items:center;justify-content:center;animation:popIn .6s cubic-bezier(.34,1.56,.64,1) both}
 .splash-title{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;animation:fadeUp .5s .3s both}
 .splash-sub{font-size:16px;color:rgba(255,255,255,.75);font-weight:600;margin-top:6px;animation:fadeUp .5s .45s both}
 @keyframes popIn{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
@@ -34,212 +43,255 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 
 #onboarding{background:var(--bg)}
 .ob-header{padding:16px 20px 8px;display:flex;align-items:center;gap:12px}
-.ob-back{width:36px;height:36px;background:var(--card);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--text2);font-weight:700;flex-shrink:0}
+.ob-back{width:38px;height:38px;background:var(--accent-bg,var(--card));border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;color:var(--icon);font-weight:700;flex-shrink:0}
+[data-theme="dark"] .ob-back{background:#1A1C21}
 .progress-bar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.progress-fill{height:100%;background:var(--green);border-radius:3px;transition:width .4s}
+[data-theme="dark"] .progress-bar{background:#23262C}
+.progress-fill{height:100%;background:var(--green-grad);border-radius:3px;transition:width .4s}
 .ob-content{flex:1;padding:24px 20px 120px;overflow-y:auto}
-.ob-icon{font-size:64px;margin-bottom:16px;display:block;text-align:center}
-.ob-title{font-size:26px;font-weight:900;text-align:center;margin-bottom:8px;line-height:1.2}
-.ob-sub{font-size:14px;color:var(--text2);text-align:center;font-weight:600;margin-bottom:28px;line-height:1.5}
+.ob-icon{margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.ob-icon svg{width:64px;height:64px;padding:14px;box-sizing:border-box;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:20px}
+.ob-title{font-size:26px;font-weight:800;text-align:center;margin-bottom:8px;line-height:1.2;letter-spacing:-.4px}
+.ob-sub{font-size:14px;color:var(--text2);text-align:center;font-weight:500;margin-bottom:28px;line-height:1.5}
 .ob-footer{position:fixed;bottom:0;left:0;right:0;padding:16px 20px 32px;background:var(--bg)}
-.ob-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:28px;padding:18px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;transition:transform .1s,opacity .2s}
+.ob-btn{width:100%;background:var(--green-grad);color:#fff;border:none;border-radius:28px;padding:18px;font-size:17px;font-weight:700;cursor:pointer;font-family:'Golos Text',sans-serif;transition:transform .1s,opacity .2s;box-shadow:0 8px 20px rgba(34,162,76,.32)}
 .ob-btn:active{transform:scale(.97)}
-.ob-btn:disabled{opacity:.4;cursor:default}
+.ob-btn:disabled{opacity:.4;cursor:default;box-shadow:none}
 .choice-list{display:flex;flex-direction:column;gap:10px}
-.choice-item{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .18s cubic-bezier(.22,1,.36,1);font-size:16px;font-weight:700}
+.choice-item{background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px 18px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:all .18s cubic-bezier(.22,1,.36,1);font-size:16px;font-weight:600}
+[data-theme="dark"] .choice-item{border-color:#23262C}
 .choice-item:active{transform:scale(.97)}
-.choice-item.selected{background:var(--text);border-color:var(--text);color:var(--card)}
-.ch-icon{font-size:26px;flex-shrink:0}
-.ch-sub{font-size:12px;font-weight:600;color:var(--text2);margin-top:2px}
-.choice-item.selected .ch-sub{color:rgba(255,255,255,.6)}
+.choice-item.selected{background:var(--accent-bg);border-color:var(--green);color:var(--text)}
+.ch-icon{flex-shrink:0;display:flex;align-items:center;justify-content:center;color:var(--icon)}
+.choice-item.selected .ch-icon{color:var(--green)}
+.ch-sub{font-size:12px;font-weight:500;color:var(--text2);margin-top:2px}
+.choice-item.selected .ch-sub{color:var(--text2)}
 .picker-wrap{position:relative;height:200px;overflow:hidden}
 .picker-list{overflow-y:scroll;height:200px;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .picker-list::-webkit-scrollbar{display:none}
-.picker-item{height:40px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:16px;font-weight:600;color:var(--text3);transition:all .15s}
-.picker-item.active{font-size:24px;font-weight:900;color:var(--text)}
-.picker-hl{position:absolute;top:50%;left:0;right:0;height:44px;transform:translateY(-50%);background:rgba(141,198,63,.08);border-radius:12px;pointer-events:none;border:1.5px solid rgba(141,198,63,.2)}
-.speed-val{font-size:36px;font-weight:900;text-align:center;margin-bottom:4px}
+.picker-item{height:40px;display:flex;align-items:center;justify-content:center;scroll-snap-align:center;font-size:16px;font-weight:500;color:var(--text3);transition:all .15s}
+.picker-item.active{font-size:24px;font-weight:800;color:var(--green)}
+.picker-hl{position:absolute;top:50%;left:0;right:0;height:44px;transform:translateY(-50%);background:rgba(34,162,76,.14);border-radius:12px;pointer-events:none;border:1.5px solid var(--green)}
+[data-theme="dark"] .picker-hl{background:rgba(90,209,122,.16)}
+.speed-val{font-size:36px;font-weight:800;text-align:center;margin-bottom:4px}
 .speed-icons{display:flex;justify-content:space-between;margin-bottom:8px;font-size:28px;padding:0 4px}
 .speed-slider{width:100%;accent-color:var(--green);cursor:pointer;margin-bottom:12px}
 .speed-marks{display:flex;justify-content:space-between}
 .speed-mark{text-align:center;flex:1}
-.sm-val{font-size:12px;font-weight:800}
-.sm-lbl{font-size:10px;color:var(--text2);font-weight:600;line-height:1.3}
+.sm-val{font-size:12px;font-weight:700}
+.sm-lbl{font-size:10px;color:var(--text2);font-weight:500;line-height:1.3}
 
 #calcScreen{background:var(--bg);align-items:center;justify-content:center;padding:40px 24px;text-align:center}
-.calc-icon{font-size:64px;margin-bottom:20px}
-.calc-title{font-size:24px;font-weight:900;margin-bottom:8px}
-.calc-sub{font-size:14px;color:var(--text2);font-weight:600;margin-bottom:40px;line-height:1.5}
+.calc-icon{margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.calc-title{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.4px}
+.calc-sub{font-size:14px;color:var(--text2);font-weight:500;margin-bottom:40px;line-height:1.5}
 .calc-ring{position:relative;width:180px;height:180px;margin:0 auto 16px}
 .calc-ring svg{transform:rotate(-90deg)}
-.calc-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:900;color:var(--green)}
-.calc-hint{font-size:13px;color:var(--text2);font-weight:600}
+.calc-pct{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:800;color:var(--green)}
+.calc-hint{font-size:13px;color:var(--text2);font-weight:500}
 
 #resultScreen{background:var(--bg);overflow-y:auto}
 .result-header{padding:24px 20px 0;text-align:center}
-.result-header h2{font-size:22px;font-weight:900;line-height:1.3;margin-bottom:20px}
-.result-card{margin:0 16px 16px;background:var(--card);border:1.5px solid rgba(141,198,63,.3);border-radius:20px;padding:20px}
-.rc-icon{width:60px;height:60px;background:rgba(141,198,63,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 12px}
-.rc-label{font-size:13px;color:var(--text2);font-weight:600;text-align:center;margin-bottom:4px}
-.rc-big{font-size:22px;font-weight:900;text-align:center;margin-bottom:16px}
+.result-header h2{font-size:22px;font-weight:800;line-height:1.3;margin-bottom:20px;letter-spacing:-.3px}
+.result-card{margin:0 16px 16px;background:var(--card);border:1.5px solid var(--accent-border);border-radius:22px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+[data-theme="dark"] .result-card{box-shadow:none}
+.rc-icon{width:60px;height:60px;background:var(--accent-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 12px}
+.rc-label{font-size:13px;color:var(--text2);font-weight:500;text-align:center;margin-bottom:4px}
+.rc-big{font-size:22px;font-weight:800;text-align:center;margin-bottom:16px}
 .rc-kcal{background:var(--bg);border-radius:14px;padding:14px;text-align:center;margin-bottom:12px}
-.rc-kcal-lbl{font-size:13px;color:var(--text2);font-weight:700;margin-bottom:4px}
-.rc-kcal-num{font-size:40px;font-weight:900;letter-spacing:-1px}
-.rc-macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.rc-macro{border-radius:12px;padding:12px 8px;text-align:center}
+.rc-kcal-lbl{font-size:13px;color:var(--text2);font-weight:600;margin-bottom:4px}
+.rc-kcal-num{font-size:40px;font-weight:800;letter-spacing:-1px}
+.rc-macros{display:flex;gap:8px}
+.rc-macro{flex:1;border-radius:14px;padding:12px 8px;text-align:center}
 .rc-macro.blue{background:var(--blue-bg)}
 .rc-macro.yellow{background:var(--yellow-bg)}
 .rc-macro.purple{background:var(--purple-bg)}
-.rc-badge{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;margin:0 auto 6px}
-.rc-macro.blue .rc-badge{background:var(--blue-text);color:#fff}
-.rc-macro.yellow .rc-badge{background:var(--yellow-text);color:#fff}
-.rc-macro.purple .rc-badge{background:var(--purple-text);color:#fff}
-.rc-mval{font-size:19px;font-weight:900}
+.rc-badge{width:22px;height:22px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;margin:0 auto 6px;color:#fff}
+.rc-macro.blue .rc-badge{background:var(--blue-text)}
+.rc-macro.yellow .rc-badge{background:var(--yellow-text)}
+.rc-macro.purple .rc-badge{background:var(--purple-text)}
+.rc-mval{font-size:19px;font-weight:800}
 .rc-macro.blue .rc-mval{color:var(--blue-text)}
 .rc-macro.yellow .rc-mval{color:var(--yellow-text)}
 .rc-macro.purple .rc-mval{color:var(--purple-text)}
-.rc-mlbl{font-size:11px;color:var(--text2);font-weight:600;margin-top:2px}
-.result-start-btn{display:block;margin:0 16px 40px;background:var(--green);color:#fff;border:none;border-radius:28px;width:calc(100% - 32px);padding:18px;font-size:17px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif}
+.rc-mlbl{font-size:11px;color:var(--text2);font-weight:500;margin-top:2px}
+.result-start-btn{display:block;margin:0 16px 40px;background:var(--green-grad);color:#fff;border:none;border-radius:28px;width:calc(100% - 32px);padding:18px;font-size:17px;font-weight:700;cursor:pointer;font-family:'Golos Text',sans-serif;box-shadow:0 8px 20px rgba(34,162,76,.32)}
 
 #main{background:var(--bg)}
-.header{padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--card);border-bottom:1px solid var(--border)}
-.header-logo{display:flex;align-items:center;gap:8px}
-.logo-icon{width:34px;height:34px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
-.logo-text{font-size:17px;font-weight:900}
-.header-right{display:flex;align-items:center;gap:8px}
-.streak-badge{background:linear-gradient(135deg,#ff6b35,#ff8c42);color:#fff;border-radius:20px;padding:6px 12px;font-size:13px;font-weight:900;display:flex;align-items:center;gap:4px}
-.profile-btn{background:var(--bg);border:1px solid var(--border);border-radius:50%;width:36px;height:36px;font-size:16px;font-weight:700;color:var(--text2);cursor:pointer;display:flex;align-items:center;justify-content:center}
-.calendar-section{background:var(--card);padding:10px 16px 14px;border-bottom:1px solid var(--border)}
-.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.header{padding:8px 22px 10px;display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+.header-logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:40px;height:40px;background:var(--accent-bg);border:1px solid var(--accent-border);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.logo-icon svg{width:23px;height:23px}
+.logo-text{font-size:21px;font-weight:800;letter-spacing:-.4px}
+.header-right{display:flex;align-items:center;gap:10px}
+.streak-badge{background:var(--orange-bg);color:var(--orange-text);border-radius:18px;height:36px;padding:0 12px 0 10px;font-size:14px;font-weight:800;display:flex;align-items:center;gap:6px}
+.profile-btn{background:var(--accent-bg, var(--bg));border:none;border-radius:50%;width:36px;height:36px;font-size:16px;font-weight:700;color:var(--icon);cursor:pointer;display:flex;align-items:center;justify-content:center}
+[data-theme="dark"] .profile-btn{background:#1A1C21}
+.calendar-section{background:var(--bg);padding:6px 16px 0}
+.cal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .cal-month{font-size:15px;font-weight:800}
-.today-btn{background:var(--text);color:var(--card);border:none;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif}
-.cal-nav{background:var(--bg);border:1px solid var(--border);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;font-weight:700}
-.cal-days-header{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;margin-bottom:4px}
-.cal-days-header span{font-size:11px;font-weight:700;color:var(--text2)}
-.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
-.cal-day{height:36px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:10px;font-size:14px;font-weight:700;color:var(--text2);position:relative}
-.cal-day.today{background:var(--green);color:#fff}
-.cal-day.selected{background:var(--text);color:var(--card)}
-.cal-day.has-data::after{content:'';width:4px;height:4px;background:var(--green);border-radius:50%;position:absolute;bottom:3px}
-.cal-day.today::after,.cal-day.selected::after{background:#fff}
-.main-scroll{flex:1;overflow-y:auto;padding:14px 14px 110px}
-.calories-card{background:var(--card);border-radius:var(--radius);padding:16px 18px;margin-bottom:10px}
-.cal-card-top{display:flex;align-items:center;justify-content:space-between}
-.cal-left .clabel{font-size:13px;color:var(--text2);font-weight:700;display:flex;align-items:center;gap:4px;margin-bottom:4px}
-.cal-left .big-num{font-size:40px;font-weight:900;line-height:1;letter-spacing:-2px}
-.ring-wrap{position:relative;width:76px;height:76px}
+.today-btn{background:var(--text);color:var(--card);border:none;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Golos Text',sans-serif}
+.cal-nav{background:var(--card);border:1px solid var(--border);border-radius:50%;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;font-weight:700}
+.cal-days-header{display:none}
+.cal-days{display:flex;gap:4px;text-align:center}
+.cal-day{flex:1;padding:9px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border-radius:14px;position:relative}
+.cal-day .cd-dow{font-size:11px;color:var(--text3);font-weight:600}
+.cal-day .cd-num{font-size:16px;font-weight:700;color:var(--text2);margin-top:4px}
+.cal-day.today,.cal-day.selected{background:var(--green-grad)}
+.cal-day.today .cd-dow,.cal-day.selected .cd-dow{color:rgba(255,255,255,.9);font-weight:700}
+.cal-day.today .cd-num,.cal-day.selected .cd-num{color:#fff;font-weight:800}
+.cal-day.has-data .cd-num::after{content:'';display:block;width:4px;height:4px;background:var(--green);border-radius:50%;margin:3px auto 0}
+.cal-day.today.has-data .cd-num::after,.cal-day.selected.has-data .cd-num::after{background:#fff}
+.main-scroll{flex:1;overflow-y:auto;padding:18px 22px 110px}
+.calories-card{display:flex;flex-direction:column;align-items:center;padding:18px 0 0}
+.cal-card-top{display:none}
+.ring-wrap{position:relative;width:210px;height:210px}
 .ring-wrap svg{transform:rotate(-90deg)}
 .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.ring-center .eaten{font-size:12px;font-weight:800}
-.ring-center .goal{font-size:10px;color:var(--text2);font-weight:600}
-.bju-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.bju-card{background:var(--card);border-radius:var(--radius-sm);padding:10px 6px;text-align:center}
-.bju-ring{width:48px;height:48px;margin:0 auto 6px;position:relative}
-.bju-ring svg{transform:rotate(-90deg)}
-.bju-ring-lbl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
-.bju-nums{font-size:11px;font-weight:700;margin-bottom:1px}
-.bju-title{font-size:10px;color:var(--text2);font-weight:600}
+.ring-center .eaten{display:none}
+.ring-center .goal{display:none}
+.ring-lbl-top{font-size:13px;font-weight:700;color:var(--text2)}
+.ring-big{font-size:56px;font-weight:800;letter-spacing:-2px;line-height:1;margin-top:4px}
+.ring-lbl-bottom{font-size:13px;font-weight:600;color:var(--text2);margin-top:4px}
+.calories-card .clabel,.calories-card .big-num{display:none}
+.bju-grid{display:flex;gap:10px;margin:22px 0 0}
+.bju-card{flex:1;background:var(--card);border-radius:18px;padding:14px 14px 16px;box-shadow:0 1px 2px rgba(0,0,0,.04);text-align:left}
+[data-theme="dark"] .bju-card{box-shadow:none}
+.bju-ring,.bju-ring-lbl{display:none}
+.bju-nums{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700}
+.bju-lbl{font-size:13px;font-weight:700}
+.bju-card:nth-child(1) .bju-lbl{color:var(--blue-text)}
+.bju-card:nth-child(2) .bju-lbl{color:var(--yellow-text)}
+.bju-card:nth-child(3) .bju-lbl{color:var(--purple-text)}
+.bju-nums span{font-size:12px;color:var(--text2);font-weight:600}
+.bju-title{display:none}
+.bju-bar{height:6px;border-radius:3px;background:var(--border);margin-top:12px;overflow:hidden}
+.bju-bar-fill{height:100%;border-radius:3px}
+.bju-card:nth-child(1) .bju-bar-fill{background:var(--blue-text)}
+.bju-card:nth-child(2) .bju-bar-fill{background:var(--yellow-text)}
+.bju-card:nth-child(3) .bju-bar-fill{background:var(--purple-text)}
+[data-theme="dark"] .bju-bar{background:#23262C}
 
-.quick-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:12px}
-.qa-btn{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:12px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform .1s}
+.quick-actions{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}
+.qa-btn{background:var(--card);border:none;box-shadow:0 1px 2px rgba(0,0,0,.04);border-radius:18px;aspect-ratio:1;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:transform .1s}
+[data-theme="dark"] .qa-btn{background:var(--card);box-shadow:none}
+.qa-btn.qa-accent{background:var(--green-grad)}
 .qa-btn:active{transform:scale(.95)}
-.qa-icon{font-size:22px}
-.qa-label{font-size:10px;font-weight:700;color:var(--text2);text-align:center;line-height:1.2}
+.qa-icon{display:flex;align-items:center;justify-content:center}
+.qa-label{font-size:12px;font-weight:600;color:var(--icon);text-align:center;line-height:1.2}
+.qa-btn.qa-accent .qa-label{color:#fff}
 
-.section-title{font-size:16px;font-weight:900;margin-bottom:8px;padding:0 2px;display:flex;justify-content:space-between;align-items:center}
-.section-title .see-all{font-size:12px;color:var(--green);font-weight:700;cursor:pointer}
-.meal-item{background:var(--card);border-radius:var(--radius-sm);padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.meal-thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;flex-shrink:0}
-.meal-thumb-ph{width:52px;height:52px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.section-title{font-size:16px;font-weight:800;margin-bottom:12px;padding:0;display:flex;justify-content:space-between;align-items:center}
+.section-title .see-all{font-size:13px;color:var(--green);font-weight:600;cursor:pointer}
+.meal-item{background:var(--card);border-radius:18px;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+[data-theme="dark"] .meal-item{box-shadow:none}
+.meal-thumb{width:52px;height:52px;border-radius:14px;object-fit:cover;flex-shrink:0}
+.meal-thumb-ph{width:52px;height:52px;border-radius:14px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+[data-theme="dark"] .meal-thumb-ph{background:#23262C}
 .meal-info{flex:1;min-width:0}
-.meal-name{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
-.meal-time{font-size:10px;color:var(--text2);font-weight:600;margin-bottom:4px}
+.meal-name{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.meal-time{font-size:11px;color:var(--text2);font-weight:600;margin-bottom:4px}
 .meal-bju{display:flex;gap:6px}
 .meal-bju span{font-size:10px;font-weight:700;color:var(--text2)}
 .meal-bju span b{color:var(--text)}
-.meal-kcal{font-size:18px;font-weight:900;white-space:nowrap}
+.meal-kcal{font-size:18px;font-weight:800;white-space:nowrap;color:var(--green)}
 .meal-actions{display:flex;flex-direction:column;gap:2px;align-items:flex-end}
-.meal-fav{background:none;border:none;cursor:pointer;font-size:14px;padding:2px}
-.meal-del{width:24px;height:24px;background:none;border:none;cursor:pointer;color:var(--text3);font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.empty-history{background:var(--card);border-radius:var(--radius);padding:36px 20px;text-align:center}
+.meal-fav{background:none;border:none;cursor:pointer;padding:2px;display:flex;align-items:center;justify-content:center}
+.meal-del{width:24px;height:24px;background:none;border:none;cursor:pointer;color:var(--text3);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.empty-history{background:var(--card);border-radius:var(--radius);padding:36px 20px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+[data-theme="dark"] .empty-history{box-shadow:none}
 .empty-plate{font-size:52px;margin-bottom:10px;opacity:.3}
 .empty-history p{font-size:14px;color:var(--text2);font-weight:600;line-height:1.5}
 
-.favs-scroll{display:flex;gap:8px;overflow-x:auto;padding:0 2px 4px;margin-bottom:10px;scrollbar-width:none}
-.favs-scroll::-webkit-scrollbar{display:none}
-.fav-card{flex-shrink:0;width:120px;background:var(--card);border-radius:14px;padding:10px;cursor:pointer;position:relative;transition:transform .1s}
-.fav-card:active{transform:scale(.96)}
-.fav-thumb{width:100%;height:80px;border-radius:8px;object-fit:cover;margin-bottom:6px;background:var(--bg)}
-.fav-thumb-ph{width:100%;height:80px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:6px}
-.fav-name{font-size:11px;font-weight:800;line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.favs-scroll{display:flex;flex-direction:column;gap:8px;padding:0;margin-bottom:18px}
+.fav-card{flex-shrink:0;width:auto;background:var(--card);border-radius:18px;padding:12px;cursor:pointer;position:relative;display:flex;align-items:center;gap:12px;transition:transform .1s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+[data-theme="dark"] .fav-card{box-shadow:none}
+.fav-card:active{transform:scale(.98)}
+.fav-thumb{width:52px;height:52px;border-radius:14px;object-fit:cover;margin-bottom:0;background:var(--bg);flex-shrink:0}
+.fav-thumb-ph{width:52px;height:52px;border-radius:14px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:0;flex-shrink:0}
+[data-theme="dark"] .fav-thumb-ph{background:#23262C}
+.fav-info{flex:1;min-width:0}
+.fav-name{font-size:15px;font-weight:700;line-height:1.2;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fav-kcal{font-size:13px;color:var(--green);font-weight:700}
+.fav-add{width:40px;height:40px;border-radius:20px;background:var(--green-grad);color:#fff;font-size:20px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .fav-kcal{font-size:11px;color:var(--green);font-weight:800}
-.fav-remove{position:absolute;top:4px;right:4px;background:var(--card);border:none;border-radius:50%;width:22px;height:22px;font-size:11px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center}
+.fav-remove{position:absolute;top:8px;right:8px;background:var(--bg);border:none;border-radius:50%;width:24px;height:24px;font-size:11px;cursor:pointer;color:var(--text2);display:flex;align-items:center;justify-content:center;z-index:2}
 
-.add-fab{position:fixed;bottom:22px;right:18px;background:var(--text);color:var(--card);border:none;border-radius:28px;padding:13px 20px;font-size:15px;font-weight:800;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.2);z-index:50;transition:transform .1s}
+.add-fab{position:fixed;bottom:22px;right:22px;background:var(--green-grad);color:#fff;border:none;border-radius:28px;padding:14px 22px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px;font-family:'Golos Text',sans-serif;box-shadow:0 8px 20px rgba(34,162,76,.32);z-index:50;transition:transform .1s}
 .add-fab:active{transform:scale(.96)}
 
 #chat{background:var(--bg)}
-.chat-header{background:var(--card);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
-.chat-header h2{font-size:17px;font-weight:900;flex:1}
-.chat-header .chat-sub{font-size:11px;color:var(--green);font-weight:700}
-.chat-messages{flex:1;overflow-y:auto;padding:16px 14px 120px;display:flex;flex-direction:column;gap:10px}
-.msg{max-width:80%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.5;font-weight:600;word-wrap:break-word}
-.msg.user{align-self:flex-end;background:var(--green);color:#fff;border-bottom-right-radius:4px}
-.msg.ai{align-self:flex-start;background:var(--card);color:var(--text);border-bottom-left-radius:4px}
+.chat-header{background:var(--card);padding:8px 20px 16px;display:flex;align-items:center;gap:14px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+[data-theme="dark"] .chat-header{box-shadow:0 1px 0 rgba(255,255,255,.05)}
+.chat-bot-icon{width:44px;height:44px;border-radius:14px;background:var(--green-grad);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chat-header h2{font-size:18px;font-weight:800;letter-spacing:-.3px;flex:1}
+.chat-header .chat-sub{font-size:13px;color:#2BB35A;font-weight:600;display:flex;align-items:center;gap:6px;margin-top:2px}
+.chat-dot{width:7px;height:7px;border-radius:4px;background:#2BB35A;display:inline-block}
+.chat-messages{flex:1;overflow-y:auto;padding:22px 20px 120px;display:flex;flex-direction:column;gap:14px}
+.msg{max-width:80%;padding:16px 18px;border-radius:20px;font-size:15px;line-height:1.5;font-weight:500;word-wrap:break-word}
+.msg.user{align-self:flex-end;background:var(--green-grad);color:#fff;border-radius:20px 6px 20px 20px;padding:14px 18px}
+.msg.ai{align-self:flex-start;background:var(--card);color:var(--text);border-radius:6px 20px 20px 20px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+[data-theme="dark"] .msg.ai{box-shadow:none;background:#1A1C21}
 .msg.typing{background:var(--card);align-self:flex-start;color:var(--text2);font-style:italic}
-.chat-input-wrap{position:fixed;bottom:0;left:0;right:0;background:var(--card);padding:12px 14px;display:flex;gap:8px;border-top:1px solid var(--border);padding-bottom:max(12px, env(safe-area-inset-bottom, 12px))}
-.chat-input{flex:1;background:var(--bg);border:1.5px solid var(--border);border-radius:24px;padding:12px 16px;font-size:14px;font-family:'Nunito',sans-serif;outline:none;font-weight:600}
-.chat-input:focus{border-color:var(--green)}
-.chat-send{background:var(--green);color:#fff;border:none;border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:18px;flex-shrink:0;font-weight:900}
-.chat-suggestions{display:flex;gap:8px;overflow-x:auto;padding:0 14px 10px;scrollbar-width:none}
+.chat-input-wrap{position:fixed;bottom:0;left:0;right:0;background:var(--card);padding:12px 16px 24px;display:flex;align-items:center;gap:10px;box-shadow:0 -1px 0 rgba(0,0,0,.05);padding-bottom:max(24px, env(safe-area-inset-bottom, 24px))}
+[data-theme="dark"] .chat-input-wrap{box-shadow:0 -1px 0 rgba(255,255,255,.05)}
+.chat-input{flex:1;background:var(--bg);border:none;border-radius:24px;padding:0 18px;height:48px;font-size:15px;font-family:'Golos Text',sans-serif;outline:none;font-weight:400;color:var(--text)}
+.chat-input:focus{outline:none}
+.chat-send{background:var(--green-grad);color:#fff;border:none;border-radius:24px;width:48px;height:48px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(34,162,76,.32)}
+.chat-suggestions{display:flex;gap:8px;overflow-x:auto;padding:0 20px 12px;scrollbar-width:none;flex-wrap:wrap}
 .chat-suggestions::-webkit-scrollbar{display:none}
-.chat-suggest{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:8px 12px;font-size:12px;font-weight:700;color:var(--text);cursor:pointer;white-space:nowrap;font-family:'Nunito',sans-serif}
+.chat-suggest{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--icon);cursor:pointer;white-space:nowrap;font-family:'Golos Text',sans-serif}
+[data-theme="dark"] .chat-suggest{border-color:rgba(255,255,255,.07)}
 
 #profile{background:var(--bg)}
-.profile-header{background:var(--card);padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border)}
-.back-btn{width:34px;height:34px;background:var(--bg);border:1px solid var(--border);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;font-weight:700;flex-shrink:0}
-.profile-header h2{font-size:17px;font-weight:900;flex:1;text-align:center}
-.spacer{width:34px}
-.profile-content{padding:14px;overflow-y:auto;height:calc(100vh - 63px)}
-.streak-card{background:linear-gradient(135deg,#ff6b35,#ff8c42);color:#fff;border-radius:var(--radius);padding:18px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between}
-.streak-card .sc-icon{font-size:40px}
-.streak-card .sc-info .sc-num{font-size:32px;font-weight:900;line-height:1}
-.streak-card .sc-info .sc-lbl{font-size:12px;font-weight:700;opacity:.9}
-.cal-goal-card{background:var(--card);border-radius:var(--radius);padding:16px;margin-bottom:10px}
-.glabel{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:5px;display:flex;align-items:center;gap:4px}
-.gval{font-size:34px;font-weight:900;letter-spacing:-1px;display:flex;align-items:center;gap:8px}
-.edit-icon{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:4px 7px;cursor:pointer;font-size:12px}
-.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:12px}
-.mg-card{border-radius:10px;padding:10px 6px}
+.profile-header{background:var(--bg);padding:8px 22px 12px;display:flex;align-items:center;gap:14px}
+.back-btn{width:38px;height:38px;background:var(--accent-bg,var(--card));border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+[data-theme="dark"] .back-btn{background:#1A1C21}
+.profile-header h2{font-size:22px;font-weight:800;letter-spacing:-.4px;flex:1;text-align:left}
+.spacer{display:none}
+.profile-content{padding:0 18px 24px;overflow-y:auto;height:calc(100vh - 63px)}
+.streak-card{background:var(--green-grad);color:#fff;border-radius:22px;padding:22px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 24px rgba(34,162,76,.28)}
+.streak-card .sc-icon{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.streak-card .sc-info .sc-num{font-size:44px;font-weight:800;line-height:1}
+.streak-card .sc-info .sc-lbl{font-size:14px;font-weight:700;opacity:.92;margin-top:6px}
+.cal-goal-card{background:var(--card);border-radius:22px;padding:18px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+[data-theme="dark"] .cal-goal-card{box-shadow:none}
+.glabel{font-size:14px;font-weight:700;color:var(--text2);margin-bottom:6px;display:flex;align-items:center;gap:7px}
+.gval{font-size:40px;font-weight:800;letter-spacing:-1.5px;display:flex;align-items:center;gap:12px}
+.edit-icon{background:var(--bg);border:none;border-radius:11px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+[data-theme="dark"] .edit-icon{background:#23262C}
+.mgrid{display:flex;gap:10px;margin-top:16px}
+.mg-card{flex:1;border-radius:14px;padding:12px}
 .mg-card.blue{background:var(--blue-bg)}
 .mg-card.yellow{background:var(--yellow-bg)}
 .mg-card.purple{background:var(--purple-bg)}
-.mg-lbl{font-size:10px;font-weight:800;display:flex;align-items:center;gap:3px;margin-bottom:4px}
+.mg-lbl{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;margin-bottom:8px}
 .mg-card.blue .mg-lbl{color:var(--blue-text)}
 .mg-card.yellow .mg-lbl{color:var(--yellow-text)}
 .mg-card.purple .mg-lbl{color:var(--purple-text)}
-.mg-badge{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;flex-shrink:0}
-.mg-card.blue .mg-badge{background:var(--blue-text);color:#fff}
-.mg-card.yellow .mg-badge{background:var(--yellow-text);color:#fff}
-.mg-card.purple .mg-badge{background:var(--purple-text);color:#fff}
-.mg-val{font-size:16px;font-weight:900;display:flex;align-items:center;gap:4px}
+.mg-badge{width:18px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;color:#fff}
+.mg-card.blue .mg-badge{background:var(--blue-text)}
+.mg-card.yellow .mg-badge{background:var(--yellow-text)}
+.mg-card.purple .mg-badge{background:var(--purple-text)}
+.mg-val{font-size:16px;font-weight:800;display:flex;align-items:center;gap:6px}
 .mg-card.blue .mg-val{color:var(--blue-text)}
 .mg-card.yellow .mg-val{color:var(--yellow-text)}
 .mg-card.purple .mg-val{color:var(--purple-text)}
-.profile-rows{background:var(--card);border-radius:var(--radius);overflow:hidden;margin-bottom:10px}
-.profile-row{display:flex;align-items:center;padding:13px 14px;border-bottom:1px solid var(--border);cursor:pointer}
+.profile-rows{background:var(--card);border-radius:22px;overflow:hidden;margin-bottom:14px;padding:0 18px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+[data-theme="dark"] .profile-rows{box-shadow:none}
+.profile-row{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px solid var(--border);cursor:pointer}
 .profile-row:last-child{border-bottom:none}
-.row-icon{font-size:16px;margin-right:10px;width:22px;text-align:center}
-.row-label{font-size:14px;font-weight:700;flex:1}
-.row-val{font-size:12px;color:var(--text2);font-weight:700;margin-right:4px;text-align:right;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chevron{color:var(--text3);font-size:14px}
+.row-icon{display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.row-label{font-size:16px;font-weight:600;flex:1}
+.row-val{font-size:15px;color:var(--text2);font-weight:500;margin-right:4px;text-align:right;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chevron{display:flex;align-items:center}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(6px)}
 .modal-overlay.open{opacity:1;pointer-events:all}
-.modal-sheet{background:var(--card);border-radius:24px 24px 0 0;padding:20px 20px 40px;max-height:88vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s;padding-bottom:calc(100px + env(safe-area-inset-bottom, 0px))}
+.modal-sheet{background:var(--bg);border-radius:32px 32px 0 0;padding:12px 22px 40px;max-height:88vh;overflow-y:auto;transform:translateY(30px);transition:transform .3s;padding-bottom:calc(100px + env(safe-area-inset-bottom, 0px))}
 .modal-overlay.open .modal-sheet{transform:translateY(0)}
-.modal-handle{width:36px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 18px}
-.modal-title{font-size:19px;font-weight:900;margin-bottom:14px}
+.modal-handle{width:44px;height:5px;background:var(--text3);opacity:.5;border-radius:3px;margin:0 auto 18px}
+.modal-title{font-size:24px;font-weight:800;letter-spacing:-.5px;margin-bottom:14px}
 .photo-preview{width:100%;border-radius:14px;max-height:230px;object-fit:cover;margin-bottom:14px}
 .analyzing{display:flex;flex-direction:column;align-items:center;padding:28px 0;gap:12px}
 .spinner{width:42px;height:42px;border:4px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 1s linear infinite}
@@ -296,36 +348,35 @@ html,body{height:100%;background:var(--bg);font-family:'Nunito',sans-serif;color
 .dish-checkbox{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;border:2px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:12px;font-weight:900;color:var(--card)}
 .dish-card.selected .dish-checkbox{background:var(--green);border-color:var(--green)}
 
-.confirm-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:16px;padding:15px;font-size:15px;font-weight:900;cursor:pointer;font-family:'Nunito',sans-serif;margin-bottom:8px}
-.cancel-btn{width:100%;background:transparent;border:1.5px solid var(--border);border-radius:16px;padding:13px;font-size:14px;font-weight:700;color:var(--text2);cursor:pointer;font-family:'Nunito',sans-serif}
+.confirm-btn{width:100%;background:var(--green-grad);color:#fff;border:none;border-radius:16px;padding:16px;font-size:16px;font-weight:700;cursor:pointer;font-family:'Golos Text',sans-serif;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px rgba(34,162,76,.32)}
+.cancel-btn{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:14px;font-size:16px;font-weight:700;color:var(--text2);cursor:pointer;font-family:'Golos Text',sans-serif}
+[data-theme="dark"] .cancel-btn{background:var(--bg);border-color:#23262C}
 .error-msg{color:#e74c3c;font-size:14px;font-weight:700;text-align:center;padding:16px 0;line-height:1.5}
 input[type=file]{display:none}
 .edit-field{margin-bottom:12px}
-.edit-field label{font-size:12px;font-weight:700;color:var(--text2);display:block;margin-bottom:5px}
-.edit-field input,.edit-field select,.edit-field textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 12px;font-size:15px;font-weight:700;color:var(--text);font-family:'Nunito',sans-serif;outline:none}
+.edit-field label{font-size:13px;font-weight:600;color:var(--text2);display:block;margin-bottom:8px}
+.edit-field input,.edit-field select,.edit-field textarea{width:100%;background:var(--card);border:1.5px solid var(--border);border-radius:16px;padding:16px;font-size:15px;font-weight:500;color:var(--text);font-family:'Golos Text',sans-serif;outline:none}
+[data-theme="dark"] .edit-field input,[data-theme="dark"] .edit-field select,[data-theme="dark"] .edit-field textarea{background:var(--bg);border-color:#23262C}
 .edit-field input:focus,.edit-field textarea:focus{border-color:var(--green)}
-.edit-field textarea{resize:vertical;min-height:60px}
+.edit-field textarea{resize:vertical;min-height:96px;line-height:1.5}
 
 .manual-form .row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.tab-switcher{display:flex;background:var(--bg);border-radius:12px;padding:3px;margin-bottom:14px}
-.tab-btn{flex:1;padding:9px;border:none;background:transparent;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;color:var(--text2);font-family:'Nunito',sans-serif}
-.tab-btn.active{background:var(--text);color:var(--card)}
-.theme-toggle{display:flex;align-items:center;justify-content:space-between;padding:13px 14px;border-bottom:1px solid var(--border)}
-.toggle-track{width:44px;height:26px;border-radius:13px;background:var(--border);position:relative;cursor:pointer;transition:background .25s;flex-shrink:0}
-.toggle-track.on{background:var(--green)}
-.toggle-thumb{width:20px;height:20px;border-radius:50%;background:#fff;position:absolute;top:3px;left:3px;transition:left .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
-[data-theme="dark"] #mainRing+circle,
-[data-theme="dark"] .ring-wrap svg circle:first-child{stroke:#2a2a2a!important}
-[data-theme="dark"] .bju-ring svg circle:first-child{stroke:#2a2a2a!important}
-[data-theme="dark"] .calc-ring svg circle:first-child{stroke:#2a2a2a!important}
-[data-theme="dark"] svg circle[stroke="#f0f0f0"],[data-theme="dark"] svg circle[stroke="#e8f4ff"],[data-theme="dark"] svg circle[stroke="#fff8e1"],[data-theme="dark"] svg circle[stroke="#f3eeff"],[data-theme="dark"] svg circle[stroke="#e8e8e8"]{stroke:#2a2a2a!important}
-.toggle-track.on .toggle-thumb{left:21px}
+.tab-switcher{display:flex;gap:6px;background:var(--border-toggle,#E6E4DE);border-radius:16px;padding:5px;margin-bottom:14px}
+[data-theme="dark"] .tab-switcher{background:var(--bg)}
+.tab-btn{flex:1;height:46px;border:none;background:transparent;border-radius:12px;font-size:15px;font-weight:700;cursor:pointer;color:var(--text2);font-family:'Golos Text',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px}
+.tab-btn.active{background:var(--green-grad);color:#fff;box-shadow:0 4px 12px rgba(34,162,76,.3)}
+.theme-toggle{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.toggle-track{width:50px;height:30px;border-radius:15px;background:var(--border-toggle,#E2E0DA);position:relative;cursor:pointer;transition:background .25s;flex-shrink:0;padding:3px}
+[data-theme="dark"] .toggle-track{background:#23262C}
+.toggle-track.on{background:var(--green-grad)}
+.toggle-thumb{width:24px;height:24px;border-radius:12px;background:#fff;position:absolute;top:3px;left:3px;transition:left .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-track.on .toggle-thumb{left:23px;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 </style>
 </head>
 <body>
 
 <div class="screen" id="splash">
-  <div class="splash-icon">🍽️</div>
+  <div class="splash-icon"><svg width="80" height="80" viewBox="0 0 100 100" fill="none"><path d="M22 76 L22 30 L50 58 L78 30 L78 76" stroke="#fff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="32" r="6" fill="#fff"/></svg></div>
   <div class="splash-title">MealMeter</div>
   <div class="splash-sub">Simple. Smart. Fit.</div>
 </div>
@@ -342,14 +393,15 @@ input[type=file]{display:none}
 </div>
 
 <div class="screen" id="calcScreen">
-  <div class="calc-icon">🤍</div>
+  <div class="calc-icon"><svg width="56" height="56" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.4-9.5-9C1 8.5 2 5 5.3 4.2 7.6 3.6 10 4.7 12 7c2-2.3 4.4-3.4 6.7-2.8C22 5 23 8.5 21.5 12 19 16.6 12 21 12 21z" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
   <div class="calc-title">Спасибо, что доверяете нам!</div>
   <div class="calc-sub">Создаём ваш персональный план.<br>Вместе достигнем цели!</div>
   <div class="calc-ring">
     <svg width="180" height="180" viewBox="0 0 180 180">
-      <circle cx="90" cy="90" r="80" fill="none" stroke="#e8e8e8" stroke-width="12"/>
-      <circle id="calcRingCircle" cx="90" cy="90" r="80" fill="none" stroke="#8DC63F" stroke-width="12"
+      <circle cx="90" cy="90" r="80" fill="none" stroke="var(--track)" stroke-width="12"/>
+      <circle id="calcRingCircle" cx="90" cy="90" r="80" fill="none" stroke="url(#gradCalc)" stroke-width="12"
         stroke-linecap="round" stroke-dasharray="502.7" stroke-dashoffset="502.7" style="transition:stroke-dashoffset .08s linear"/>
+      <defs><linearGradient id="gradCalc" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AD17A"/><stop offset="1" stop-color="#22A24C"/></linearGradient></defs>
     </svg>
     <div class="calc-pct" id="calcPct">0%</div>
   </div>
@@ -359,11 +411,11 @@ input[type=file]{display:none}
 <div class="screen" id="resultScreen">
   <div class="result-header"><h2>Поздравляем! Ваш персональный план создан.</h2></div>
   <div class="result-card">
-    <div class="rc-icon" id="rcIcon">🏆</div>
+    <div class="rc-icon" id="rcIcon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M7 4v6m0-6c1.5 0 1.5 4 0 4m0 0v10M17 4c-2 0-3 2-3 5s1 3 3 3v8" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <div class="rc-label">Вы <span id="rcVerb">достигнете</span></div>
     <div class="rc-big" id="rcBig">—</div>
     <div class="rc-kcal">
-      <div class="rc-kcal-lbl">🔥 Калории</div>
+      <div class="rc-kcal-lbl"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:-2px"><path d="M12 3c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-1.2.4-2 1-2.8C9 9.8 9.5 11 11 11c0-2.5-1-3.5 1-8z" fill="var(--orange-text)"/></svg> Калории</div>
       <div class="rc-kcal-num" id="rcKcal">—</div>
     </div>
     <div class="rc-macros">
@@ -378,12 +430,12 @@ input[type=file]{display:none}
 <div class="screen" id="main">
   <div class="header">
     <div class="header-logo">
-      <div class="logo-icon">🍽️</div>
+      <div class="logo-icon"><svg viewBox="0 0 100 100" fill="none"><path d="M22 76 L22 30 L50 58 L78 30 L78 76" stroke="#22A24C" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><circle cx="50" cy="32" r="6.5" fill="#22A24C"/></svg></div>
       <div class="logo-text">MealMeter</div>
     </div>
     <div class="header-right">
-      <div class="streak-badge" id="streakBadge" onclick="showScreen('profile')">🔥 <span id="streakNum">0</span></div>
-      <button class="profile-btn" onclick="showScreen('profile')">👤</button>
+      <div class="streak-badge" id="streakBadge" onclick="showScreen('profile')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-1.2.4-2 1-2.8C9 9.8 9.5 11 11 11c0-2.5-1-3.5 1-8z" fill="var(--orange-text)"/></svg> <span id="streakNum">0</span></div>
+      <button class="profile-btn" onclick="showScreen('profile')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="var(--text3)" stroke-width="2"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6" stroke="var(--text3)" stroke-width="2" stroke-linecap="round"/></svg></button>
     </div>
   </div>
   <div class="calendar-section">
@@ -393,7 +445,6 @@ input[type=file]{display:none}
       <button class="today-btn" onclick="goToday()">Сегодня</button>
       <button class="cal-nav" onclick="nextWeek()">›</button>
     </div>
-    <div class="cal-days-header"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div>
     <div class="cal-days" id="calDays"></div>
   </div>
   <div class="main-scroll">
@@ -403,79 +454,61 @@ input[type=file]{display:none}
           <div class="clabel">🔥 Осталось калорий</div>
           <div class="big-num" id="remainKcal">0</div>
         </div>
-        <div class="ring-wrap">
-          <svg width="76" height="76" viewBox="0 0 76 76">
-            <circle cx="38" cy="38" r="31" fill="none" stroke="#f0f0f0" stroke-width="8"/>
-            <circle id="mainRing" cx="38" cy="38" r="31" fill="none" stroke="#8DC63F" stroke-width="8"
-              stroke-linecap="round" stroke-dasharray="194.8" stroke-dashoffset="194.8" style="transition:stroke-dashoffset .7s"/>
-          </svg>
-          <div class="ring-center">
-            <div class="eaten" id="eatenKcal">0</div>
-            <div class="goal" id="goalKcalLbl">0</div>
-          </div>
+      </div>
+      <div class="ring-wrap">
+        <svg width="210" height="210" viewBox="0 0 210 210">
+          <circle cx="105" cy="105" r="92" fill="none" stroke="var(--track)" stroke-width="16"/>
+          <circle id="mainRing" cx="105" cy="105" r="92" fill="none" stroke="url(#gradMain)" stroke-width="16"
+            stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="578" style="transition:stroke-dashoffset .7s"/>
+          <defs><linearGradient id="gradMain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5AD17A"/><stop offset="1" stop-color="#22A24C"/></linearGradient></defs>
+        </svg>
+        <div class="ring-center">
+          <span class="ring-lbl-top">Осталось</span>
+          <span class="ring-big" id="remainKcalBig">0</span>
+          <span class="ring-lbl-bottom">ккал · цель <span id="goalKcalLbl">0</span></span>
         </div>
+        <div class="eaten" id="eatenKcal" style="display:none">0</div>
       </div>
     </div>
     <div class="bju-grid">
       <div class="bju-card">
-        <div class="bju-ring">
-          <svg width="48" height="48" viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="19" fill="none" stroke="#e8f4ff" stroke-width="6"/>
-            <circle id="ringP" cx="24" cy="24" r="19" fill="none" stroke="#3b9ede" stroke-width="6"
-              stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .7s"/>
-          </svg>
-          <div class="bju-ring-lbl" style="color:#3b9ede">Б</div>
-        </div>
-        <div class="bju-nums"><span id="valP">0</span>/<span id="goalPd">—</span></div>
-        <div class="bju-title">Белки</div>
+        <div class="bju-nums"><span class="bju-lbl">Белки</span><span><span id="valP">0</span>/<span id="goalPd">—</span></span></div>
+        <div class="bju-bar"><div class="bju-bar-fill" id="barP" style="width:0%"></div></div>
+        <svg style="display:none" width="0" height="0"><circle id="ringP" stroke-dasharray="119.4" stroke-dashoffset="119.4"/></svg>
       </div>
       <div class="bju-card">
-        <div class="bju-ring">
-          <svg width="48" height="48" viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="19" fill="none" stroke="#fff8e1" stroke-width="6"/>
-            <circle id="ringF" cx="24" cy="24" r="19" fill="none" stroke="#e6a817" stroke-width="6"
-              stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .7s"/>
-          </svg>
-          <div class="bju-ring-lbl" style="color:#e6a817">Ж</div>
-        </div>
-        <div class="bju-nums"><span id="valF">0</span>/<span id="goalFd">—</span></div>
-        <div class="bju-title">Жиры</div>
+        <div class="bju-nums"><span class="bju-lbl">Жиры</span><span><span id="valF">0</span>/<span id="goalFd">—</span></span></div>
+        <div class="bju-bar"><div class="bju-bar-fill" id="barF" style="width:0%"></div></div>
+        <svg style="display:none" width="0" height="0"><circle id="ringF" stroke-dasharray="119.4" stroke-dashoffset="119.4"/></svg>
       </div>
       <div class="bju-card">
-        <div class="bju-ring">
-          <svg width="48" height="48" viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="19" fill="none" stroke="#f3eeff" stroke-width="6"/>
-            <circle id="ringC" cx="24" cy="24" r="19" fill="none" stroke="#8b5cf6" stroke-width="6"
-              stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="119.4" style="transition:stroke-dashoffset .7s"/>
-          </svg>
-          <div class="bju-ring-lbl" style="color:#8b5cf6">У</div>
-        </div>
-        <div class="bju-nums"><span id="valC">0</span>/<span id="goalCd">—</span></div>
-        <div class="bju-title">Углеводы</div>
+        <div class="bju-nums"><span class="bju-lbl">Угл.</span><span><span id="valC">0</span>/<span id="goalCd">—</span></span></div>
+        <div class="bju-bar"><div class="bju-bar-fill" id="barC" style="width:0%"></div></div>
+        <svg style="display:none" width="0" height="0"><circle id="ringC" stroke-dasharray="119.4" stroke-dashoffset="119.4"/></svg>
       </div>
     </div>
 
     <div class="quick-actions">
-      <div class="qa-btn" onclick="openCamera()">
-        <div class="qa-icon">📸</div>
+      <div class="qa-btn qa-accent" onclick="openCamera()">
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1l1-2h7l1 2h1A2.5 2.5 0 0 1 19 8.5v8A2.5 2.5 0 0 1 16.5 19h-9A2.5 2.5 0 0 1 5 16.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12.5" r="3.2" stroke="#fff" stroke-width="1.8"/></svg></div>
         <div class="qa-label">Камера</div>
       </div>
       <div class="qa-btn" onclick="openGallery()">
-        <div class="qa-icon">🖼️</div>
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="3" stroke="var(--icon)" stroke-width="1.8"/><circle cx="9" cy="10" r="1.6" fill="var(--icon)"/><path d="M5 17l4-4 3 3 3-3 4 4" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="qa-label">Галерея</div>
       </div>
       <div class="qa-btn" onclick="openManualEntry()">
-        <div class="qa-icon">✏️</div>
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 4l6 6L9 21H3v-6L14 4z" stroke="var(--icon)" stroke-width="1.8" stroke-linejoin="round"/><path d="M12.5 6.5l5 5" stroke="var(--icon)" stroke-width="1.8"/></svg></div>
         <div class="qa-label">Вручную</div>
       </div>
       <div class="qa-btn" onclick="showScreen('chat')">
-        <div class="qa-icon">💬</div>
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4v-4H4V5z" stroke="var(--icon)" stroke-width="1.8" stroke-linejoin="round"/><circle cx="9" cy="10.5" r="1.1" fill="var(--icon)"/><circle cx="12" cy="10.5" r="1.1" fill="var(--icon)"/><circle cx="15" cy="10.5" r="1.1" fill="var(--icon)"/></svg></div>
         <div class="qa-label">Диетолог</div>
       </div>
     </div>
 
     <div id="favoritesSection" style="display:none">
-      <div class="section-title">⭐ Избранное</div>
+      <div class="section-title"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px;margin-right:4px"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" stroke="var(--green)" stroke-width="1.5" stroke-linejoin="round"/></svg>Избранное</div>
       <div class="favs-scroll" id="favsScroll"></div>
     </div>
 
@@ -489,28 +522,29 @@ input[type=file]{display:none}
 
 <div class="screen" id="chat">
   <div class="chat-header">
-    <div class="back-btn" onclick="showScreen('main')">‹</div>
+    <div class="back-btn" onclick="showScreen('main')"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M7.5 1 L1.5 7.5 L7.5 14" stroke="var(--icon)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="chat-bot-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 13c0-4 3.5-7 8-7s8 3 8 7H4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 16h18" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="10" r="1" fill="#fff"/><circle cx="15" cy="10" r="1" fill="#fff"/></svg></div>
     <div>
-      <h2 style="text-align:left">🥗 ИИ-Диетолог</h2>
-      <div class="chat-sub">● онлайн</div>
+      <h2 style="text-align:left">ИИ-Диетолог</h2>
+      <div class="chat-sub"><span class="chat-dot"></span>онлайн</div>
     </div>
   </div>
   <div class="chat-messages" id="chatMessages"></div>
   <div class="chat-suggestions" id="chatSuggestions">
-    <div class="chat-suggest" onclick="sendSuggest('Что приготовить на обед?')">🍳 Что приготовить?</div>
-    <div class="chat-suggest" onclick="sendSuggest('Как набрать белок?')">💪 Больше белка</div>
-    <div class="chat-suggest" onclick="sendSuggest('Полезные перекусы')">🥜 Перекусы</div>
-    <div class="chat-suggest" onclick="sendSuggest('Анализируй мой рацион сегодня')">📊 Мой рацион</div>
+    <div class="chat-suggest" onclick="sendSuggest('Анализируй мой рацион сегодня')">Проанализируй рацион</div>
+    <div class="chat-suggest" onclick="sendSuggest('Что приготовить на ужин?')">Идея ужина</div>
+    <div class="chat-suggest" onclick="sendSuggest('Как набрать белок?')">Больше белка</div>
+    <div class="chat-suggest" onclick="sendSuggest('Полезные перекусы')">Перекусы</div>
   </div>
   <div class="chat-input-wrap">
-    <input class="chat-input" id="chatInput" placeholder="Спроси у диетолога..." onkeypress="if(event.key==='Enter')sendChatMessage()"/>
-    <button class="chat-send" onclick="sendChatMessage()">➤</button>
+    <input class="chat-input" id="chatInput" placeholder="Спроси у диетолога…" onkeypress="if(event.key==='Enter')sendChatMessage()"/>
+    <button class="chat-send" onclick="sendChatMessage()"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h13M12 5l7 7-7 7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </div>
 
 <div class="screen" id="profile">
   <div class="profile-header">
-    <div class="back-btn" onclick="showScreen('main')">‹</div>
+    <div class="back-btn" onclick="showScreen('main')"><svg width="9" height="15" viewBox="0 0 9 15" fill="none"><path d="M7.5 1 L1.5 7.5 L7.5 14" stroke="var(--icon)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
     <h2>Профиль</h2>
     <div class="spacer"></div>
   </div>
@@ -520,37 +554,37 @@ input[type=file]{display:none}
         <div class="sc-num" id="profStreakNum">0</div>
         <div class="sc-lbl">Дней подряд</div>
       </div>
-      <div class="sc-icon">🔥</div>
+      <div class="sc-icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-1.2.4-2 1-2.8C9 9.8 9.5 11 11 11c0-2.5-1-3.5 1-8z" fill="#fff"/></svg></div>
     </div>
     <div class="cal-goal-card">
-      <div class="glabel">🔥 Калории</div>
-      <div class="gval"><span id="profileKcal">—</span> <span class="edit-icon" onclick="editGoal('kcal')">✏️</span></div>
+      <div class="glabel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 3c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-1.2.4-2 1-2.8C9 9.8 9.5 11 11 11c0-2.5-1-3.5 1-8z" fill="var(--orange-text)"/></svg> Калории</div>
+      <div class="gval"><span id="profileKcal">—</span> <span class="edit-icon" onclick="editGoal('kcal')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M14 4l6 6L9 21H3v-6L14 4z" stroke="var(--text2)" stroke-width="1.8" stroke-linejoin="round"/></svg></span></div>
       <div class="mgrid">
-        <div class="mg-card blue"><div class="mg-lbl"><div class="mg-badge">Б</div> Белки</div><div class="mg-val"><span id="profileP">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('p')">✏️</span></div></div>
-        <div class="mg-card yellow"><div class="mg-lbl"><div class="mg-badge">Ж</div> Жиры</div><div class="mg-val"><span id="profileF">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('f')">✏️</span></div></div>
-        <div class="mg-card purple"><div class="mg-lbl"><div class="mg-badge">У</div> Углев.</div><div class="mg-val"><span id="profileC">—</span>г <span class="edit-icon" style="font-size:10px" onclick="editGoal('c')">✏️</span></div></div>
+        <div class="mg-card blue"><div class="mg-lbl"><div class="mg-badge">Б</div> Белки</div><div class="mg-val"><span id="profileP">—</span>г <span class="edit-icon" onclick="editGoal('p')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M14 4l6 6L9 21H3v-6L14 4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></div></div>
+        <div class="mg-card yellow"><div class="mg-lbl"><div class="mg-badge">Ж</div> Жиры</div><div class="mg-val"><span id="profileF">—</span>г <span class="edit-icon" onclick="editGoal('f')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M14 4l6 6L9 21H3v-6L14 4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></div></div>
+        <div class="mg-card purple"><div class="mg-lbl"><div class="mg-badge">У</div> Углев.</div><div class="mg-val"><span id="profileC">—</span>г <span class="edit-icon" onclick="editGoal('c')"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M14 4l6 6L9 21H3v-6L14 4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span></div></div>
       </div>
     </div>
     <div class="profile-rows">
-      <div class="profile-row"><div class="row-icon">🎯</div><div class="row-label">Цель</div><div class="row-val" id="profGoal">—</div><div class="chevron">›</div></div>
-      <div class="profile-row"><div class="row-icon">⚧️</div><div class="row-label">Пол</div><div class="row-val" id="profGender">—</div><div class="chevron">›</div></div>
-      <div class="profile-row"><div class="row-icon">📅</div><div class="row-label">Возраст</div><div class="row-val" id="profAge">—</div><div class="chevron">›</div></div>
-      <div class="profile-row"><div class="row-icon">📏</div><div class="row-label">Рост</div><div class="row-val" id="profHeight">—</div><div class="chevron">›</div></div>
-      <div class="profile-row"><div class="row-icon">⚖️</div><div class="row-label">Вес</div><div class="row-val" id="profWeight">—</div><div class="chevron">›</div></div>
-      <div class="profile-row"><div class="row-icon">🏃</div><div class="row-label">Активность</div><div class="row-val" id="profActivity">—</div><div class="chevron">›</div></div>
-      <div class="profile-row"><div class="row-icon">🥗</div><div class="row-label">Диета</div><div class="row-val" id="profDiet">—</div><div class="chevron">›</div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="var(--green)" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="var(--green)" stroke-width="1.8"/><circle cx="12" cy="12" r="1.4" fill="var(--green)"/></svg></div><div class="row-label">Цель</div><div class="row-val" id="profGoal">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14" r="5" stroke="var(--icon)" stroke-width="1.8"/><path d="M12 9V3m0 0H8m4 0h4" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="row-label">Пол</div><div class="row-val" id="profGender">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="3" stroke="var(--icon)" stroke-width="1.8"/><path d="M4 9h16M8 3v4M16 3v4" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="row-label">Возраст</div><div class="row-val" id="profAge">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="20" rx="2" stroke="var(--icon)" stroke-width="1.8"/><path d="M9 6h2M9 10h2M9 14h2M9 18h2" stroke="var(--icon)" stroke-width="1.6" stroke-linecap="round"/></svg></div><div class="row-label">Рост</div><div class="row-val" id="profHeight">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 4v3M6 7h12l-2.5 7a3.5 3.5 0 0 1-7 0L6 7z" stroke="var(--icon)" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 20h6" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="row-label">Вес</div><div class="row-val" id="profWeight">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="14" cy="5" r="2" stroke="var(--icon)" stroke-width="1.8"/><path d="M6 21l3-6 3 1.5V21m0-5.5l3-2.5 3 3M9 11l4-2 2 3" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="row-label">Активность</div><div class="row-val" id="profActivity">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      <div class="profile-row"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 13c0-4 3.5-7 8-7s8 3 8 7H4z" stroke="var(--icon)" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 17h18M9 6c0-1.5 1.5-3 3-3" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="row-label">Диета</div><div class="row-val" id="profDiet">—</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="var(--text3)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
     <div class="profile-rows">
       <div class="theme-toggle">
-        <div style="display:flex;align-items:center;gap:10px">
-          <div class="row-icon">🌙</div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" stroke="var(--icon)" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
           <div class="row-label">Тёмная тема</div>
         </div>
         <div class="toggle-track" id="themeToggle" onclick="toggleTheme()">
           <div class="toggle-thumb"></div>
         </div>
       </div>
-      <div class="profile-row" onclick="resetOnboarding()"><div class="row-icon">🔄</div><div class="row-label" style="color:#e74c3c">Пересчитать план</div><div class="chevron">›</div></div>
+      <div class="profile-row" onclick="resetOnboarding()"><div class="row-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 11a8 8 0 1 0-.5 4M20 5v4h-4" stroke="var(--red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="row-label" style="color:var(--red)">Пересчитать план</div><div class="chevron"><svg width="7" height="12" viewBox="0 0 7 12" fill="none"><path d="M1 1 L6 6 L1 11" stroke="#E89497" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
     </div>
   </div>
 </div>
@@ -644,33 +678,52 @@ function checkStreakBreak(){
   }
 }
 
+const ICONS={
+  run:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="14" cy="5" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M6 21l3-6 3 1.5V21m0-5.5l3-2.5 3 3M9 11l4-2 2 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  scale:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3v17M12 3l-7 4M12 3l7 4M5 7l-3 6h6l-3-6zM19 7l-3 6h6l-3-6zM8 20h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  strong:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="9" width="3" height="6" rx="1" fill="currentColor"/><rect x="19" y="9" width="3" height="6" rx="1" fill="currentColor"/><rect x="5" y="7" width="2.5" height="10" rx="1" fill="currentColor"/><rect x="16.5" y="7" width="2.5" height="10" rx="1" fill="currentColor"/><rect x="7.5" y="11" width="9" height="2" fill="currentColor"/></svg>',
+  male:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="10" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M14 10l5-5m0 0h-4m4 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  female:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 14v7m-3-4h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  other:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="14" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 9V3m0 0H8m4 0h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+  calendar:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="15" rx="3" stroke="var(--green)" stroke-width="1.6"/><path d="M4 9h16M8 3v4M16 3v4" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  ruler:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="9" y="2" width="6" height="20" rx="2" stroke="var(--green)" stroke-width="1.6"/><path d="M9 6h2M9 10h2M9 14h2M9 18h2" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round"/></svg>',
+  weight:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 4v3M6 7h12l-2.5 7a3.5 3.5 0 0 1-7 0L6 7z" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 20h6" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  walk:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="13" cy="4" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 21l2-6 3 1v6m0-6l2-4-3-2-3 2v3M7 13l3-2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  rest:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="2" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v6m0 0l-4 7m4-7l4 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  fire:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3c1.5 3 4 4.5 4 8a4 4 0 1 1-8 0c0-1.2.4-2 1-2.8C9 9.8 9.5 11 11 11c0-2.5-1-3.5 1-8z" fill="currentColor"/></svg>',
+  trophy:'<svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M7 4v6m0-6c1.5 0 1.5 4 0 4m0 0v10M17 4c-2 0-3 2-3 5s1 3 3 3v8" stroke="var(--green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  plate:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/></svg>',
+  leaf:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M7 4v6m0-6c1.5 0 1.5 4 0 4m0 0v10M17 4c-2 0-3 2-3 5s1 3 3 3v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  sprout:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 21V11M12 11C12 7 9 5 6 5c0 4 3 6 6 6zm0 0c0-4 3-6 6-6 0 4-3 6-6 6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+  avocado:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="13" rx="6" ry="8" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="14" r="3" stroke="currentColor" stroke-width="1.6"/></svg>',
+  meat:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="11" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M7.7 7.7l8.6 8.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="18" cy="18" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="13" cy="18" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>',
+  broccoli:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 9c-3 0-5 2-5 5 0 4 3 7 5 7s5-3 5-7c0-3-2-5-5-5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+  olive:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 13c2-4 6-7 10-7 3 0 5 1 6 2-1 3-4 6-8 7-4 1-7 1-8-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 13c1.5 1 3.5 1.5 5 1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>'
+};
 const STEPS=[
   {title:'Ваша главная цель',sub:'Ваш личный план будет создан для достижения Вашей цели.',type:'choice',key:'goal',
-   choices:[{icon:'🏃',label:'Похудеть',val:'lose'},{icon:'⚖️',label:'Удержать вес',val:'maintain'},{icon:'💪',label:'Набрать вес',val:'gain'}]},
+   choices:[{icon:ICONS.run,label:'Похудеть',val:'lose'},{icon:ICONS.scale,label:'Удержать вес',val:'maintain'},{icon:ICONS.strong,label:'Набрать вес',val:'gain'}]},
   {title:'Выберите Ваш пол',sub:'Это стартовая точка для расчёта базового метаболизма.',type:'choice',key:'gender',
-   choices:[{icon:'♂️',label:'Мужской',val:'male'},{icon:'♀️',label:'Женский',val:'female'},{icon:'⚧️',label:'Другое',val:'other'}]},
-  {icon:'📅',title:'Когда вы родились?',sub:'Мы учтём возраст при расчёте плана.',type:'birthdate',key:'birthYear'},
-  {icon:'📏',title:'Какой у Вас рост?',sub:'Это влияет на норму калорий.',type:'picker',key:'height',min:140,max:220,def:170,suf:' см'},
-  {icon:'⚖️',title:'Какой у Вас вес?',sub:'Это влияет на норму калорий.',type:'picker',key:'weight',min:40,max:200,def:75,suf:' кг'},
+   choices:[{icon:ICONS.male,label:'Мужской',val:'male'},{icon:ICONS.female,label:'Женский',val:'female'}]},
+  {icon:ICONS.calendar,title:'Когда вы родились?',sub:'Мы учтём возраст при расчёте плана.',type:'birthdate',key:'birthYear'},
+  {icon:ICONS.ruler,title:'Какой у Вас рост?',sub:'Это влияет на норму калорий.',type:'picker',key:'height',min:140,max:220,def:170,suf:' см'},
+  {icon:ICONS.weight,title:'Какой у Вас вес?',sub:'Это влияет на норму калорий.',type:'picker',key:'weight',min:40,max:200,def:75,suf:' кг'},
   {title:'Какая у Вас активность?',sub:'Это поможет рассчитать TDEE.',type:'choice',key:'activity',
    choices:[
-     {icon:'🧘',label:'Минимальная',sub:'Сидячий образ жизни',val:1.2},
-     {icon:'🚶',label:'Лёгкая',sub:'Упражнения 1-2 раза в неделю',val:1.375},
-     {icon:'🏃',label:'Средняя',sub:'Тренировки 3-4 раза в неделю',val:1.55},
-     {icon:'🏋️',label:'Высокая',sub:'Тренировки 4-5 раз в неделю',val:1.725},
-     {icon:'🤸',label:'Очень высокая',sub:'Тренировки 6-7 раз в неделю',val:1.9}
+     {icon:ICONS.rest,label:'Минимальная',sub:'Сидячий образ жизни',val:1.2},
+     {icon:ICONS.walk,label:'Лёгкая',sub:'Упражнения 1-2 раза в неделю',val:1.375},
+     {icon:ICONS.run,label:'Средняя',sub:'Тренировки 3-4 раза в неделю',val:1.55},
+     {icon:ICONS.strong,label:'Высокая',sub:'Тренировки 4-5 раз в неделю',val:1.725},
+     {icon:ICONS.fire,label:'Очень высокая',sub:'Тренировки 6-7 раз в неделю',val:1.9}
    ]},
-  {icon:'🏆',title:'Какой вес Вы хотите получить?',sub:'Мы рассчитаем, как безопасно достичь.',type:'picker',key:'targetWeight',min:40,max:200,def:70,suf:' кг'},
+  {icon:ICONS.trophy,title:'Какой вес Вы хотите получить?',sub:'Мы рассчитаем, как безопасно достичь.',type:'picker',key:'targetWeight',min:40,max:200,def:70,suf:' кг'},
   {title:'Как быстро вы хотите достичь цели?',sub:'',type:'speed',key:'speed'},
   {title:'Ваша диета?',sub:'',type:'choice',key:'diet',
    choices:[
-     {icon:'🍽️',label:'Без диеты',val:'none'},
-     {icon:'🥗',label:'Вегетарианская',val:'veg'},
-     {icon:'🌿',label:'Веганская',val:'vegan'},
-     {icon:'🥑',label:'Кето',val:'keto'},
-     {icon:'🍖',label:'Палео',val:'paleo'},
-     {icon:'🥦',label:'LCHF',val:'lchf'},
-     {icon:'🫒',label:'Средиземноморская',val:'med'}
+     {icon:ICONS.plate,label:'Без диеты',val:'none'},
+     {icon:ICONS.leaf,label:'Вегетарианская',val:'veg'},
+     {icon:ICONS.sprout,label:'Веганская',val:'vegan'},
+     {icon:ICONS.avocado,label:'Кето',val:'keto'}
    ]}
 ];
 
@@ -882,9 +935,9 @@ function showResultScreen(goals){
   const sp=parseFloat(g.speed)||0.4;
   const {dateStr}=calcSpeedDate(sp,tw,w);
   const verbs={lose:'скинете',maintain:'сохраните',gain:'наберёте'};
-  const icons={lose:'🏃',maintain:'⚖️',gain:'💪'};
+  const icons={lose:ICONS.run,maintain:ICONS.scale,gain:ICONS.strong};
   document.getElementById('rcVerb').textContent=verbs[goal]||'достигнете';
-  document.getElementById('rcIcon').textContent=icons[goal]||'🏆';
+  document.getElementById('rcIcon').innerHTML=icons[goal]||ICONS.trophy;
   const diffLabel=diff<1?'текущий вес':(goal==='lose'?'-'+diff+' кг':'+'+diff+' кг');
   document.getElementById('rcBig').textContent=goal==='maintain'?('свой вес → '+dateStr):(diffLabel+' → '+dateStr);
   document.getElementById('rcKcal').textContent=goals.kcal;
@@ -927,7 +980,8 @@ function renderCalendar(){
     const isToday=ds===todayStr(), isSel=ds===state.selectedDate;
     const hasMeals=(state.meals[ds]||[]).length>0;
     div.className='cal-day'+(isToday?' today':isSel?' selected':'')+(hasMeals?' has-data':'');
-    div.textContent=d.getDate();
+    const dows=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+    div.innerHTML=`<span class="cd-dow">${dows[i]}</span><span class="cd-num">${d.getDate()}</span>`;
     div.onclick=()=>{state.selectedDate=ds;renderCalendar();render();};
     container.appendChild(div);
   }
@@ -944,6 +998,7 @@ function render(){
   const tF=meals.reduce((s,m)=>s+m.fat,0);
   const tC=meals.reduce((s,m)=>s+m.carbs,0);
   document.getElementById('remainKcal').textContent=Math.max(0,g.kcal-tK);
+  document.getElementById('remainKcalBig').textContent=Math.max(0,g.kcal-tK);
   document.getElementById('eatenKcal').textContent=tK;
   document.getElementById('goalKcalLbl').textContent=g.kcal;
   document.getElementById('goalPd').textContent=g.p;
@@ -955,15 +1010,18 @@ function render(){
   document.getElementById('streakNum').textContent=state.streak.count;
   const pct=Math.min(tK/g.kcal,1);
   const ring=document.getElementById('mainRing');
-  ring.style.strokeDashoffset=194.8*(1-pct);
-  ring.style.stroke=pct>1?'#e74c3c':pct>.85?'#f39c12':'#8DC63F';
+  const circMain=578;
+  ring.style.strokeDashoffset=circMain*(1-pct);
+  setBar('barP',tP,g.p);
+  setBar('barF',tF,g.f);
+  setBar('barC',tC,g.c);
   setRing('ringP',tP,g.p,119.4);
   setRing('ringF',tF,g.f,119.4);
   setRing('ringC',tC,g.c,119.4);
   renderFavorites();
   const list=document.getElementById('mealsList');
   if(!meals.length){
-    list.innerHTML=`<div class="empty-history"><div class="empty-plate">🍽️</div><p>Пока ничего нет.<br>Нажми «+ Добавить» или одну из кнопок выше.</p></div>`;
+    list.innerHTML=`<div class="empty-history"><div class="empty-plate"><svg width="52" height="52" viewBox="0 0 24 24" fill="none"><path d="M7 4v6m0-6c1.5 0 1.5 4 0 4m0 0v10M17 4c-2 0-3 2-3 5s1 3 3 3v8" stroke="var(--text3)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><p>Пока ничего нет.<br>Нажми «+ Добавить» или одну из кнопок выше.</p></div>`;
     return;
   }
   list.innerHTML=meals.map((m,idx)=>{
@@ -971,7 +1029,7 @@ function render(){
     const animStyle=`style="animation-delay:${delay}s"`;
     const isFav=state.favorites.some(f=>f.name===m.name);
     return `<div class="meal-item" data-id="${m.id}" ${animStyle}>
-      ${m.img?`<img src="${m.img}" class="meal-thumb"/>`:`<div class="meal-thumb-ph">🍽️</div>`}
+      ${m.img?`<img src="${m.img}" class="meal-thumb"/>`:`<div class="meal-thumb-ph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4v6m0-6c1.5 0 1.5 4 0 4m0 0v10M17 4c-2 0-3 2-3 5s1 3 3 3v8" stroke="var(--text3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`}
       <div class="meal-info">
         <div class="meal-name">${m.name}</div>
         <div class="meal-time">${m.time}</div>
@@ -979,8 +1037,8 @@ function render(){
       </div>
       <div class="meal-kcal">${m.kcal}</div>
       <div class="meal-actions">
-        <button class="meal-fav" onclick="toggleFavorite(${m.id})">${isFav?'⭐':'☆'}</button>
-        <button class="meal-del" onclick="deleteMeal(${m.id})">✕</button>
+        <button class="meal-fav" onclick="toggleFavorite(${m.id})">${isFav?`<svg width="16" height="16" viewBox="0 0 24 24" fill="var(--green)"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>`:`<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z" stroke="var(--text3)" stroke-width="1.5" stroke-linejoin="round"/></svg>`}</button>
+        <button class="meal-del" onclick="deleteMeal(${m.id})"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
       </div>
     </div>`;
   }).join('');
@@ -993,14 +1051,18 @@ function renderFavorites(){
   section.style.display='block';
   scroll.innerHTML=state.favorites.map((f,i)=>`
     <div class="fav-card" onclick="addFromFavorite(${i})">
-      ${f.img?`<img src="${f.img}" class="fav-thumb"/>`:`<div class="fav-thumb-ph">🍽️</div>`}
-      <div class="fav-name">${f.name}</div>
-      <div class="fav-kcal">${f.kcal} ккал</div>
-      <button class="fav-remove" onclick="event.stopPropagation();removeFavorite(${i})">✕</button>
+      ${f.img?`<img src="${f.img}" class="fav-thumb"/>`:`<div class="fav-thumb-ph"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M7 4v6m0-6c1.5 0 1.5 4 0 4m0 0v10M17 4c-2 0-3 2-3 5s1 3 3 3v8" stroke="var(--text3)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`}
+      <div class="fav-info">
+        <div class="fav-name">${f.name}</div>
+        <div class="fav-kcal">${f.kcal} ккал</div>
+      </div>
+      <div class="fav-add">+</div>
+      <button class="fav-remove" onclick="event.stopPropagation();removeFavorite(${i})"><svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
     </div>`).join('');
 }
 
 function setRing(id,val,goal,circ){const el=document.getElementById(id);if(el)el.style.strokeDashoffset=circ*(1-Math.min(val/Math.max(goal,1),1));}
+function setBar(id,val,goal){const el=document.getElementById(id);if(el)el.style.width=Math.min(val/Math.max(goal,1),1)*100+'%';}
 function deleteMeal(id){
   const el=document.querySelector(`.meal-item[data-id="${id}"]`);
   if(el){
@@ -1045,20 +1107,20 @@ function openAddMenu(){
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">Добавить блюдо</div>
     <div class="quick-actions" style="margin-bottom:0">
-      <div class="qa-btn" onclick="closeModal();openCamera()">
-        <div class="qa-icon">📸</div>
+      <div class="qa-btn qa-accent" onclick="closeModal();openCamera()">
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1l1-2h7l1 2h1A2.5 2.5 0 0 1 19 8.5v8A2.5 2.5 0 0 1 16.5 19h-9A2.5 2.5 0 0 1 5 16.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12.5" r="3.2" stroke="#fff" stroke-width="1.8"/></svg></div>
         <div class="qa-label">Камера</div>
       </div>
       <div class="qa-btn" onclick="closeModal();openGallery()">
-        <div class="qa-icon">🖼️</div>
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="5" width="16" height="14" rx="3" stroke="var(--icon)" stroke-width="1.8"/><circle cx="9" cy="10" r="1.6" fill="var(--icon)"/><path d="M5 17l4-4 3 3 3-3 4 4" stroke="var(--icon)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <div class="qa-label">Галерея</div>
       </div>
       <div class="qa-btn" onclick="closeModal();openManualEntry()">
-        <div class="qa-icon">✏️</div>
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 4l6 6L9 21H3v-6L14 4z" stroke="var(--icon)" stroke-width="1.8" stroke-linejoin="round"/><path d="M12.5 6.5l5 5" stroke="var(--icon)" stroke-width="1.8"/></svg></div>
         <div class="qa-label">Вручную</div>
       </div>
       <div class="qa-btn" onclick="closeModal();openBarcode()">
-        <div class="qa-icon">📊</div>
+        <div class="qa-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="2.5" height="12" fill="var(--icon)"/><rect x="7" y="6" width="1.2" height="12" fill="var(--icon)"/><rect x="9.5" y="6" width="2.5" height="12" fill="var(--icon)"/><rect x="13.5" y="6" width="1.2" height="12" fill="var(--icon)"/><rect x="16" y="6" width="2.5" height="12" fill="var(--icon)"/><rect x="19.5" y="6" width="1.2" height="12" fill="var(--icon)"/></svg></div>
         <div class="qa-label">Штрих-код</div>
       </div>
     </div>
@@ -1073,15 +1135,15 @@ function openManualEntry(){
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">Добавить вручную</div>
     <div class="tab-switcher">
-      <button class="tab-btn active" onclick="switchManualTab(this,'ai')">🤖 Через ИИ</button>
-      <button class="tab-btn" onclick="switchManualTab(this,'form')">📝 Форма</button>
+      <button class="tab-btn active" onclick="switchManualTab(this,'ai')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 8a7 7 0 0 1 14 0v3a7 7 0 0 1-14 0V8z" stroke="currentColor" stroke-width="1.8"/><circle cx="9.5" cy="9.5" r="1.3" fill="currentColor"/><circle cx="14.5" cy="9.5" r="1.3" fill="currentColor"/><path d="M9 14c.8.8 2 .8 3 .8s2.2 0 3-.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg> Через ИИ</button>
+      <button class="tab-btn" onclick="switchManualTab(this,'form')"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M9 8h6M9 12h6M9 16h3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg> Форма</button>
     </div>
     <div id="manualAITab">
       <div class="edit-field">
         <label>Опишите что вы съели</label>
         <textarea id="aiDesc" placeholder="Например: тарелка борща с говядиной и сметаной, кусок хлеба"></textarea>
       </div>
-      <button class="confirm-btn" onclick="analyzeManualText()">Проанализировать</button>
+      <button class="confirm-btn" onclick="analyzeManualText()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3v3m0 12v3m9-9h-3M6 12H3m13.5-6.5l-2 2m-7 7l-2 2m11 0l-2-2m-7-7l-2-2" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg> Проанализировать</button>
     </div>
     <div id="manualFormTab" style="display:none">
       <div class="manual-form">
@@ -1145,8 +1207,8 @@ function openBarcode(){
   openModal();
   document.getElementById('modalContent').innerHTML=`
     <div class="modal-title">Штрих-код</div>
-    <div class="ob-sub" style="text-align:left;margin-bottom:16px">📸 Сфотографируй штрих-код на упаковке — ИИ распознает продукт и его КБЖУ.</div>
-    <button class="confirm-btn" onclick="closeModal();document.getElementById('fileInputCamera').setAttribute('data-mode','barcode');document.getElementById('fileInputCamera').click()">📸 Сфотографировать</button>
+    <div class="ob-sub" style="text-align:left;margin-bottom:16px">Сфотографируй штрих-код на упаковке — ИИ распознает продукт и его КБЖУ.</div>
+    <button class="confirm-btn" onclick="closeModal();document.getElementById('fileInputCamera').setAttribute('data-mode','barcode');document.getElementById('fileInputCamera').click()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1l1-2h7l1 2h1A2.5 2.5 0 0 1 19 8.5v8A2.5 2.5 0 0 1 16.5 19h-9A2.5 2.5 0 0 1 5 16.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="12.5" r="3.2" stroke="#fff" stroke-width="1.8"/></svg> Сфотографировать</button>
     <button class="cancel-btn" onclick="closeModal()">Отмена</button>`;
 }
 
